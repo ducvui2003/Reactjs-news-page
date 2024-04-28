@@ -5,7 +5,7 @@ import {
     faSun,
 } from "@fortawesome/free-solid-svg-icons";
 import {faFacebook, faYoutube, faTiktok} from '@fortawesome/free-brands-svg-icons';
-import "../../assets/scss/header.scss"
+import "./style.scss"
 
 export default function HeaderInfo() {
     const currentDate: Date = new Date();

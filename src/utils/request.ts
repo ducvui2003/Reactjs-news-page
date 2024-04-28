@@ -1,4 +1,4 @@
-import axios, {Axios, AxiosInstance} from "axios";
+import axios, {AxiosInstance} from "axios";
 
 require('dotenv').config()
 const instance: AxiosInstance = axios.create({

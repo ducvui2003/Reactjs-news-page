@@ -1,5 +1,5 @@
 import instance from "./request";
-import Parser = require('rss-parser');
+import Parser from 'rss-parser';
 
 const parser = new Parser();
 const parserRSS = async (path: string) => {
