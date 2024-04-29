@@ -2,7 +2,6 @@ import React from "react";
 import {Button, Dropdown, Navbar} from "react-bootstrap";
 
 export default function Nav() {
-    const cssBtn: {} = ["px-1"]
     return <>
         <Navbar>
             <Navbar.Brand href="#">The economist</Navbar.Brand>
