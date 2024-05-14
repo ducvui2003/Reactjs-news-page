@@ -1,16 +1,12 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/scss/bootstrap.scss";
-// import './assets/scss/bootstrap_custom.scss';
 import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+
+import ModalAuth from "./pages/Authentication/Auth";
 
 function App() {
-  return (
-    <>
-      <Footer />
-    </>
-  );
+  return <ModalAuth />;
 }
 
 export default App;
