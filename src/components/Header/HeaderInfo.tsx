@@ -2,7 +2,7 @@ import React from "react";
 import {format} from "date-fns";
 import { vi } from 'date-fns/locale';
 import Logo from './HeaderLogo';
-import NavBar from './HeaderNav';
+import NavBar from './HeaderNav/HeaderNav';
 import SearchBar from './HeaderSearch';
 import "./style.scss"
 import LogIn from "./HeaderLogIn";
