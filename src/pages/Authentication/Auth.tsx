@@ -1,7 +1,6 @@
 import React from "react";
 import { Col, Container, Modal, Row } from "react-bootstrap";
-import AnotherAuth from "../../components/AuthModal/AnotherAuth";
-import Register from "../../components/AuthModal/Register";
+import RegisterForm from "../../components/Form/RegisterForm";
 
 function ModalAuth() {
   return (
@@ -10,10 +9,6 @@ function ModalAuth() {
         <Container>
           <Row>
             <Col>
-              <Register></Register>
-            </Col>
-            <Col>
-              <AnotherAuth />
             </Col>
           </Row>
         </Container>

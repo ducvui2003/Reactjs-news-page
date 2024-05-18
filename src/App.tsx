@@ -1,12 +1,9 @@
-import React from "react";
 import "./App.css";
 import "bootstrap/scss/bootstrap.scss";
-import Header from "./components/Header/Header";
-
-import ModalAuth from "./pages/Authentication/Auth";
+import Home from "./pages/Home/Home";
 
 function App() {
-  return <ModalAuth />;
+    return <Home/>
 }
 
 export default App;

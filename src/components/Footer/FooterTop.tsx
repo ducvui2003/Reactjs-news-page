@@ -1,5 +1,5 @@
 import {Col, Container, Row, Stack} from "react-bootstrap";
-import {EMAIL, PHONE_1, PHONE_2} from "../../constraints/store";
+import {EMAIL, PHONE_1, PHONE_2} from "../../constraints/info";
 import {Email, Handshake, Phone} from "@mui/icons-material";
 import {Divider} from "@mui/material";
 import "./footer.scss";

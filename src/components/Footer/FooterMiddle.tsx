@@ -1,5 +1,5 @@
 import {Container, Stack} from "react-bootstrap";
-import {LOGO} from "../../constraints/store";
+import {LOGO} from "../../constraints/info";
 import "./footer.scss";
 import {Divider} from "@mui/material";
 

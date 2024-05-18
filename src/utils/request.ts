@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from "axios";
-import { RSS_FEED_URL } from "../constraints/store";
+import { RSS_FEED_URL } from "../constraints/info";
 
 require("dotenv").config();
 const instance: AxiosInstance = axios.create({
