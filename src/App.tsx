@@ -1,13 +1,9 @@
-import React from 'react';
-import './App.css';
-import 'bootstrap/scss/bootstrap.scss';
-// import './assets/scss/bootstrap_custom.scss';
-import Header from "./components/Header/Header";
+import "./App.css";
+import "bootstrap/scss/bootstrap.scss";
+import Home from "./pages/Home/Home";
 
 function App() {
-    return (
-        <Header/>
-    );
+    return <Home/>
 }
 
 export default App;
