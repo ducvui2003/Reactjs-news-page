@@ -7,5 +7,6 @@ const parserRSS = async (path: string) => {
     const rss = await parser.parseString(res.data)
     console.log("response:>>>>>>>", res)
     console.log("rss:>>>>>>>", rss)
+    return rss
 }
 export default parserRSS;
