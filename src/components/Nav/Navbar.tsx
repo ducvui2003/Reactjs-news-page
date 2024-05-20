@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 // @ts-ignore
-import {Button, Dropdown, Navbar} from "react-bootstrap";
+import {Button, Container, Navbar, NavDropdown, NavLink} from "react-bootstrap";
 import { CiBellOn } from "react-icons/ci";
 
 import DarkMode from "./DarkMode/DarkMode";
@@ -8,48 +8,60 @@ import DarkMode from "./DarkMode/DarkMode";
 import  "./Navbar.scss";
 import {format} from "date-fns";
 
+//  icon
+import { IoMdHome } from "react-icons/io";
+import Intro from "../Intro/Intro";
+import {Link} from "react-router-dom";
+// import NewsList from "../NewsList/NewsList";
+
 export default function Nav() {
     const cssBtn: {} = ["px-1"]
+    let path = "/";
     const currentDate: Date = new Date();
     const formattedDate: string = format(currentDate, "dd/MM/yyyy");
+
+
+    const categories = ["Trang chính", 'Quốc tế', 'Lao động', 'Bạn đọc',
+        "Kinh tế", 'Sức khỏe', 'Giáo dục', 'Pháp luật',
+        "Văn hóa - Nghệ thuật", 'Giải trí', 'Thể thao', 'Công nghệ'];
+    const [selectedCategory, setSelectCategory] = useState<string>(categories[0]);
+
+    function handleCategoryClick(category: string) {
+        setSelectCategory(category);
+    }
+
     return (
         <>
-            <Navbar className="custom__navbar">
-                <img className="logo ml-5 mb-3" src="https://s1.vnecdn.net/vnexpress/restruct/i/v889/v2_2019/pc/graphics/logo.svg"/>
-                {/*<Navbar.Brand href="#">NewsVN</Navbar.Brand>*/}
-                <div className="header__date ml-5 mb-3">{formattedDate}</div>
-                <div className="news">
-                    <div className={"news__today news__item"}><a href="">Tin tức hôm nay</a></div>
-                    <div className={"news__24h news__item"}><a href="">Tin tức 24h</a></div>
-                    <div className={"news__podcast news__item"}><a href="">Tin quốc tế</a></div>
-                    <div className={"news__area news__item"}> Tin theo khu vực
-                        <ul className="area__list">
-                            <li className="area__item"><a href="">Miền Bắc</a></li>
-                            <li className="area__item"><a href="">Miền Trung</a></li>
-                            <li className="area__item"><a href="">Miền Nam</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div className="content__right">
-                    <div className="form">
-                        <form role="search" method="get" id="searchform" className="searchform"
-                              action="' . home_url( '/' ) . '">
-                            <div className="input-group mb-3">
-                                <input name="s" type="text" className="form-control" placeholder="Nhập từ khóa..."/>
-                                <div className="input-group-append">
-                                    <button className="btn btn-info" type="submit">Tìm</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <Button className={"btn__subscriber"}>Subscribe</Button>
-                    <Button className={"btn__login"}>Log in</Button>
-                    <a href=""><CiBellOn/></a>
+            <Navbar expand="lg" className="bg-body-tertiary">
+                <Container>
+                    {/*<Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>*/}
+                    <Navbar.Toggle aria-controls="basic-navbar-nav " />
+                    <Navbar.Collapse id="basic-navbar-nav" className="d-flex justify-content-evenly">
+                        {/*<Navbar className="me-auto">*/}
+                        {categories.map((category) => (
+                            <Link onClick={() => handleCategoryClick(category)} to={path+category}>{category}</Link>
+                        ))}
+                        {/*<NavDropdown title="Xem thêm" id="basic-nav-dropdown">*/}
+                        {/*    <NavDropdown.Item href="#action/3.1">*/}
+                        {/*        Action*/}
+                        {/*    </NavDropdown.Item>*/}
+                        {/*    <NavDropdown.Item href="#action/3.2">*/}
+                        {/*        Another action*/}
+                        {/*    </NavDropdown.Item>*/}
+                        {/*    <NavDropdown.Item href="#action/3.3">*/}
+                        {/*        Something*/}
+                        {/*    </NavDropdown.Item>*/}
+                        {/*    <NavDropdown.Divider />*/}
+                        {/*    <NavDropdown.Item href="#action/3.4">*/}
+                        {/*        Separated link*/}
+                        {/*    </NavDropdown.Item>*/}
+                        {/*</NavDropdown>*/}
+                        {/*</Navbar>*/}
+                    </Navbar.Collapse>
                     <DarkMode/>
-                </div>
-
+                </Container>
             </Navbar>
+            {/*<NewsList category={selectedCategory}/>*/}
         </>
     )
 }

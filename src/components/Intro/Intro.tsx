@@ -1,6 +1,24 @@
+import "./Intro.scss";
 import CardItem from "./CardItem/CardItem";
-import "./Intro.scss"
+import {News} from "../../features/internationalNews/internationalNews";
 
+const listData: News[] = [
+        {
+            title: "title",
+            imgLink: "https://i1-vnexpress.vnecdn.net/2024/05/15/luongcuong-1715756711-5929-1715756762.jpg?w=120&h=72&q=100&dpr=2&fit=crop&s=QLEDRGolpQX4Yye9XBapRg",
+            shortDes: "ABC"
+        },
+        {
+            title: "title",
+            imgLink: "https://i1-vnexpress.vnecdn.net/2024/05/15/luongcuong-1715756711-5929-1715756762.jpg?w=120&h=72&q=100&dpr=2&fit=crop&s=QLEDRGolpQX4Yye9XBapRg",
+            shortDes: "ABC"
+        },
+        {
+            title: "title",
+            imgLink: "https://i1-vnexpress.vnecdn.net/2024/05/15/luongcuong-1715756711-5929-1715756762.jpg?w=120&h=72&q=100&dpr=2&fit=crop&s=QLEDRGolpQX4Yye9XBapRg",
+            shortDes: "ABC"
+        }
+    ];
 export default function Intro() {
     return (
         <>
@@ -29,15 +47,15 @@ export default function Intro() {
                             </div>
                         </div>
                     </div>
-                    <div className="intro__item">
-                        <CardItem/>
-                    </div>
-                    <div className="intro__item">
-                        <CardItem/>
-                    </div>
-                    <div className="intro__item">
-                        <CardItem/>
-                    </div>
+
+                    {listData.map((item:News) =>  {
+                        return (
+                            <div className="intro__item">
+                                <CardItem imgLink={item.imgLink} title={item.title} shortDes={item.shortDes}/>
+                            </div>
+                        )
+                    })}
+
                 </div>
                 <div className="intro__left">
                     <div className="intro__item">
