@@ -6,6 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import {Provider} from "react-redux";
 import {store} from "./features/store";
 import {BrowserRouter} from "react-router-dom";
+import "nprogress/nprogress.css"
+import "./assets/sass/custom-nprogress.scss"
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
