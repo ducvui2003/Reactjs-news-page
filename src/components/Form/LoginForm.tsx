@@ -1,7 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 import {login} from "../../features/authenticate/authenticate.slice";
-import {User} from "../../features/types/user.type";
+import {User} from "../../types/user.type";
 import {useForm} from "react-hook-form"
 import {yupResolver} from "@hookform/resolvers/yup"
 import * as yup from "yup"

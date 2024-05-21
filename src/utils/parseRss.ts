@@ -1,8 +1,6 @@
 import instance from "./request";
-import {Category} from "../services/api/category";
-// import Parser from 'rss-parser';
+import {Category} from "../constraints/category";
 
-// const parser = new Parser();
 const parserRSS = async (category: Category) => {
     return await instance.get("/", {
         params: {

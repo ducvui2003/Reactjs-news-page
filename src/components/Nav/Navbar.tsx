@@ -9,7 +9,6 @@ import {format} from "date-fns";
 
 //  icon
 import {Link} from "react-router-dom";
-// import NewsList from "../NewsList/NewsList";
 
 export default function Nav() {
     const cssBtn: {} = ["px-1"]
@@ -26,7 +25,6 @@ export default function Nav() {
     function handleCategoryClick(category: string) {
         setSelectCategory(category);
     }
-
     return (
         <>
             <Navbar expand="lg" className="bg-body-tertiary">
