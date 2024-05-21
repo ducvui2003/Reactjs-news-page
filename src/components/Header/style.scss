@@ -1,6 +1,12 @@
+//  variables
+$border-color: black;
+$border-radius: 999px;
+$padding-left: 36px;
+$icon-position-left: 12px;
+$icon-position-top: 50%;
+
 .custom-border-start {
-  border-left: 1px solid black;
-  border-left: 1px solid black;
+  border-left: 1px solid $border-color;
 }
 
 .header__logo-container {
@@ -14,20 +20,20 @@
 }
 
 .input-search {
-  border: 1px solid #000;
-  border-radius: 999px;
-  padding-left: 36px;
-}
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding-left: $padding-left;
 
-.input-search:focus {
-  outline: none;
+  &:focus {
+    outline: none;
+  }
 }
 
 .ic-search {
   background: none;
   border: none;
   position: absolute;
-  left: 12px;
-  top: 50%;
+  left: $icon-position-left;
+  top: $icon-position-top;
   transform: translateY(-50%);
 }
