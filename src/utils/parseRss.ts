@@ -1,12 +1,13 @@
 import instance from "./request";
-import Parser from 'rss-parser';
+import {Category} from "../services/api/category";
+// import Parser from 'rss-parser';
 
-const parser = new Parser();
-const parserRSS = async (path: string) => {
-    const res = await instance.get(path);
-    const rss = await parser.parseString(res.data)
-    console.log("response:>>>>>>>", res)
-    console.log("rss:>>>>>>>", rss)
-    return rss
+// const parser = new Parser();
+const parserRSS = async (category: Category) => {
+    return await instance.get("/", {
+        params: {
+            "category": category
+        }
+    });
 }
 export default parserRSS;

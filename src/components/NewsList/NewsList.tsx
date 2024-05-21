@@ -1,4 +1,4 @@
-import {getNews, News} from "../../features/internationalNews/internationalNews";
+import {News} from "../../features/internationalNews/internationalNews";
 // import React, {useEffect, useState} from "react";
 import CardItem from "../Intro/CardItem/CardItem";
 import {Card, Col, Container, Row} from "react-bootstrap";
@@ -26,22 +26,22 @@ const listData: News[] = [
 
 export function NewsList() {
     return (
-            <Container>
-                {listData.map((item) => (
-                    <Card className="mb-3">
-                        <Row noGutters>
-                            <Col md={4}>
-                                <Card.Img src={item.imgLink} />
-                            </Col>
-                            <Col md={8}>
-                                <Card.Body>
-                                    <Card.Title className="h1">{item.title}</Card.Title>
-                                    <Card.Text>{item.shortDes}</Card.Text>
-                                </Card.Body>
-                            </Col>
-                        </Row>
-                    </Card>
-                ))}
-            </Container>
+        <Container>
+            {listData.map((item) => (
+                <Card className="mb-3">
+                    <Row noGutters>
+                        <Col md={4}>
+                            <Card.Img src={item.imgLink}/>
+                        </Col>
+                        <Col md={8}>
+                            <Card.Body>
+                                <Card.Title className="h1">{item.title}</Card.Title>
+                                <Card.Text>{item.shortDes}</Card.Text>
+                            </Card.Body>
+                        </Col>
+                    </Row>
+                </Card>
+            ))}
+        </Container>
     )
 };

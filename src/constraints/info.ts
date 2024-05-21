@@ -1,4 +1,4 @@
-export const RSS_FEED_URL: string = "https://vnexpress.net/rss";
+export const SERVER_RSS: string = "http://localhost:5000";
 export const LOGO: string =
   "https://s1.vnecdn.net/vnexpress/restruct/i/v884/v2_2019/pc/graphics/logo.svg";
 export const EMAIL: string = "21130320@gmail.com";
