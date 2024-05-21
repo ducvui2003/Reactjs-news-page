@@ -1,46 +1,38 @@
-# Getting Started with Create React App
+# I. Cấu trúc folder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. assets
 
-## Available Scripts
+- Chứa các tài nguyên như ảnh, font, svg,...
 
-In the project directory, you can run:
+## 2. components
 
-### `npm start`
+- Chứa các component
+- Các component là các thành phần tách rời mà các trang có thể tái sử dụng lẫn nhau
+- Mỗi component được để trong 1 folder riêng, đặt tên theo dạng Header, Nav,...(đặt tên chữ **HOA** đầu)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 3. pages
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Chứa các page lớn của trang
+- Mỗi page và các page con của page đó nằm trong 1 package (đặt tên chữ **HOA** đầu)
 
-### `npm test`
+## 4. services
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Chứa các phần để lấy các tài nguyên bên ngoài (call api, gửi action đến redux)
 
-### `npm run build`
+### 4.1 api
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Cung cấp hàm để call api, những lúc cần call chỉ cần gọi method trong đây ra (hiện tại đan tích hợp bằng axios)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 5. store
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Sử dụng để setup các thành phần cần thiết cho redux (sẽ cấu hình sau)
 
-### `npm run eject`
+## utils
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Chứa các function dùng chung như format tiền tệ, ngôn ngữ, đơn vị,...
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Lưu ý
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Các file tsx đặt tên chứ Hoa ở đầu mỗi chữ
+- Mỗi file tsx chỉ chứa duy nhất 1 function components (sử dụng export + import)
+- Các function, method, variable đều phải khai báo type
