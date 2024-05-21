@@ -1,9 +1,10 @@
-import axios, {AxiosInstance} from "axios";
+import axios, { AxiosInstance } from "axios";
+import { RSS_FEED_URL } from "../constraints/info";
 
-require('dotenv').config()
+require("dotenv").config();
 const instance: AxiosInstance = axios.create({
-    baseURL: process.env.RSS_FEED_URL,
-    timeout: 60000,
-})
+  baseURL: RSS_FEED_URL,
+  timeout: 60000,
+});
 
 export default instance;

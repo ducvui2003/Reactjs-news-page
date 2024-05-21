@@ -7,6 +7,7 @@ import {
     Form,
     Row, Stack,
 } from "react-bootstrap";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import {useDispatch} from "react-redux";
 import {login} from "../../features/authenticate/authenticate.slice";
 import {User} from "../../features/types/user.type";
