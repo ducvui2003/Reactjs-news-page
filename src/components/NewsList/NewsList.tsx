@@ -50,3 +50,5 @@ export function NewsList() {
         </Container>
     )
 };
+
+export {};
