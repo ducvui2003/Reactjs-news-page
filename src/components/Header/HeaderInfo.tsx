@@ -1,11 +1,12 @@
 import React from "react";
 import {format} from "date-fns";
 import { vi } from 'date-fns/locale';
-import Logo from './HeaderLogo';
-import NavBar from './HeaderNav/HeaderNavInfo';
+import NavBar from './HeaderNavInfo';
 import SearchBar from './HeaderSearch';
 import "./style.scss"
 import LogIn from "./HeaderLogIn";
+import {LOGO} from "../../constraints/info";
+
 
 export default function HeaderInfo() {
     const currentDate: Date = new Date();
@@ -14,7 +15,7 @@ export default function HeaderInfo() {
     return (
         <div className="container border-bottom">
             <nav className="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
-                <div className="header__logo-container">
+                <div className="d-flex align-items-center justify-content-center position-relative">
                     <Logo/>
                     <div className="header__date custom-border-start px-2">{dayOfWeek}, {formattedDate}</div>
                 </div>
@@ -29,6 +30,16 @@ export default function HeaderInfo() {
                     <LogIn />
                 </div>
             </nav>
+        </div>
+    );
+}
+
+function Logo() {
+    return (
+        <div className="navbar-brand">
+            <a href="#">
+                <img src={LOGO} alt="VnExpress" />
+            </a>
         </div>
     );
 }

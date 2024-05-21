@@ -9,10 +9,8 @@ $icon-position-top: 50%;
   border-left: 1px solid $border-color;
 }
 
-.header__logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.position-relative {
+  position: relative;
 }
 
 .form-grp {

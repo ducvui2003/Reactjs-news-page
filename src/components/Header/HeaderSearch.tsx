@@ -5,7 +5,7 @@ import {faSearch} from '@fortawesome/free-solid-svg-icons';
 const SearchBar: React.FC = () => {
     return (
         <form className="form__search form-inline my-2 my-lg-0 px-2 custom-border-start">
-            <div className="form-grp">
+            <div className="position-relative">
                 <input className="input-search" type="search" placeholder="Tìm kiếm" aria-label="Search"/>
                 <div className="ic-search small">
                     <span className="">
