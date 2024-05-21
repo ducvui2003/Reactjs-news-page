@@ -1,0 +1,11 @@
+.icon {
+  transition: opacity 0.5s ease;
+}
+
+.icon-hidden {
+  opacity: 0;
+}
+
+.icon-visible {
+  opacity: 1;
+}
