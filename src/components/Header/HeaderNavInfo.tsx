@@ -26,5 +26,13 @@ function RegionalNews() {
     );
 }
 
+function InternationalNews() {
+    return (
+        <li className="custom-border-start">
+            <a className="py-0 nav-link" href="#">International</a>
+        </li>
+    )
+}
+
 
 export default NavBar;
