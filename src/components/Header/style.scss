@@ -1,0 +1,37 @@
+//  variables
+$border-color: black;
+$border-radius: 999px;
+$padding-left: 36px;
+$icon-position-left: 12px;
+$icon-position-top: 50%;
+
+.custom-border-start {
+  border-left: 1px solid $border-color;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.form-grp {
+  position: relative;
+}
+
+.input-search {
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding-left: $padding-left;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.ic-search {
+  background: none;
+  border: none;
+  position: absolute;
+  left: $icon-position-left;
+  top: $icon-position-top;
+  transform: translateY(-50%);
+}
