@@ -6,16 +6,17 @@ import Footer from "../../components/Footer/Footer";
 import {Container} from "react-bootstrap";
 
 function Home() {
-    // const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-    //
-    // const openModal = () => {
-    //     setIsModalOpen(true);
-    // }
-    // const closeModal = () => {
-    //     setIsModalOpen(false);
-    // }
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    }
+    const closeModal = () => {
+        setIsModalOpen(false);
+    }
     return (
         <>
+            <Header/>
             <Nav/>
             <Container fluid={"xl"}>
                 <Intro/>
