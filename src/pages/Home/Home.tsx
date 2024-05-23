@@ -18,7 +18,7 @@ function Home() {
     }
     return (
         <>
-            {/*<Header/>*/}
+            <Header/>
             <Nav/>
             <Intro/>
             <NewsList/>
