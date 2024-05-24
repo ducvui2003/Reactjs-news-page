@@ -1,14 +1,10 @@
-import React from 'react';
-import './App.css';
-import 'bootstrap/scss/bootstrap.scss';
-// import './assets/scss/bootstrap_custom.scss';
-import Header from "./components/Header/Header";
+import "./App.css";
+import "bootstrap/scss/bootstrap.scss";
 import Home from "./pages/Home/Home";
+import ReactRouter from "./routes/RouterConfig";
 
 function App() {
-    return (
-        <Home/>
-    );
+    return <ReactRouter/>
 }
 
 export default App;
