@@ -29,7 +29,7 @@ const listData: News[] = [
 export function NewsList() {
   const [news, setNews] = useState<News[]>([]);
   useEffect(() => {
-    getNewsByCategory(Category.TRANG_CHU).then((res) => setNews(res));
+    getNewsByCategory(Category.BAN_DOC).then((res) => setNews(res));
   }, []);
   return (
     <Container>

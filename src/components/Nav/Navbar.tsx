@@ -12,7 +12,7 @@ import {Link} from "react-router-dom";
 
 export default function Nav() {
     const cssBtn: {} = ["px-1"]
-    let path = "/";
+    const path = "/";
     const currentDate: Date = new Date();
     const formattedDate: string = format(currentDate, "dd/MM/yyyy");
 
