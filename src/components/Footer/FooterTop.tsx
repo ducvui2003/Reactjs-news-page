@@ -85,9 +85,11 @@ function FooterHotline() {
 function Item({
                   contentArray,
                   bold,
+                  key
               }: {
-    contentArray: string[];
-    bold: boolean;
+    contentArray: string[],
+    bold: boolean,
+    key?: number
 }) {
     return (
         <Stack gap={3}>

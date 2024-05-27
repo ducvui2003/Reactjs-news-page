@@ -1,18 +1,14 @@
 import React, {useState} from "react";
 // @ts-ignore
 import {Button, Container, Navbar, NavDropdown, NavLink} from "react-bootstrap";
-import { CiBellOn } from "react-icons/ci";
 
 import DarkMode from "./DarkMode/DarkMode";
 
-import  "./Navbar.scss";
+import "./Navbar.scss";
 import {format} from "date-fns";
 
 //  icon
-import { IoMdHome } from "react-icons/io";
-import Intro from "../Intro/Intro";
 import {Link} from "react-router-dom";
-// import NewsList from "../NewsList/NewsList";
 
 export default function Nav() {
     const cssBtn: {} = ["px-1"]
@@ -29,17 +25,16 @@ export default function Nav() {
     function handleCategoryClick(category: string) {
         setSelectCategory(category);
     }
-
     return (
         <>
             <Navbar expand="lg" className="bg-body-tertiary">
                 <Container>
                     {/*<Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>*/}
-                    <Navbar.Toggle aria-controls="basic-navbar-nav " />
+                    <Navbar.Toggle aria-controls="basic-navbar-nav "/>
                     <Navbar.Collapse id="basic-navbar-nav" className="d-flex justify-content-evenly">
                         {/*<Navbar className="me-auto">*/}
                         {categories.map((category) => (
-                            <Link onClick={() => handleCategoryClick(category)} to={path+category}>{category}</Link>
+                            <Link onClick={() => handleCategoryClick(category)} to={path + category}>{category}</Link>
                         ))}
                         {/*<NavDropdown title="Xem thêm" id="basic-nav-dropdown">*/}
                         {/*    <NavDropdown.Item href="#action/3.1">*/}

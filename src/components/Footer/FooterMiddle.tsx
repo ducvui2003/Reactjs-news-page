@@ -1,17 +1,15 @@
 import {Container, Stack} from "react-bootstrap";
-import {LOGO} from "../../constraints/info";
 import "./footer.scss";
 import {Divider} from "@mui/material";
+import logo from '../../assets/image/logo.svg'
 
 function FooterMiddle() {
 
     return (
-        <Container fluid={"xl"}>
-            <Stack direction="horizontal" className="my-2">
-                <FooterLogo/>
-                <FooterLegacy/>
-            </Stack>
-        </Container>
+        <Stack direction="horizontal" className="my-2">
+            <FooterLogo/>
+            <FooterLegacy/>
+        </Stack>
     );
 }
 
@@ -27,7 +25,7 @@ function FooterLogo() {
             >
                 Báo điện tử
             </h2>
-            <img src={LOGO} alt="logo" className="logo ms-1"/>
+            <img src={logo} alt="logo" className="logo ms-1"/>
         </Stack>
     );
 }
