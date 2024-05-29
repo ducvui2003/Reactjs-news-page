@@ -21,7 +21,7 @@ function ModalAuth({ isOpen, onClose }: ModalProps) {
     setValue(newValue);
   };
   return (
-    <Modal show={isOpen} onHide={onClose}>
+    <Modal show={isOpen} className="fade" onHide={onClose}>
       <Modal.Body>
         <TabContext value={value}>
           <TabList onChange={handleChange}>
