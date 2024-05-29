@@ -3,7 +3,7 @@ import {News} from "../../types/news.type";
 import "../../assets/sass/utils.scss"
 import Typography from "@mui/joy/Typography";
 import React from "react";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 export default NewsItem;
 

@@ -6,6 +6,8 @@ export interface News {
     shortDes: string
 }
 
+
+
 // export function getNews(cate:string) {
 //     const newsList =  parserRSS(cate);
 //     return newsList;
