@@ -8,6 +8,7 @@ import "swiper/css/pagination";
 import { Stack } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
+import {useDispatch} from "react-redux";
 const settings = {
   slidesPerView: 2,
   spaceBetween: 30,
@@ -27,6 +28,9 @@ const settings = {
 };
 
 function Carousel({ title, children }: { title: string; children: any }) {
+
+  const dispatch = useDispatch();
+
   return (
     <div
       className={
