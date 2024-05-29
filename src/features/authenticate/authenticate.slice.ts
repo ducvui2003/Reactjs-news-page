@@ -1,12 +1,13 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {User} from "../../types/user.type";
 import {userData} from "./UserData";
+import {addUser, removeUser} from "../../services/sessionStorageService";
+import bcrypt from 'bcryptjs'
 
 const initialState: User = {
     email: undefined,
     password: undefined,
 };
-
 
 const authenticateSlice = createSlice({
     name: 'authenticate',
@@ -18,33 +19,25 @@ const authenticateSlice = createSlice({
             if (userExist) {
                 state.email = user.email;
                 state.password = user.password;
-                add(user);
+                addUser(user);
             }
         },
         register: (state, action: PayloadAction<User>) => {
             const user = action.payload;
             const userExist = userData.find((item: User) => user.email == item.email);
-            if (userExist == undefined){
+            if (userExist == undefined) {
                 userData.push(user);
             }
+            addUser(user);
         },
         logout: (state) => {
             state.email = undefined;
             state.password = undefined;
-            remove();
+            removeUser();
         }
     }
 });
 
-// Thêm user
-function add(user: User) {
-    remove();
-    localStorage.setItem("user", JSON.stringify(user));
-}
-
-function remove() {
-    localStorage.removeItem("user");
-}
 
 export const {login, logout} = authenticateSlice.actions
 const authenticateReducer = authenticateSlice.reducer;

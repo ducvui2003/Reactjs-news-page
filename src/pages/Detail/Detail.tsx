@@ -4,10 +4,10 @@ import { categoryExist } from "../../services/categoryService";
 
 function Detail() {
   const { id } = useParams();
-  console.log(id);
-  if (!categoryExist(id || "")) {
-    return <Navigate to="/404" />;
-  }
+  console.log("id: ",id);
+  // if (!categoryExist(id || "")) {
+  //   return <Navigate to="/404" />;
+  // }
   return <div></div>;
 }
 
