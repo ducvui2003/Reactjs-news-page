@@ -13,6 +13,7 @@ function App() {
       <Route path="/" element={<Main />}>
         <Route index element={<Home />} />
         <Route path="/category/:id" element={<NewsList />} />
+        {/*<Route path="/detail/:id" element={<Detail>}/>*/}
       </Route>
       {/*<Route path="/404" element={<Page404 />} />*/}
       {/*<Route path="*" element={<Page404 />} />*/}
