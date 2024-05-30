@@ -1,4 +1,3 @@
-import {Divider} from "@mui/material";
 import {Col, Container, Row, Stack} from "react-bootstrap";
 import "./footer.scss";
 

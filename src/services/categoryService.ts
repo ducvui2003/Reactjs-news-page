@@ -1,4 +1,4 @@
-import {Category} from "../constraints/category";
+import {Category, categoryName} from "../constraints/category";
 
 export const categoryExist = (categoryValue: string | undefined): boolean => {
     if (categoryList.includes(categoryValue as Category)) {
@@ -7,10 +7,14 @@ export const categoryExist = (categoryValue: string | undefined): boolean => {
     return false;
 };
 
-export  const toCategory = (value: string ): Category  => {
+export const toCategory = (value: string): Category => {
     if (categoryList.includes(value as Category)) {
         return value as Category;
     }
     return Category.NULL;
 }
 export const categoryList: Category[] = Object.values(Category);
+
+export const toCategoryName = (category: Category): string => {
+    return categoryName[category];
+}

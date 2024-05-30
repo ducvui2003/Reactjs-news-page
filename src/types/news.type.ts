@@ -3,6 +3,6 @@ export interface News {
     title?: string | undefined,
     link?: string | undefined,
     description?: string | undefined,
-    publishDate?: Date | undefined,
+    publishDate: Date,
     thumbnail?: string | undefined,
 }
