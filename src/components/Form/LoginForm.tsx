@@ -7,8 +7,6 @@ import {yupResolver} from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import {FormControl, TextField} from "@mui/material";
 import {Button, Form, Stack} from "react-bootstrap";
-import {Link} from "react-router-dom";
-import auth from "../../pages/Authentication/Auth";
 import Toast from "../Toast/Toast";
 import CheckIcon from "@mui/icons-material/Check";
 import {RootState} from "../../features/store";

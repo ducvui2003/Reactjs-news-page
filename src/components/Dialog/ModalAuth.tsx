@@ -16,7 +16,6 @@ interface ModalProps {
 
 function ModalAuth({isOpen, onClose}: ModalProps) {
     if (!isOpen) return null;
-    const authReducer = useSelector((state: RootState) => state.authenticate);
 
     const [value, setValue] = useState("1");
 

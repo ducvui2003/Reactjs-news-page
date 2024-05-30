@@ -3,8 +3,6 @@ import "bootstrap/scss/bootstrap.scss";
 import { Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
 import Home from "./pages/Home/Home";
-import Detail from "./pages/Detail/Detail";
-import Page404 from "./pages/Error/Page404";
 import {NewsList} from "./components/NewsList/NewsList";
 
 function App() {

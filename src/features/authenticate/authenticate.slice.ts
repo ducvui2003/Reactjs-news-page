@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {User} from "../../types/user.type";
 import {addUser, getUser, removeUser} from "../../services/sessionStorageService";
-import {add, get} from "../../services/userServices";
+import {get} from "../../services/userServices";
 
 const initialState: User = {
     email: undefined,

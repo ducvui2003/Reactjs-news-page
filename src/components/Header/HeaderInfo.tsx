@@ -4,7 +4,7 @@ import {vi} from 'date-fns/locale';
 import NavBar from './HeaderNavInfo';
 import SearchBar from './HeaderSearch';
 import "./style.scss"
-import LogIn from "./HeaderLogIn";
+import HeaderLogin from "./HeaderLogIn";
 import logo from '../../assets/image/logo.svg'
 
 
@@ -13,7 +13,7 @@ export default function HeaderInfo() {
     const formattedDate: string = format(currentDate, "dd/MM/yyyy");
     const dayOfWeek: string = format(currentDate, "EEEE", {locale: vi});
     return (
-        <div className="container border-bottom">
+        <div className="container ">
             <nav className="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
                 <div className="d-flex align-items-center justify-content-center position-relative">
                     <Logo/>
@@ -27,7 +27,7 @@ export default function HeaderInfo() {
                 <div className="d-flex justify-content-center align-items-center gap-2" id="navbarNav">
                     <NavBar/>
                     <SearchBar/>
-                    <LogIn/>
+                    <HeaderLogin/>
                 </div>
             </nav>
         </div>

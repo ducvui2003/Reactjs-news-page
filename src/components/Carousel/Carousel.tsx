@@ -1,14 +1,8 @@
 import React from "react";
-import {Swiper, SwiperSlide} from "swiper/react";
+import {Swiper} from "swiper/react";
 import {Autoplay, Pagination, Scrollbar} from "swiper/modules";
 import "swiper/css";
-import Typography from "@mui/joy/Typography";
-import "swiper/css";
 import "swiper/css/pagination";
-import {Stack} from "react-bootstrap";
-import {NavLink} from "react-router-dom";
-import {motion} from "framer-motion";
-import {useDispatch} from "react-redux";
 import CarouselHeader from "./CarouselHeader";
 import {toCategory} from "../../services/categoryService";
 
