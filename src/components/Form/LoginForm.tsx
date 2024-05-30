@@ -1,5 +1,5 @@
-import React from "react";
-import {useDispatch} from "react-redux";
+import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {login} from "../../features/authenticate/authenticate.slice";
 import {User} from "../../types/user.type";
 import {useForm} from "react-hook-form"
@@ -8,6 +8,10 @@ import * as yup from "yup"
 import {FormControl, TextField} from "@mui/material";
 import {Button, Form, Stack} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import auth from "../../pages/Authentication/Auth";
+import Toast from "../Toast/Toast";
+import CheckIcon from "@mui/icons-material/Check";
+import {RootState} from "../../features/store";
 
 // Quy định các message đối với từng trường
 const EMAIL_INVALID = "Email không đúng định dạng ";
@@ -23,22 +27,35 @@ const schema = yup
     .required()
 
 function LoginForm() {
+    const authReducer = useSelector((state: RootState) => state.authenticate);
+    const dispatch = useDispatch();
     // Quy định các rule đối với mỗi trường dữ liệu
     const {
         register,
         handleSubmit,
         formState: {errors, isValid},
+        reset,
     } = useForm({
         mode: "onSubmit",
         resolver: yupResolver(schema),
     });
-
-    const dispatch = useDispatch();
+    const [open, setOpen] = useState<boolean>(false);
+    const [toast, setToast] = useState<{
+        message: string,
+        variant: string,
+    }>({})
 
     // Gọi tới store để tiến hành đăng nhập
     const onSubmit = (data: User) => {
-        if (isValid)
-            dispatch(login(data))
+        if (!isValid) return;
+        dispatch(login(data));
+        if (authReducer.email) {
+            setToast({message: "Đăng nhập thành công", variant: "success"});
+            reset();
+        } else {
+            setToast({message: "Đăng nhập thất bại", variant: "warning"})
+            setOpen(true);
+        }
     }
 
     return (
@@ -70,8 +87,8 @@ function LoginForm() {
                 <Button type="submit" variant="primary" className={"mt-3"}>
                     Đăng nhập
                 </Button>
-                <a className="mt-3 w-100 center-text">Lấy lại mật khẩu</a>
             </Stack>
+            <Toast message={toast?.message} color={toast?.variant} icon={<CheckIcon/>} open={open} setOpen={setOpen}/>
         </Form>
     );
 }

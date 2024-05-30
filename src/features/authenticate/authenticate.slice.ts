@@ -1,8 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {User} from "../../types/user.type";
-import {userData} from "./UserData";
-import {addUser, removeUser} from "../../services/sessionStorageService";
-import bcrypt from 'bcryptjs'
+import {addUser, getUser, removeUser} from "../../services/sessionStorageService";
+import {add, get} from "../../services/userServices";
 
 const initialState: User = {
     email: undefined,
@@ -15,25 +14,17 @@ const authenticateSlice = createSlice({
     reducers: {
         login: (state, action: PayloadAction<User>) => {
             const user = action.payload;
-            const userExist = userData.find((item: User) => user.email == item.email);
-            if (userExist) {
-                state.email = user.email;
-                state.password = user.password;
-                addUser(user);
-            }
-        },
-        register: (state, action: PayloadAction<User>) => {
-            const user = action.payload;
-            const userExist = userData.find((item: User) => user.email == item.email);
-            if (userExist == undefined) {
-                userData.push(user);
-            }
+            const userExist = get(user.email);
+            if (!userExist) return;
+            state.email = user.email;
+            state.password = user.password;
             addUser(user);
         },
+
         logout: (state) => {
             state.email = undefined;
             state.password = undefined;
-            removeUser();
+            removeUser(state);
         }
     }
 });
