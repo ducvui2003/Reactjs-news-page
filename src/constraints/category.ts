@@ -10,4 +10,5 @@ export enum Category {
   PHAP_LUAT = "phap-luat",
   VAN_HOA_VAN_NGHE = "van-hoa-van-nghe",
   GIAI_TRI = "giai-tri",
+  NULL = ""
 }
