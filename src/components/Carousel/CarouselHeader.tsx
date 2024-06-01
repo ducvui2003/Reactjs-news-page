@@ -12,7 +12,7 @@ function CarouselHeader({title}: { title: Category }) {
             <Typography level="h1" className={"my-2 text-uppercase"}>
                 {toCategoryName(title) || ""}
             </Typography>
-            <motion.a
+            <motion.div
                 whileHover={{scale: 1.2}}
                 onHoverStart={(e) => {
                 }}
@@ -22,7 +22,7 @@ function CarouselHeader({title}: { title: Category }) {
                 <NavLink to={`/category/${title}`} className="link-primary">
                     Xem thêm
                 </NavLink>
-            </motion.a>
+            </motion.div>
         </Stack>
     );
 }

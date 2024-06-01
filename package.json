@@ -58,6 +58,7 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "dev": "vite",
     "test": "react-scripts test",
     "lint": "eslint --fix src"
   },

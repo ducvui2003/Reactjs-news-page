@@ -3,14 +3,11 @@ import {EMAIL, PHONE_1, PHONE_2} from "../../constraints/info";
 import {Email, Handshake, Phone} from "@mui/icons-material";
 import {Divider} from "@mui/material";
 import "./footer.scss";
-
-
-// Content configuration
-const content: string[][] = [];
-content.push(["Trang chủ", "Video", "Tài liệu", "Hình ảnh"]);
-content.push(["Tin tức", "Sự kiện", "Liên hệ"]);
-content.push(["Thể thao", "Pháp luật", "Giáo dục"]);
-content.push(["Kinh tế", "Xã hội", "Văn hóa"]);
+import {categoryList, getMatrixCategory, toCategoryName} from "../../services/categoryService";
+import {Category} from "../../constraints/category";
+import {NavLink} from "react-router-dom";
+import Typography from "@mui/joy/Typography";
+import {motion} from "framer-motion";
 
 function FooterTop() {
     return (
@@ -18,10 +15,10 @@ function FooterTop() {
             <Row>
                 <Col xs={"8"}>
                     <Row>
-                        {content.map((row, index) => {
+                        {getMatrixCategory().map((categoryArray, index) => {
                             return (
                                 <Col>
-                                    <Item bold={index == 0} key={index} contentArray={row}/>
+                                    <Item bold={index == 0} key={index} categoryArray={categoryArray}/>
                                 </Col>
                             );
                         })}
@@ -83,24 +80,25 @@ function FooterHotline() {
 }
 
 function Item({
-                  contentArray,
+                  categoryArray,
                   bold,
-                  key
               }: {
-    contentArray: string[],
+    categoryArray: Category[],
     bold: boolean,
     key?: number
 }) {
     return (
         <Stack gap={3}>
-            {contentArray.map((item, index) => {
+            {categoryArray.map((category, index) => {
                 return (
-                    <p
-                        className={"mb-2 fs-6 " + (bold ? "fw-bold" : "fw-light")}
-                        key={index}
-                    >
-                        {item}
-                    </p>
+                    <motion.span whileHover={{scale: 1.2}} key={index}>
+                        <NavLink to={`/category/${category}`}>
+                            <Typography level="h5" gutterBottom className={"d-inline"}
+                                        className={(bold ? "fw-bold" : "fw-light")}>
+                                {toCategoryName(category)}
+                            </Typography>
+                        </NavLink>
+                    </motion.span>
                 );
             })}
         </Stack>
