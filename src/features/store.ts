@@ -1,15 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
+import {configureStore} from "@reduxjs/toolkit";
 import authenticateReducer from "./authenticate/authenticate.slice";
 import darkModeReducer from "./darkmode/darkmode.slice";
-import dialogAuthReducer from "./dialog/auth/dialogAuth.slice";
 
 export const store = configureStore({
-  reducer: {
-    authenticate: authenticateReducer,
-    darkMode: darkModeReducer,
-    dialogAuth: dialogAuthReducer,
-
-  },
+    reducer: {
+        authenticate: authenticateReducer,
+        darkMode: darkModeReducer,
+    },
 });
 
 // Lấy RootState và AppDispatch từ Store

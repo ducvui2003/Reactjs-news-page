@@ -23,7 +23,6 @@ export default function NewsListTransition({listNews}: {listNews: News[]}) {
         setPageNum(Math.ceil(totalNews/size));
         const prePage = currentPage - 1;
         setNewsItem(listNews.slice(prePage*size, currentPage*size));
-        console.log(...listNews);
     }, [listNews]);
     return (
         <>

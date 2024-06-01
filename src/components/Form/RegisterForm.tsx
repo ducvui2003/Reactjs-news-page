@@ -1,21 +1,17 @@
-import React, {SyntheticEvent} from "react";
+import React, {SyntheticEvent, useState} from "react";
 import {
     Button,
-    Col,
-    Container,
-    FloatingLabel,
     Form,
-    Row, Stack,
+    Stack,
 } from "react-bootstrap";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import {useDispatch} from "react-redux";
-import {login} from "../../features/authenticate/authenticate.slice";
 import {User} from "../../types/user.type";
 import {useForm} from "react-hook-form"
 import {yupResolver} from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import {finished} from "node:stream";
 import {FormControl, TextField} from "@mui/material";
+import Toast from "../Toast/Toast";
+import CheckIcon from "@mui/icons-material/Check";
+import {register as registerServices} from "../../services/userServices"
 
 // Quy định các message đối với từng trường
 const PASSWORD_CONFIRM_TEXT = "Mật khẩu nhập lại không trùng với mật khẩu đã nhập "
@@ -52,15 +48,25 @@ function RegisterForm() {
         register,
         handleSubmit,
         formState: {errors},
+        reset
     } = useForm({
         mode: "onSubmit",
         resolver: yupResolver(schema),
     });
-
-    const dispatch = useDispatch();
-
+    // State bật tắt toast thông báo đăng nhập
+    const [open, setOpen] = useState<boolean>(false);
+    const [toast, setToast] = useState<{
+        message: string,
+        variant: string,
+    }>({})
     const onSubmit = (data: User) => {
-        dispatch(login(data))
+        const registerSuccess = registerServices(data);
+        if (registerSuccess) {
+            setToast({message: "Đăng ký thành công", variant: "success"});
+            reset();
+        } else
+            setToast({message: "Đăng ký thất bại", variant: "warning"})
+        setOpen(true);
     }
 
     return (
@@ -104,7 +110,7 @@ function RegisterForm() {
                     Đăng ký
                 </Button>
             </Stack>
-            {/*<p>Nếu đã có tài khoản thì tiến thành <span onClick={onTab(null, "1")}>đăng nhập </span></p>*/}
+            <Toast message={toast?.message} color={toast?.variant} icon={<CheckIcon/>} open={open} setOpen={setOpen}/>
         </Form>
     );
 }

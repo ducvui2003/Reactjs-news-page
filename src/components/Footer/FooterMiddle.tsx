@@ -2,19 +2,21 @@ import {Container, Stack} from "react-bootstrap";
 import "./footer.scss";
 import {Divider} from "@mui/material";
 import logo from '../../assets/image/logo.svg'
+import {NavLink} from "react-router-dom";
 
 function FooterMiddle() {
 
     return (
         <Stack direction="horizontal" className="my-2">
-            <FooterLogo/>
+            <NavLink to={"/"}>
+                <FooterLogo/>
+            </NavLink>
             <FooterLegacy/>
         </Stack>
     );
 }
 
 function FooterLogo() {
-
     return (
         <Stack as="a" direction="horizontal" className="align-items-center">
             <h2
