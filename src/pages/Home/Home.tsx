@@ -3,6 +3,7 @@ import Intro from "../../components/Intro/Intro";
 import { Container } from "react-bootstrap";
 import CategoryCarouselList from "../../components/Carousel/CategoryCarouselList";
 
+
 function Home() {
   return (
     <>

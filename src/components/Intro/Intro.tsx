@@ -19,7 +19,8 @@ const listData: News[] = [
             shortDes: "ABC"
         }
     ];
-export default function Intro() {
+export default function
+    Intro() {
     return (
         <>
             <div className="intro">

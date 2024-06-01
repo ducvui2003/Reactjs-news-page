@@ -8,6 +8,7 @@ export const store = configureStore({
     authenticate: authenticateReducer,
     darkMode: darkModeReducer,
     dialogAuth: dialogAuthReducer,
+
   },
 });
 
