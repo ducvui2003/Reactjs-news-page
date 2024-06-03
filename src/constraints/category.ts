@@ -1,5 +1,6 @@
 // Định nghĩa các thể loại
 export enum Category {
+    HOME = "home",
     THOI_SU = "thoi-su",
     QUOC_TE = "quoc-te",
     LAO_DONG = "lao-dong",
@@ -43,6 +44,7 @@ export enum Category {
 }
 
 export const categoryName = {
+    [Category.HOME]: "Trang chủ",
     [Category.THOI_SU]: "Thời sự",
     [Category.QUOC_TE]: "Quốc tế",
     [Category.LAO_DONG]: "Lao động",
