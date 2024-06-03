@@ -32,7 +32,7 @@ export default function
                                         <p className="line-clamp">{news[0].description || 'No Description'}</p>
                                     </div>
                                     <div className="detail">
-                                        <Link to={news[0].link || '#'}>Chi Tiết</Link>
+                                        <Link className="btn btn-primary" to={news[0].link || '#'}>Chi Tiết</Link>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@ export default function
                                         <p>{news[4].description || 'No Description'}</p>
                                     </div>
                                     <div className="detail">
-                                        <Link to={news[4].link || '#'}>Chi Tiết</Link>
+                                        <Link className="btn btn-primary" to={news[4].link || '#'}>Chi Tiết</Link>
                                     </div>
                                 </div>
                             </div>
