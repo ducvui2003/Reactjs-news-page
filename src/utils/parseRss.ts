@@ -9,7 +9,6 @@ const parserRSS = async (category: Category) => {
         }
     }).then((xml) => {
         const json = xmljs.xml2json(xml.data, {compact: true, spaces: 4});
-        console.log(JSON.parse(json))
         return JSON.parse(json)
     }).catch(error => {
         console.log(error)
