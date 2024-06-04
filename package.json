@@ -26,8 +26,8 @@
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
     "@types/uuid": "^9.0.8",
+    "@types/xml2js": "^0.4.14",
     "@vitejs/plugin-react-swc": "^3.7.0",
-    "antd": "^5.16.5",
     "axios": "^1.6.8",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.3",
@@ -41,6 +41,7 @@
     "react-hook-form": "^7.51.4",
     "react-redux": "^9.1.1",
     "react-router-dom": "^6.23.1",
+    "react-scripts": "^5.0.1",
     "react-slick": "^0.30.2",
     "redux": "^5.0.1",
     "rss-parser": "^3.13.0",
@@ -53,11 +54,13 @@
     "vite-plugin-svgr": "^4.2.0",
     "vite-tsconfig-paths": "^4.3.2",
     "web-vitals": "^2.1.4",
+    "xml-js": "^1.6.11",
     "yup": "^1.4.0"
   },
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "preview": "vite preview",
     "dev": "vite",
     "test": "react-scripts test",
     "lint": "eslint --fix src"
