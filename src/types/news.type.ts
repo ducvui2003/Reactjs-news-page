@@ -6,3 +6,22 @@ export interface News {
     publishDate: Date,
     thumbnail?: string | undefined,
 }
+
+export interface NewsDetail {
+    id: string,
+    title: string,
+    author: string,
+    publishDate: Date,
+    thumbnail: string,
+    paragraphs: Paragraph[];
+}
+
+export interface Paragraph {
+    image?: Image
+    text: string,
+}
+
+export interface Image {
+    capture: string,
+    link: string
+}

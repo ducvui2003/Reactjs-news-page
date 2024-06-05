@@ -5,7 +5,7 @@ import DarkMode from "./DarkMode/DarkMode";
 
 import "./Navbar.scss";
 import {Link} from "react-router-dom";
-import {categoryList} from "../../services/categoryService";
+import {categoryList, toCategoryName} from "../../services/categoryService";
 
 export default function Nav() {
     return (
@@ -15,7 +15,7 @@ export default function Nav() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav "/>
                     <Navbar.Collapse id="basic-navbar-nav" className="d-flex justify-content-evenly">
                             {categoryList.map((category) => (
-                                <Link to={`/category/${category}`}>{category}</Link>
+                                <Link to={`/category/${category}`}>{toCategoryName(category)}</Link>
                             ))}
                     </Navbar.Collapse>
                     <DarkMode/>
