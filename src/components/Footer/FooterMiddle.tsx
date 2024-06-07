@@ -2,6 +2,8 @@ import {Container, Stack} from "react-bootstrap";
 import {Divider} from "@mui/material";
 import logo from '../../assets/image/logo.svg'
 import {NavLink} from "react-router-dom";
+import NavLinkMUILink from "../Link/NavLinkMUILink";
+import {toCategoryName} from "../../services/categoryService";
 
 function FooterMiddle() {
 
@@ -21,7 +23,7 @@ function FooterLogo() {
     }
     return (
         <Stack as="a" direction="horizontal" className="align-items-center" onClick={() => handleToTop()}>
-            <img src={logo} alt="logo" className="logo ms-1"/>
+            <img src={logo} alt="logo" className=" ms-1 p-2" style={{height: "50px"}}/>
         </Stack>
     );
 }
@@ -34,14 +36,14 @@ function FooterLegacy() {
             {content.map((item, index) => {
                 return (
                     <>
-                        <a key={index} href="#" className="footer__link">
+                        <NavLinkMUILink to={`/`} variant={"overline"} underline={"none"} color={"black"}>
                             {item}
-                        </a>
+                        </NavLinkMUILink>
 
                         {index != content.length - 1 ? (
                             <Divider
                                 orientation="vertical"
-                                className="divide__color--low mx-3 divider__color--low"
+                                sx={{width: '2px', backgroundColor: 'black', opacity: 0.2, marginInline: '10px'}}
                             />
                         ) : null}
                     </>

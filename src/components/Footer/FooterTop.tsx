@@ -41,18 +41,24 @@ function FooterContact() {
         <div>
             <Typography variant={"h6"}>Liên hệ </Typography>
             <div>
-                <a href="#" className="d-flex align-items-center">
-                    <Email className="pe-2"/>
-                    <Typography component={"p"} variant={"overline"}>{EMAIL}</Typography>
-                </a>
-                <a href="#" className="d-flex align-items-center">
-                    <Phone className="pe-2"/>
-                    <Typography component={"p"} variant={"overline"}>{PHONE_1}</Typography>
-                </a>
-                <a href="#" className="d-flex align-items-center">
-                    <Phone className="pe-2"/>
-                    <Typography component={"p"} variant={"overline"}>{PHONE_2}</Typography>
-                </a>
+                <NavLinkMUILink to={`/`} underline={"none"} color={"black"}>
+                    <Stack direction={"horizontal"}>
+                        <Email className="pe-2"/>
+                        <Typography component={"p"} variant={"overline"}>{EMAIL}</Typography>
+                    </Stack>
+                </NavLinkMUILink>
+                <NavLinkMUILink to={`/`} underline={"none"} color={"black"}>
+                    <Stack direction={"horizontal"}>
+                        <Phone className="pe-2"/>
+                        <Typography component={"p"} variant={"overline"}>{PHONE_1}</Typography>
+                    </Stack>
+                </NavLinkMUILink>
+                <NavLinkMUILink to={`/`} underline={"none"} color={"black"}>
+                    <Stack direction={"horizontal"}>
+                        <Phone className="pe-2"/>
+                        <Typography component={"p"} variant={"overline"}>{PHONE_2}</Typography>
+                    </Stack>
+                </NavLinkMUILink>
             </div>
         </div>
     );
@@ -71,7 +77,8 @@ function Item({
             {categoryArray.map((category, index) => {
                 return (
                     <motion.span whileHover={{scale: 1.2}} key={index}>
-                        <NavLinkMUILink to={`/category/${category}`} variant={"overline"} underline={"none"} color={"black"}
+                        <NavLinkMUILink to={`/category/${category}`} variant={"overline"} underline={"none"}
+                                        color={"black"}
                                         className={(bold ? "fw-bold" : "fw-light")}>
                             {toCategoryName(category)}
                         </NavLinkMUILink>
