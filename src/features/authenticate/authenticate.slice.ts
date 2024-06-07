@@ -4,8 +4,8 @@ import {addUser, getUser, removeUser} from "../../services/sessionStorageService
 import {get} from "../../services/userServices";
 
 const initialState: User = {
-    email: undefined,
-    password: undefined,
+    email: getUser()?.email,
+    password: getUser()?.password,
 };
 
 const authenticateSlice = createSlice({

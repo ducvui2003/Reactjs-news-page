@@ -4,14 +4,20 @@ import {vi} from 'date-fns/locale';
 import NavBar from './HeaderNavInfo';
 import SearchBar from './HeaderSearch';
 import "./style.scss"
-import HeaderLogin from "./HeaderLogIn";
 import logo from '../../assets/image/logo.svg'
+import {useSelector} from "react-redux";
+import {RootState} from "../../features/store";
+import HeaderBeforeLogin from "./HeaderBeforeLogin";
+import HeaderAfterLogin from "./HeaderAfterLogin";
 
 
 export default function HeaderInfo() {
     const currentDate: Date = new Date();
     const formattedDate: string = format(currentDate, "dd/MM/yyyy");
     const dayOfWeek: string = format(currentDate, "EEEE", {locale: vi});
+    // Kiểm tra state user đã đăng nhập chưa
+    const authReducer = useSelector((state: RootState) => state.authenticate);
+
     return (
         <div className="container ">
             <nav className="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
@@ -27,7 +33,9 @@ export default function HeaderInfo() {
                 <div className="d-flex justify-content-center align-items-center gap-2" id="navbarNav">
                     <NavBar/>
                     <SearchBar/>
-                    <HeaderLogin/>
+                    {
+                        authReducer.email ? <HeaderBeforeLogin/> : <HeaderAfterLogin/>
+                    }
                 </div>
             </nav>
         </div>
