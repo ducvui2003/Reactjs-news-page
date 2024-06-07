@@ -14,7 +14,7 @@ const parserRSS = async (category: Category) => {
         console.log(error)
         if (error.response.status == 500)
             return;
-        if (erro.response.status == 400)
+        if (error.response.status == 400)
             return;
     })
 }
