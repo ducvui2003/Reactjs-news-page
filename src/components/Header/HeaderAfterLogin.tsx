@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import ModalAuth from "../Dialog/ModalAuth";
-import Button from "@mui/joy/Button";
+import Button from "@mui/material/Button";
 
 function HeaderAfterLogin() {
     const [open, setOpen] = useState<boolean>(false);
@@ -9,7 +9,7 @@ function HeaderAfterLogin() {
     };
     return (
         <>
-            <Button variant="primary" className="px-3" onClick={() => setOpen(true)}>
+            <Button variant="contained" className={"ms-3"} onClick={() => setOpen(true)}>
                 Đăng nhập{" "}
             </Button>
             <ModalAuth isOpen={open} onClose={handleClose}/>

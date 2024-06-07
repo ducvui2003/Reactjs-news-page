@@ -8,17 +8,22 @@ import {store} from "./features/store";
 import {BrowserRouter} from "react-router-dom";
 import "nprogress/nprogress.css"
 import "./assets/sass/custom-nprogress.scss"
+// Cấu hình react-toastify
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+import {reactToastifyConfig} from "./config";
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
 );
 root.render(
     // <React.StrictMode>
-        <BrowserRouter>
-            <Provider store={store}>
-                <App/>
-            </Provider>
-        </BrowserRouter>
+    <BrowserRouter>
+        <Provider store={store}>
+            <App/>
+            <ToastContainer {...reactToastifyConfig}/>
+        </Provider>
+    </BrowserRouter>
     // </React.StrictMode>
 );
 

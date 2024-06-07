@@ -14,13 +14,14 @@ const authenticateSlice = createSlice({
     reducers: {
         login: (state, action: PayloadAction<User>) => {
             const user = action.payload;
-            const userExist = get(user.email);
-            if (!userExist) return;
-            state.email = user.email;
-            state.password = user.password;
-            addUser(user);
+            console.log(user)
+            const userInDB = get(user.email);
+            if (userInDB != undefined && userInDB.password == user.password) {
+                state.email = user.email;
+                state.password = user.password;
+                addUser(user);
+            }
         },
-
         logout: (state) => {
             state.email = undefined;
             state.password = undefined;

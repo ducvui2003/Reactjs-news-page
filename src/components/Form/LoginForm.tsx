@@ -7,9 +7,9 @@ import {yupResolver} from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import {FormControl, TextField} from "@mui/material";
 import {Button, Form, Stack} from "react-bootstrap";
-import Toast from "../Toast/Toast";
 import CheckIcon from "@mui/icons-material/Check";
 import {RootState} from "../../features/store";
+import {toast} from 'react-toastify';
 
 // Quy định các message đối với từng trường
 const EMAIL_INVALID = "Email không đúng định dạng ";
@@ -37,22 +37,17 @@ function LoginForm() {
         mode: "onSubmit",
         resolver: yupResolver(schema),
     });
-    const [open, setOpen] = useState<boolean>(false);
-    const [toast, setToast] = useState<{
-        message: string,
-        variant: string,
-    }>({})
+
 
     // Gọi tới store để tiến hành đăng nhập
-    const onSubmit = (data: User) => {
+    const onSubmit = async (data: User) => {
         if (!isValid) return;
         dispatch(login(data));
         if (authReducer.email) {
-            setToast({message: "Đăng nhập thành công", variant: "success"});
+            toast.success("Đăng nhập thành công");
             reset();
         } else {
-            setToast({message: "Đăng nhập thất bại", variant: "warning"})
-            setOpen(true);
+            toast.error("Đăng nhập thất bại, vui lòng thử lại");
         }
     }
 
@@ -86,7 +81,6 @@ function LoginForm() {
                     Đăng nhập
                 </Button>
             </Stack>
-            <Toast message={toast?.message} color={toast?.variant} icon={<CheckIcon/>} open={open} setOpen={setOpen}/>
         </Form>
     );
 }

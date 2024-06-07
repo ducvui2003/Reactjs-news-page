@@ -4,8 +4,17 @@ import {List, ListItem, ListItemButton, ListItemIcon, ListItemText} from "@mui/m
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FeedbackIcon from "@mui/icons-material/Feedback";
 import LogoutIcon from "@mui/icons-material/Logout";
+import {useDispatch} from "react-redux";
+import {logout} from "../../features/authenticate/authenticate.slice";
+import {toast} from "react-toastify";
 
 function HeaderBeforeLogin() {
+    const dispatch = useDispatch();
+    const handleLogOut = () => {
+        dispatch(logout());
+        console.log("log out")
+        toast.success("Đăng xuất thành công");
+    }
     return <PopoverUser>
         <List>
             <ListItem disablePadding>
@@ -25,11 +34,11 @@ function HeaderBeforeLogin() {
                 </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={() => handleLogOut()}>
                     <ListItemIcon>
                         <LogoutIcon color={"black"} fontSize={"medium"}/>
                     </ListItemIcon>
-                    <ListItemText primary={"Đăng xuất"}/>
+                    <ListItemText primary={"Đăng xuất"} />
                 </ListItemButton>
             </ListItem>
         </List>
