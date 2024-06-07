@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import CarouselHeader from "./CarouselHeader";
 import {toCategory} from "../../services/categoryService";
+import {Divider} from "@mui/material";
 
 const settings = {
     slidesPerView: 2,
@@ -26,10 +27,13 @@ const settings = {
 
 function Carousel({title, children}: { title: string; children: any }) {
     return (
-        <div className="mt-1  border-opacity-10 border-top border-3 align-items-center">
-            <CarouselHeader title={toCategory(title)}/>
-            <Swiper {...settings}>{children}</Swiper>
-        </div>
+        <>
+            <Divider flexItems sx={{height: 1.5, backgroundColor: 'black', opacity: 0.2}}/>
+            <div className="mt-1 align-items-center">
+                <CarouselHeader title={toCategory(title)}/>
+                <Swiper {...settings}>{children}</Swiper>
+            </div>
+        </>
     );
 }
 

@@ -1,5 +1,4 @@
 import {Container, Stack} from "react-bootstrap";
-import "./footer.scss";
 import {Divider} from "@mui/material";
 import logo from '../../assets/image/logo.svg'
 import {NavLink} from "react-router-dom";
@@ -17,16 +16,11 @@ function FooterMiddle() {
 }
 
 function FooterLogo() {
+    const handleToTop = () => {
+        window.scrollTo({top: 0, behavior: "smooth"})
+    }
     return (
-        <Stack as="a" direction="horizontal" className="align-items-center">
-            <h2
-                style={{
-                    fontSize: "20px",
-                    marginBottom: "0",
-                }}
-            >
-                Báo điện tử
-            </h2>
+        <Stack as="a" direction="horizontal" className="align-items-center" onClick={() => handleToTop()}>
             <img src={logo} alt="logo" className="logo ms-1"/>
         </Stack>
     );

@@ -1,29 +1,29 @@
 import {Col, Container, Row, Stack} from "react-bootstrap";
-import "./footer.scss";
+import Typography from "@mui/material/Typography";
 
 function FooterBottom() {
     return (
         <Container fluid={"xl"} className="my-3">
             <Row>
                 <Col>
-                    <Stack gap={3}>
-                        <div className="fw-bold">Báo tiếng Việt nhiều người xem nhất</div>
-                        <div>Thuộc Bộ Khoa học và Công nghệ</div>
-                        <div>Số giấy phép: 548/GP-BTTTT ngày 24/08/2021</div>
+                    <Stack gap={2}>
+                        <Typography variant={"h6"} className="fw-bold">Báo tiếng Việt nhiều người xem nhất</Typography>
+                        <Typography variant={"overline"} >Thuộc Bộ Khoa học và Công nghệ</Typography>
+                        <Typography variant={"overline"}>Số giấy phép: 548/GP-BTTTT ngày 24/08/2021</Typography>
                     </Stack>
                 </Col>
                 <Col>
-                    <Stack gap={3}>
-                        <div> Tổng biên tập: Phạm Hiếu</div>
-                        <div>
+                    <Stack gap={2}>
+                        <Typography variant={"overline"}> Tổng biên tập: Phạm Hiếu</Typography>
+                        <Typography variant={"overline"}>
                             Địa chỉ: Tầng 10, Tòa A FPT Tower, số 10 Phạm Văn Bạch, Dịch Vọng,
                             Cầu Giấy, Hà Nội
-                        </div>
-                        <div>Điện thoại: 024 7300 8899 - máy lẻ 4500</div>
+                        </Typography>
+                        <Typography variant={"overline"}>Điện thoại: 024 7300 8899 - máy lẻ 4500</Typography>
                     </Stack>
                 </Col>
                 <Col>
-                    <div>© 1997-2024. Toàn bộ bản quyền thuộc VnExpress</div>
+                    <Typography variant={"caption"}>© 1997-2024. Toàn bộ bản quyền thuộc VnExpress</Typography>
                 </Col>
             </Row>
         </Container>
