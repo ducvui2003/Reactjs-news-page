@@ -26,7 +26,7 @@ function PopoverUser({children}: { children: React.ReactNode }) {
             <IconButton
                 size={"lg"}
                 aria-label="user"
-                color="primary"
+                color="black"
                 onClick={handleClick}
             >
                 <PersonIcon/>

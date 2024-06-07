@@ -11,7 +11,7 @@ function HeaderBeforeLogin() {
             <ListItem disablePadding>
                 <ListItemButton>
                     <ListItemIcon>
-                        <FavoriteIcon color={"primary"} fontSize={"medium"}/>
+                        <FavoriteIcon color={"black"} fontSize={"medium"}/>
                     </ListItemIcon>
                     <ListItemText primary={"Bài báo yêu thích"}/>
                 </ListItemButton>
@@ -19,7 +19,7 @@ function HeaderBeforeLogin() {
             <ListItem disablePadding>
                 <ListItemButton>
                     <ListItemIcon>
-                        <FeedbackIcon color={"primary"} fontSize={"medium"}/>
+                        <FeedbackIcon color={"black"} fontSize={"medium"}/>
                     </ListItemIcon>
                     <ListItemText primary={"Góp ý"}/>
                 </ListItemButton>
@@ -27,7 +27,7 @@ function HeaderBeforeLogin() {
             <ListItem disablePadding>
                 <ListItemButton>
                     <ListItemIcon>
-                        <LogoutIcon color={"primary"} fontSize={"medium"}/>
+                        <LogoutIcon color={"black"} fontSize={"medium"}/>
                     </ListItemIcon>
                     <ListItemText primary={"Đăng xuất"}/>
                 </ListItemButton>

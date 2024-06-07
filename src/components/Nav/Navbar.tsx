@@ -1,26 +1,26 @@
 import React from "react";
-import { Container, Navbar} from "react-bootstrap";
-
-import DarkMode from "./DarkMode/DarkMode";
-
+import {Container, Navbar} from "react-bootstrap";
+import Stack from '@mui/material/Stack';
 import "./Navbar.scss";
 import {Link} from "react-router-dom";
 import {categoryList, toCategoryName} from "../../services/categoryService";
+import NavLinkMUILink from "../Link/NavLinkMUILink";
+import {Divider} from "@mui/material";
 
 export default function Nav() {
     return (
         <>
-            <Navbar expand="lg" className="bg-body-tertiary">
-                <Container>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav "/>
-                    <Navbar.Collapse id="basic-navbar-nav" className="d-flex justify-content-evenly">
-                            {categoryList.map((category) => (
-                                <Link to={`/category/${category}`}>{toCategoryName(category)}</Link>
-                            ))}
-                    </Navbar.Collapse>
-                    <DarkMode/>
+            <div className={"bg-body-tertiary py-3"}>
+                <Container className="">
+                    <Stack direction={"row"} justifyContent={"space-between"}>
+                        {categoryList.map((category) => (
+                            <NavLinkMUILink variant={"h6"} underline={"none"} color={"black"}
+                                            to={`/category/${category}`}>{toCategoryName(category)}</NavLinkMUILink>
+                        ))}
+                    </Stack>
                 </Container>
-            </Navbar>
+            </div>
+            <Divider flexItems sx={{height: 0.5, backgroundColor: 'black', opacity: 0.2}}/>
         </>
     )
 }

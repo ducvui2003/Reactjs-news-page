@@ -1,29 +1,17 @@
 import {Container, Stack} from "react-bootstrap";
 import {Divider} from "@mui/material";
-import logo from '../../assets/image/logo.svg'
 import {NavLink} from "react-router-dom";
 import NavLinkMUILink from "../Link/NavLinkMUILink";
-import {toCategoryName} from "../../services/categoryService";
+import LogoScrollToTop from "../Logo/LogoScrollToTop";
 
 function FooterMiddle() {
 
     return (
         <Stack direction="horizontal" className="my-2">
             <NavLink to={"/"}>
-                <FooterLogo/>
+                <LogoScrollToTop/>
             </NavLink>
             <FooterLegacy/>
-        </Stack>
-    );
-}
-
-function FooterLogo() {
-    const handleToTop = () => {
-        window.scrollTo({top: 0, behavior: "smooth"})
-    }
-    return (
-        <Stack as="a" direction="horizontal" className="align-items-center" onClick={() => handleToTop()}>
-            <img src={logo} alt="logo" className=" ms-1 p-2" style={{height: "50px"}}/>
         </Stack>
     );
 }
