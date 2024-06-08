@@ -6,6 +6,7 @@ import React, {useState} from "react";
 import {motion} from "framer-motion";
 import {timeAgo} from "../../utils/timeUtils";
 import {Skeleton} from "@mui/material";
+import NavLinkMUILink from "../Link/NavLinkMUILink";
 
 export default NewsItemLoading;
 type NewsItemProp = {
@@ -21,7 +22,9 @@ function NewsItemLoading({title, thumbnail, description, publishDate, loading = 
                     <Col md={4}>
                         {loading ?
                             <Skeleton variant="rectangular" width={210} height={118}/>
-                            : <Card.Img className="object-fit-cover " style={{height: "200px"}} src={thumbnail}/>
+                            : <NavLinkMUILink to={`/`} underline={"hover"}>
+                                <Card.Img className="object-fit-cover " style={{height: "200px"}} src={thumbnail}/>
+                            </NavLinkMUILink>
                         }
                     </Col>
                     <Col md={8}>
@@ -29,7 +32,9 @@ function NewsItemLoading({title, thumbnail, description, publishDate, loading = 
                             <Card.Title className="h1">
                                 {loading ?
                                     <Skeleton variant="text" sx={{fontSize: '1rem'}}/>
-                                    : <Typography level="h3"> {title || ""} </Typography>
+                                    : <NavLinkMUILink to={`/`} underline={"hover"} color={"primary"}>
+                                        <Typography level="h3" > {title || ""} </Typography>
+                                    </NavLinkMUILink>
                                 }
                             </Card.Title>
                             {loading ? <Skeleton variant="text" sx={{fontSize: '1rem'}}/> : timeAgo(publishDate)}

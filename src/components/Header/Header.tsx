@@ -17,6 +17,7 @@ export default function Header() {
     const dayOfWeek: string = format(currentDate, "EEEE", {locale: vi});
     // Kiểm tra state user đã đăng nhập chưa
     const authReducer = useSelector((state: RootState) => state.authenticate);
+    console.log("email",authReducer.email)
     return (
         <Container className="container ">
             <nav className="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
@@ -34,7 +35,7 @@ export default function Header() {
                     <SearchBar/>
                     <DarkMode/>
                     {
-                        authReducer.email ? <HeaderBeforeLogin/> : <HeaderAfterLogin/>
+                        authReducer.email ? <HeaderAfterLogin/> : <HeaderBeforeLogin/>
                     }
                 </div>
             </nav>

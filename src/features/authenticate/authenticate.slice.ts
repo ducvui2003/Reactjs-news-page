@@ -3,26 +3,23 @@ import {User} from "../../types/user.type";
 import {addUser, getUser, removeUser} from "../../services/sessionStorageService";
 import {get} from "../../services/userServices";
 
+const userStorage = getUser();
 const initialState: User = {
-    email: getUser()?.email,
-    password: getUser()?.password,
+    email: userStorage?.email,
+    password: userStorage?.password,
 };
 
 const authenticateSlice = createSlice({
     name: 'authenticate',
     initialState: initialState,
     reducers: {
-        login: (state, action: PayloadAction<User>) => {
+        save: (state, action: PayloadAction<User>) => {
             const user = action.payload;
-            console.log(user)
-            const userInDB = get(user.email);
-            if (userInDB != undefined && userInDB.password == user.password) {
-                state.email = user.email;
-                state.password = user.password;
-                addUser(user);
-            }
+            state.email = user.email;
+            state.password = user.password;
+            addUser(user);
         },
-        logout: (state) => {
+        exit: (state) => {
             state.email = undefined;
             state.password = undefined;
             removeUser(state);
@@ -31,6 +28,6 @@ const authenticateSlice = createSlice({
 });
 
 
-export const {login, logout} = authenticateSlice.actions
+export const {save, exit} = authenticateSlice.actions
 const authenticateReducer = authenticateSlice.reducer;
 export default authenticateReducer;

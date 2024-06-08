@@ -4,10 +4,8 @@ import {Email, Handshake, Phone} from "@mui/icons-material";
 import {Divider} from "@mui/material";
 import {categoryList, getMatrixCategory, toCategoryName} from "../../services/categoryService";
 import {Category} from "../../constraints/category";
-import {NavLink} from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import {motion} from "framer-motion";
-import {Link} from '@mui/material';
 import NavLinkMUILink from "../Link/NavLinkMUILink";
 
 function FooterTop() {

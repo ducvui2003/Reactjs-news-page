@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {login} from "../../features/authenticate/authenticate.slice";
+import {save} from "../../features/authenticate/authenticate.slice";
 import {User} from "../../types/user.type";
 import {useForm} from "react-hook-form"
 import {yupResolver} from "@hookform/resolvers/yup"
@@ -10,6 +10,7 @@ import {Button, Form, Stack} from "react-bootstrap";
 import CheckIcon from "@mui/icons-material/Check";
 import {RootState} from "../../features/store";
 import {toast} from 'react-toastify';
+import {login} from "../../services/userServices";
 
 // Quy định các message đối với từng trường
 const EMAIL_INVALID = "Email không đúng định dạng ";
@@ -20,12 +21,10 @@ const schema = yup
     .object({
         email: yup.string().email(EMAIL_INVALID).required(REQUIRED),
         password: yup.string().required(REQUIRED),
-
     })
     .required()
 
 function LoginForm() {
-    const authReducer = useSelector((state: RootState) => state.authenticate);
     const dispatch = useDispatch();
     // Quy định các rule đối với mỗi trường dữ liệu
     const {
@@ -40,12 +39,12 @@ function LoginForm() {
 
 
     // Gọi tới store để tiến hành đăng nhập
-    const onSubmit = async (data: User) => {
+    const onSubmit = (data: User) => {
         if (!isValid) return;
-        dispatch(login(data));
-        if (authReducer.email) {
+        if (login(data)) {
             toast.success("Đăng nhập thành công");
             reset();
+            dispatch(save(data));
         } else {
             toast.error("Đăng nhập thất bại, vui lòng thử lại");
         }
