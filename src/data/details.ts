@@ -1,6 +1,5 @@
 import {NewsDetail} from "../types/news.type";
 
-export default details;
 const details: NewsDetail[] = [
     {
         "id": "A1",
@@ -875,3 +874,5 @@ const details: NewsDetail[] = [
         ]
     }
 ]
+
+export default details;
