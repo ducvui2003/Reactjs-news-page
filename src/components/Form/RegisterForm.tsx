@@ -1,4 +1,4 @@
-import React, {SyntheticEvent, useState} from "react";
+import React from "react";
 import {
     Button,
     Form,
@@ -9,10 +9,8 @@ import {useForm} from "react-hook-form"
 import {yupResolver} from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import {FormControl, TextField} from "@mui/material";
-import Toast from "../Toast/Toast";
-import CheckIcon from "@mui/icons-material/Check";
 import {register as registerServices} from "../../services/userServices"
-
+import {toast} from 'react-toastify';
 // Quy định các message đối với từng trường
 const PASSWORD_CONFIRM_TEXT = "Mật khẩu nhập lại không trùng với mật khẩu đã nhập "
 const EMAIL_INVALID = "Email không đúng định dạng ";
@@ -53,20 +51,15 @@ function RegisterForm() {
         mode: "onSubmit",
         resolver: yupResolver(schema),
     });
-    // State bật tắt toast thông báo đăng nhập
-    const [open, setOpen] = useState<boolean>(false);
-    const [toast, setToast] = useState<{
-        message: string,
-        variant: string,
-    }>({})
+
     const onSubmit = (data: User) => {
         const registerSuccess = registerServices(data);
         if (registerSuccess) {
-            setToast({message: "Đăng ký thành công", variant: "success"});
+            toast.success('Đăng ký thành công, vui lòng tiến hành đăng nhập');
             reset();
-        } else
-            setToast({message: "Đăng ký thất bại", variant: "warning"})
-        setOpen(true);
+        } else {
+            toast.error('Đăng ký thất bại, vui lòng thử lại');
+        }
     }
 
     return (
@@ -110,7 +103,6 @@ function RegisterForm() {
                     Đăng ký
                 </Button>
             </Stack>
-            <Toast message={toast?.message} color={toast?.variant} icon={<CheckIcon/>} open={open} setOpen={setOpen}/>
         </Form>
     );
 }

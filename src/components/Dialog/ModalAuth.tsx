@@ -22,6 +22,7 @@ function ModalAuth({isOpen, onClose}: ModalProps) {
     const handleChange = (event: SyntheticEvent, newValue: string) => {
         setValue(newValue);
     };
+
     return (
         <Modal show={isOpen} className="fade" onHide={onClose}>
             <Modal.Body>

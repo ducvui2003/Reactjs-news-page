@@ -1,0 +1,1 @@
+export {reactToastifyConfig} from "./reactToastify"

@@ -1,5 +1,4 @@
 import {Col, Container, Row} from "react-bootstrap";
-import "./footer.scss";
 import {Divider} from "@mui/material";
 import FooterBottom from "./FooterBottom";
 import FooterTop from "./FooterTop";
@@ -11,11 +10,11 @@ function Footer() {
         <Container>
             <Row>
                 <Col>
-                    <Divider className=" divider--large divider__color--low"/>
+                    <Divider flexItems sx={{height: 3, backgroundColor: 'black', opacity: 0.2}}/>
                     <FooterTop/>
-                    <Divider className=" divider--low divider__color--high"/>
+                    <Divider flexItem flexItems sx={{height: 1.5, backgroundColor: 'black', opacity: 0.2}}/>
                     <FooterMiddle/>
-                    <Divider className=" divider--low divider__color--low"/>
+                    <Divider flexItem flexItems sx={{height: 1.5, backgroundColor: 'black', opacity: 0.2}}/>
                     <FooterBottom/>
                 </Col>
             </Row>

@@ -8,7 +8,6 @@ import NewsListTransition from "./NewsListTransition";
 
 export function NewsList() {
     const {id} = useParams();
-    console.log(id)
     if (!categoryExist(id || "")) {
         return <Navigate to="/404"/>;
     }
