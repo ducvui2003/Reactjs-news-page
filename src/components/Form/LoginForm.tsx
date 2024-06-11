@@ -37,7 +37,6 @@ function LoginForm() {
         resolver: yupResolver(schema),
     });
 
-
     // Gọi tới store để tiến hành đăng nhập
     const onSubmit = (data: User) => {
         if (!isValid) return;

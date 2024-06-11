@@ -12,7 +12,7 @@ function Main() {
             <Nav/>
             <Outlet/>
             <Footer/>
-          </>
+        </>
     );
 }
 

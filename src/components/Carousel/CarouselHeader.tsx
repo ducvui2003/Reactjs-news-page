@@ -10,7 +10,7 @@ import NavLinkMUILink from "../Link/NavLinkMUILink";
 function CarouselHeader({title}: { title: Category }) {
     return (
         <Stack direction="horizontal" className="justify-content-between">
-            <Typography level="h1" className={"my-2 text-uppercase"}>
+            <Typography level="h2" component={"h2"} className={"my-2 text-uppercase"}>
                 {toCategoryName(title) || ""}
             </Typography>
             <motion.div
@@ -20,7 +20,7 @@ function CarouselHeader({title}: { title: Category }) {
                 onHoverEnd={(e) => {
                 }}
             >
-                <NavLinkMUILink to={`/`} underline={"hover"} variant={"primary"}>
+                <NavLinkMUILink to={`/category/${title}`} underline={"hover"} variant={"primary"}>
                     Xem thêm
                 </NavLinkMUILink>
             </motion.div>

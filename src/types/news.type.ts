@@ -1,10 +1,13 @@
+import React from "react";
+import {Category} from "../constraints/category";
+
 export interface News {
-    id?: number | undefined,
-    title?: string | undefined,
-    link?: string | undefined,
-    description?: string | undefined,
+    id: number | undefined,
+    title: string | undefined,
+    link: string | undefined,
+    description: string | undefined,
     publishDate: Date,
-    thumbnail?: string | undefined,
+    thumbnail: string | undefined,
 }
 
 export interface NewsDetail {
@@ -14,6 +17,7 @@ export interface NewsDetail {
     publishDate: Date,
     thumbnail: string,
     paragraphs: Paragraph[];
+    category:Category
 }
 
 export interface Paragraph {
@@ -25,3 +29,11 @@ export interface Image {
     capture: string,
     link: string
 }
+
+// Sử dụng cho component để loading
+export interface NewsLoading {
+    news?: News,
+    isLoading: boolean
+    cssImage?: React.CSSProperties
+}
+

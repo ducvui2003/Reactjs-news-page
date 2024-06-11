@@ -1,7 +1,7 @@
 import {Col, Container, Row, Stack} from "react-bootstrap";
 import {EMAIL, PHONE_1, PHONE_2} from "../../constraints/info";
 import {Email, Handshake, Phone} from "@mui/icons-material";
-import {Divider} from "@mui/material";
+import {Box, Divider, Grid, List} from "@mui/material";
 import {categoryList, getMatrixCategory, toCategoryName} from "../../services/categoryService";
 import {Category} from "../../constraints/category";
 import Typography from "@mui/material/Typography";
@@ -10,55 +10,56 @@ import NavLinkMUILink from "../Link/NavLinkMUILink";
 
 function FooterTop() {
     return (
-        <Container fluid={"xl"} className="py-3">
-            <Row>
-                <Col xs={"8"}>
-                    <Row>
-                        {getMatrixCategory().map((categoryArray, index) => {
-                            return (
-                                <Col>
-                                    <Item bold={index == 0} key={index} categoryArray={categoryArray}/>
-                                </Col>
-                            );
-                        })}
-                    </Row>
-                </Col>
-                <Col xs={"1"}>
-                    <Divider orientation="vertical" className="divide__color--low"/>
-                </Col>
-                <Col className=" border-secondary" xs={"3"}>
+        <Grid container sx={{marginBlock: "10px"}}>
+            <Grid item xs={8}>
+                <Row>
+                    {getMatrixCategory().map((categoryArray, index) => {
+                        return (
+                            <Col>
+                                <Item bold={index == 0} key={index} categoryArray={categoryArray}/>
+                            </Col>
+                        );
+                    })}
+                </Row>
+            </Grid>
+            <Grid item xs={1}>
+
+            </Grid>
+            <Grid item className=" border-secondary" xs={3}>
+                <Stack direction={"horizontal"}>
+                    <Divider flexItem orientation={"vertical"} sx={{width: "1px", marginRight: "10px"}}/>
                     <FooterContact/>
-                </Col>
-            </Row>
-        </Container>
+                </Stack>
+            </Grid>
+        </Grid>
     );
 }
 
 function FooterContact() {
     return (
-        <div>
-            <Typography variant={"h6"}>Liên hệ </Typography>
-            <div>
+        <Box sx={{width: "auto"}}>
+            <Typography variant={"h3"}>Liên hệ </Typography>
+            <Stack>
                 <NavLinkMUILink to={`/`} underline={"none"} color={"black"}>
                     <Stack direction={"horizontal"}>
-                        <Email className="pe-2"/>
-                        <Typography component={"p"} variant={"overline"}>{EMAIL}</Typography>
+                        <Email className="pe-2" fontSize={"small"}/>
+                        <Typography component={"p"} variant={"body2"}>{EMAIL}</Typography>
                     </Stack>
                 </NavLinkMUILink>
                 <NavLinkMUILink to={`/`} underline={"none"} color={"black"}>
                     <Stack direction={"horizontal"}>
-                        <Phone className="pe-2"/>
-                        <Typography component={"p"} variant={"overline"}>{PHONE_1}</Typography>
+                        <Phone className="pe-2" fontSize={"small"}/>
+                        <Typography component={"p"} variant={"body2"}>{PHONE_1}</Typography>
                     </Stack>
                 </NavLinkMUILink>
                 <NavLinkMUILink to={`/`} underline={"none"} color={"black"}>
                     <Stack direction={"horizontal"}>
-                        <Phone className="pe-2"/>
-                        <Typography component={"p"} variant={"overline"}>{PHONE_2}</Typography>
+                        <Phone className="pe-2" fontSize={"small"}/>
+                        <Typography component={"p"} variant={"body2"}>{PHONE_2}</Typography>
                     </Stack>
                 </NavLinkMUILink>
-            </div>
-        </div>
+            </Stack>
+        </Box>
     );
 }
 
@@ -75,7 +76,7 @@ function Item({
             {categoryArray.map((category, index) => {
                 return (
                     <motion.span whileHover={{scale: 1.2}} key={index}>
-                        <NavLinkMUILink to={`/category/${category}`} variant={"overline"} underline={"none"}
+                        <NavLinkMUILink to={`/category/${category}`} variant={"h6"} underline={"none"}
                                         color={"black"}
                                         className={(bold ? "fw-bold" : "fw-light")}>
                             {toCategoryName(category)}

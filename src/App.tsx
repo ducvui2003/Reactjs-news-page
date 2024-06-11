@@ -2,9 +2,9 @@ import "./App.css";
 import "bootstrap/scss/bootstrap.scss";
 import {Route, Routes} from "react-router-dom";
 import Main from "./pages/Main";
-import Home from "./pages/Home/Home";
+import Home from "./pages/Home";
 import {NewsList} from "./components/NewsList/NewsList";
-import Detail from "./pages/Detail/Detail";
+import Detail from "./pages/Detail";
 
 function App() {
     return (

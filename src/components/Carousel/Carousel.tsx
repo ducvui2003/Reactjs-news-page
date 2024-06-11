@@ -12,9 +12,10 @@ const settings = {
     spaceBetween: 30,
     pagination: {
         clickable: true,
+        dynamicBullets: true
     },
     autoplay: {
-        delay: 1000,
+        delay: 5000,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
     },
@@ -27,13 +28,10 @@ const settings = {
 
 function Carousel({title, children}: { title: string; children: any }) {
     return (
-        <>
-            <Divider flexItems sx={{height: 1.5, backgroundColor: 'black', opacity: 0.2}}/>
-            <div className="mt-1 align-items-center">
-                <CarouselHeader title={toCategory(title)}/>
-                <Swiper {...settings}>{children}</Swiper>
-            </div>
-        </>
+        <div className="mt-1 align-items-center">
+            <CarouselHeader title={toCategory(title)}/>
+            <Swiper style={{paddingBottom: "50px"}}  {...settings}>{children}</Swiper>
+        </div>
     );
 }
 

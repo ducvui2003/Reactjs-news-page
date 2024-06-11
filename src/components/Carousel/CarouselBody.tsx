@@ -15,7 +15,7 @@ const categoryFirstLoading: Category[] = [
   Category.GIAI_TRI
 ];
 
-function CategoryCarouselList() {
+function CarouselBody() {
   return (
     <div>
       {categoryFirstLoading.map((category) => (
@@ -25,4 +25,4 @@ function CategoryCarouselList() {
   );
 }
 
-export default CategoryCarouselList;
+export default CarouselBody;

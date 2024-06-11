@@ -11,17 +11,23 @@ import "./assets/sass/custom-nprogress.scss"
 // Cấu hình react-toastify
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import {reactToastifyConfig} from "./config";
+import {reactToastifyConfig, theme} from "./config";
+import {ThemeProvider, createTheme} from '@mui/material/styles';
+import {CssBaseline} from "@mui/material";
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
 );
+
 root.render(
     // <React.StrictMode>
     <BrowserRouter>
         <Provider store={store}>
-            <App/>
-            <ToastContainer {...reactToastifyConfig}/>
+            <ThemeProvider theme={theme}>
+                <CssBaseline/>
+                <App/>
+                <ToastContainer {...reactToastifyConfig}/>
+            </ThemeProvider>
         </Provider>
     </BrowserRouter>
     // </React.StrictMode>

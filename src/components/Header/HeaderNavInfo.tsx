@@ -1,36 +1,34 @@
 import React from 'react';
+import Stack from "@mui/material/Stack";
+import {Divider} from "@mui/material";
 
 
 const NavBar: React.FC = () => {
     return (
-        <ul className="navbar-nav mr-auto align-items-center">
-            <Newest />
-            <RegionalNews />
-        </ul>
+        <Stack direction={"row"} alignItems={"center"} gap={2}>
+            <Newest/>
+            <Divider orientation="vertical" variant="middle" flexItem color={"black"}/>
+            <RegionalNews/>
+            <Divider orientation="vertical" variant="middle" flexItem color={"black"}/>
+        </Stack>
     );
 };
 
 function Newest() {
     return (
-        <li className="nav-item active">
-            <a className="nav-link" href="#">Mới nhất</a>
-        </li>
+        <a className="nav-link" href="#">Mới nhất</a>
     );
 }
 
 function RegionalNews() {
     return (
-        <li className="custom-border-start">
-            <a className="py-0 nav-link" href="#">Tin theo khu vực</a>
-        </li>
+        <a className="py-0 nav-link" href="#">Tin theo khu vực</a>
     );
 }
 
 function InternationalNews() {
     return (
-        <li className="custom-border-start">
-            <a className="py-0 nav-link" href="#">International</a>
-        </li>
+        <a className="py-0 nav-link" href="#">International</a>
     )
 }
 
