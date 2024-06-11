@@ -1,7 +1,4 @@
 import React, {useState} from "react";
-import SaveIcon from "@mui/icons-material/Save";
-import PrintIcon from "@mui/icons-material/Print";
-import ShareIcon from "@mui/icons-material/Share";
 import {Popover} from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import {IconButton} from "@mui/joy";

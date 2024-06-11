@@ -9,8 +9,13 @@ import {Category} from "../../constraints/category";
 export default function Nav() {
     const style = {
         backgroundColor: 'background.paper',
-
+        position: "sticky",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1000,
     }
+
     return (
         <Box sx={style}>
             <Divider sx={{height: 0.5, backgroundColor: 'black', opacity: 0.2}}/>

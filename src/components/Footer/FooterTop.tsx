@@ -38,7 +38,7 @@ function FooterTop() {
 function FooterContact() {
     return (
         <Box sx={{width: "auto"}}>
-            <Typography variant={"h3"}>Liên hệ </Typography>
+            <Typography variant={"h5"}>Liên hệ </Typography>
             <Stack>
                 <NavLinkMUILink to={`/`} underline={"none"} color={"black"}>
                     <Stack direction={"horizontal"}>

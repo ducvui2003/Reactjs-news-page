@@ -1,28 +1,29 @@
 import {TypographyOptions} from "@mui/material/styles/createTypography";
+import '@fontsource/roboto'
+import '@fontsource/merriweather'
 
-const typographyMUI:TypographyOptions = {
-    fontFamily: [
-        'Roboto', // Google Font family
-        'Arial',  // Default font family
-        'sans-serif'
-    ].join(','),
+const typography: TypographyOptions = {
+    fontFamily: 'Roboto, Arial, sans-serif',
     // Set default font sizes for various variants
     fontSize: 16, // Default font size
     htmlFontSize: 10,//HTML font size
     h1: {
-        fontSize: '2.5rem', // 40px
+        fontSize: '3rem', // 40px
         fontWeight: 700, // Bold
         lineHeight: 1.2, // Ensure adequate line spacing
+        fontFamily: "Merriweather, serif",
     },
     h2: {
-        fontSize: '2rem', // 32px
-        fontWeight: 700, // Bold
+        fontSize: '2.5rem', // 32px
+        fontWeight: 600, // Bold
         lineHeight: 1.3, // Ensure adequate line spacing
+        fontFamily: "Merriweather, serif",
     },
     h3: {
-        fontSize: '1.75rem', // 28px
+        fontSize: '2.25rem', // 28px
         fontWeight: 700, // Bold
         lineHeight: 1.4, // Ensure adequate line spacing
+        fontFamily: "Merriweather, serif",
     },
     h4: {
         fontSize: '1.5rem', // 24px
@@ -48,7 +49,7 @@ const typographyMUI:TypographyOptions = {
         lineHeight: 1.6, // Ensure adequate line spacing
     },
     body1: {
-        fontSize: '1rem', // 16px
+        fontSize: '1.3rem', // 16px
         lineHeight: 1.5, // Ensure adequate line spacing
     },
     body2: {
@@ -61,4 +62,4 @@ const typographyMUI:TypographyOptions = {
     },
 }
 // @ts-ignore
-export default typographyMUI;
+export default typography;

@@ -1,4 +1,4 @@
-import {ConfigMUI} from "../configTheme";
+import {ConfigMUI} from "../theme";
 
 const buttonMUI: ConfigMUI<"MuiButton"> = {
   variants: [

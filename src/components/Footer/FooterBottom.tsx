@@ -6,20 +6,20 @@ function FooterBottom() {
     return (
         <Grid container sx={{marginBlock: "10px"}}>
             <Grid item xs>
-                <Stack spacing={3}>
-                    <Typography variant={"body1"} className="fw-bold">Báo tiếng Việt nhiều người xem nhất</Typography>
-                    <Typography variant={"body1"}>Thuộc Bộ Khoa học và Công nghệ</Typography>
-                    <Typography variant={"body1"}>Số giấy phép: 548/GP-BTTTT ngày 24/08/2021</Typography>
+                <Stack spacing={2}>
+                    <Typography variant={"subtitle1"} className="fw-bold">Báo tiếng Việt nhiều người xem nhất</Typography>
+                    <Typography variant={"subtitle1"}>Thuộc Bộ Khoa học và Công nghệ</Typography>
+                    <Typography variant={"subtitle1"}>Số giấy phép: 548/GP-BTTTT ngày 24/08/2021</Typography>
                 </Stack>
             </Grid>
             <Grid item xs >
-                <Stack spacing={3}>
-                    <Typography variant={"body1"}> Tổng biên tập: Phạm Hiếu</Typography>
-                    <Typography variant={"body1"}>
+                <Stack spacing={2}>
+                    <Typography variant={"subtitle1"}> Tổng biên tập: Phạm Hiếu</Typography>
+                    <Typography variant={"subtitle1"}>
                         Địa chỉ: Tầng 10, Tòa A FPT Tower, số 10 Phạm Văn Bạch, Dịch Vọng,
                         Cầu Giấy, Hà Nội
                     </Typography>
-                    <Typography variant={"body1"}>Điện thoại: 024 7300 8899 - máy lẻ 4500</Typography>
+                    <Typography variant={"subtitle1"}>Điện thoại: 024 7300 8899 - máy lẻ 4500</Typography>
                 </Stack>
             </Grid>
             <Grid item xs>

@@ -7,7 +7,6 @@ import {News} from "../../types/news.type";
 import {Divider, Grid} from "@mui/material";
 import CardVertical from "../Card/CardVertical";
 import CardHorizontal from "../Card/CardHorizontal";
-import Stack from "@mui/material/Stack";
 
 function Intro() {
     const [news, setNews] = useState<News[]>([]);

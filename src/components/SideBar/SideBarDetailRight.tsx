@@ -1,28 +1,42 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Box} from "@mui/material";
 import Typography from "@mui/material/Typography";
+import {Category} from "../../constraints/category";
+import {News, NewsLoading} from "../../types/news.type";
+import {getNewsByCategory} from "../../services/newsService";
+import CardVertical from "../Card/CardVertical";
+import Stack from "@mui/material/Stack";
+import CardHorizontal from "../Card/CardHorizontal";
+import {describe} from "node:test";
 
-function SideBarDetailRight() {
+function SideBarDetailRight({category}: { category: Category }) {
     const style = {
         position: "sticky",
-        top: 0,
         left: 0,
+        top: "50px",
+        paddingTop: "50px",
     }
-    const relevantNews = [
-        {id: "B1", title: "Relevant News 1"},
-        {id: "B2", title: "Relevant News 2"},
-        {id: "B3", title: "Relevant News 3"}
-    ];
+    const [newsRelated, setNewsRelated] = useState<News[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        getNewsByCategory(category).then((news) => {
+            const newsRemoveDescription = news.map(item => {
+                return {...item, description: ""}
+            })
+            setNewsRelated(newsRemoveDescription);
+            setLoading(false)
+        })
+    }, []);
+
     return (
         <Box sx={style}>
-            <Typography variant={"h3"}>Các bài báo liên quan</Typography>
-            <ul className="list-unstyled">
-                {relevantNews.map((news) => (
-                    <li key={news.id}>
-                        <a href={`#${news.id}`}>{news.title}</a>
-                    </li>
+            <Typography gutterBottom variant={"h3"}>Các bài báo liên quan</Typography>
+            <Stack sx={{position: "static"}} spacing={3}>
+                {newsRelated.slice(0, 3).map((news) => (
+                    <CardHorizontal isLoading={loading} news={news} key={Math.random()} cssImage={{flex: 1}}/>
                 ))}
-            </ul>
+            </Stack>
         </Box>
     );
 }

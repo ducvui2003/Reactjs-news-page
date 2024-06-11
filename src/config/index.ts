@@ -1,2 +1,2 @@
 export {reactToastifyConfig} from "./reactToastify"
-export {theme} from './configTheme';
+export {theme} from './theme';

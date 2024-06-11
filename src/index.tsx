@@ -12,8 +12,8 @@ import "./assets/sass/custom-nprogress.scss"
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import {reactToastifyConfig, theme} from "./config";
-import {ThemeProvider, createTheme} from '@mui/material/styles';
 import {CssBaseline} from "@mui/material";
+import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles';
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
@@ -23,11 +23,11 @@ root.render(
     // <React.StrictMode>
     <BrowserRouter>
         <Provider store={store}>
-            <ThemeProvider theme={theme}>
+            <CssVarsProvider theme={theme}>
                 <CssBaseline/>
                 <App/>
                 <ToastContainer {...reactToastifyConfig}/>
-            </ThemeProvider>
+            </CssVarsProvider>
         </Provider>
     </BrowserRouter>
     // </React.StrictMode>
