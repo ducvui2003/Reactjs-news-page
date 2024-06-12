@@ -1,8 +1,8 @@
 // Thêm user
-import { User } from "../types/user.type";
+import { User } from '../types/user.type';
 
 export enum SessionStorage {
-  USER = "user",
+  USER = 'user',
 }
 
 const setUser = (user: User) => {

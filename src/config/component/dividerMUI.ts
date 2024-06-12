@@ -1,8 +1,8 @@
 const dividerMUI = {
-    styleOverrides: {
-        root: {
-            backgroundColor: "#000",
-        },
+  styleOverrides: {
+    root: {
+      backgroundColor: '#000',
     },
+  },
 };
 export default dividerMUI;

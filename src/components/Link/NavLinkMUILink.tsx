@@ -4,16 +4,11 @@ import Link from '@mui/material/Link';
 
 // Custom NavLink component using MUI Link
 const CustomNavLink = React.forwardRef(function CustomNavLink(props, ref) {
-    return <NavLink ref={ref} {...props} />;
+  return <NavLink ref={ref} {...props} />;
 });
 
 function NavLinkMUILink(props) {
-    return (
-        <Link
-            component={CustomNavLink}
-            {...props}
-        />
-    );
+  return <Link component={CustomNavLink} {...props} />;
 }
 
 export default NavLinkMUILink;

@@ -1,6 +1,6 @@
-import React from "react";
-import {Category} from "../../constraints/category";
-import CategoryCarousel from "./CategoryCarousel";
+import React from 'react';
+import { Category } from '../../constraints/category';
+import CategoryCarousel from './CategoryCarousel';
 
 const categoryFirstLoading: Category[] = [
   Category.QUOC_TE,
@@ -12,7 +12,7 @@ const categoryFirstLoading: Category[] = [
   // Category.SUC_KHOE,
   // Category.PHAP_LUAT,
   // Category.VAN_HOA_VAN_NGHE,
-  Category.GIAI_TRI
+  Category.GIAI_TRI,
 ];
 
 function CarouselBody() {

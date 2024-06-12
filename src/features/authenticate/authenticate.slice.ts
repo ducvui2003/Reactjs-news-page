@@ -1,20 +1,20 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { User } from "../../types/user.type";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { User } from '../../types/user.type';
 import {
   addUser,
   getUser,
   removeUser,
-} from "../../services/sessionStorageService";
-import { get } from "../../services/userServices";
+} from '../../services/sessionStorageService';
+import { get } from '../../services/userServices';
 
 const userStorage = getUser();
 const initialState: User = {
-  email: userStorage?.email,
-  password: userStorage?.password,
+  email: userStorage?.email ?? '',
+  password: userStorage?.password ?? '',
 };
 
 const authenticateSlice = createSlice({
-  name: "authenticate",
+  name: 'authenticate',
   initialState: initialState,
   reducers: {
     save: (state, action: PayloadAction<User>) => {
@@ -24,8 +24,8 @@ const authenticateSlice = createSlice({
       addUser(user);
     },
     exit: (state) => {
-      state.email = undefined;
-      state.password = undefined;
+      state.email = '';
+      state.password = '';
       removeUser();
     },
   },
