@@ -68,42 +68,38 @@ function RegisterForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack>
-        <FormControl variant="standard" fullWidth className={'mt-3'}>
-          <TextField
-            error={!!errors.email}
-            label="Email"
-            type="email"
-            defaultValue=""
-            placeholder="name@example.com"
-            helperText={errors.email?.message}
-            {...register('email')}
-          />
-        </FormControl>
+        <TextField
+          error={!!errors.email}
+          label="Email"
+          type="email"
+          defaultValue=""
+          placeholder="name@example.com"
+          helperText={errors.email?.message}
+          {...register('email')}
+        />
 
-        <FormControl variant="standard" fullWidth className={'mt-3'}>
-          <TextField
-            error={!!errors.password}
-            type="password"
-            label="Mật khẩu "
-            defaultValue=""
-            helperText={errors.password?.message}
-            {...register('password')}
-          />
-        </FormControl>
+        <TextField
+          error={!!errors.password}
+          type="password"
+          label="Mật khẩu "
+          defaultValue=""
+          helperText={errors.password?.message}
+          {...register('password')}
+          sx={{ mt: 3 }}
+        />
 
-        <FormControl variant="standard" fullWidth className={'mt-3'}>
-          <TextField
-            error={!!errors.confirmPassword}
-            type="password"
-            label="Nhập lại mật khẩu "
-            defaultValue=""
-            helperText={errors.password?.message}
-            {...register('confirmPassword')}
-          />
-        </FormControl>
+        <TextField
+          error={!!errors.confirmPassword}
+          type="password"
+          label="Nhập lại mật khẩu "
+          defaultValue=""
+          helperText={errors.password?.message}
+          {...register('confirmPassword')}
+          sx={{ mt: 3 }}
+        />
 
-        <Button type="submit" variant={'contained'} className={'mt-3'}>
-          <Typography variant={'body1'}> Đăng ký</Typography>
+        <Button size="small" type="submit" sx={{ mt: 3 }} variant={'contained'}>
+          Đăng ký
         </Button>
       </Stack>
     </form>

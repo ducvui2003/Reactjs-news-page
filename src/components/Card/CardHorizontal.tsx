@@ -1,4 +1,3 @@
-import React from 'react';
 import { NewsLoading } from '../../types/news.type';
 import {
   Box,
@@ -46,9 +45,11 @@ function CardHorizontal({ news, cssImage, isLoading = false }: NewsLoading) {
               {isLoading ? (
                 <Skeleton width="100%" />
               ) : (
-                <ClampedTypography lineClamp={3} variant="caption">
-                  {timeAgo(news?.publishDate)}
-                </ClampedTypography>
+                news?.publishDate && (
+                  <ClampedTypography lineClamp={3} variant="caption">
+                    {timeAgo(news.publishDate)}
+                  </ClampedTypography>
+                )
               )}
               {isLoading ? (
                 <Skeleton width="100%" />

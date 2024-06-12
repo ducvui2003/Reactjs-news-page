@@ -9,7 +9,7 @@ import SearchBar from './HeaderSearch';
 import DarkMode from '../Nav/DarkMode/DarkMode';
 import HeaderBeforeLogin from './HeaderBeforeLogin';
 import HeaderAfterLogin from './HeaderAfterLogin';
-import { Container } from '@mui/material';
+import { Container, Divider } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
@@ -44,11 +44,22 @@ export default function Header() {
           alignItems={'center'}
           gap={'2'}
           justifyContent={'center'}
+          divider={
+            <Divider
+              orientation="vertical"
+              variant="middle"
+              flexItem
+              color={'black'}
+              sx={{ mx: 2 }}
+            />
+          }
         >
           <NavBar />
-          <SearchBar />
-          <DarkMode />
-          {authReducer.email ? <HeaderAfterLogin /> : <HeaderBeforeLogin />}
+          <Stack direction={'row'} spacing={2}>
+            <SearchBar />
+            <DarkMode />
+            {authReducer.email ? <HeaderAfterLogin /> : <HeaderBeforeLogin />}
+          </Stack>
         </Stack>
       </Stack>
     </Container>

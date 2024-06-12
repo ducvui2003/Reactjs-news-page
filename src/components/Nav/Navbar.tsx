@@ -3,10 +3,13 @@ import Stack from '@mui/material/Stack';
 import './Navbar.scss';
 import { categoryList, toCategoryName } from '../../services/categoryService';
 import NavLinkMUILink from '../Link/NavLinkMUILink';
-import { Box, Container, Divider } from '@mui/material';
+import { Box, Container, Divider, Link, useColorScheme } from '@mui/material';
 import { Category } from '../../constraints/category';
+import { useTheme } from '@emotion/react';
+import { NavLink } from 'react-router-dom';
 
 export default function Nav() {
+  const theme = useTheme();
   const style = {
     backgroundColor: 'background.paper',
     position: 'sticky',
@@ -24,14 +27,15 @@ export default function Nav() {
           {categoryList
             .filter((category: Category) => category != Category.HOME)
             .map((category) => (
-              <NavLinkMUILink
+              <Link
+                component={NavLink}
                 variant={'h6'}
                 underline={'none'}
-                color={'black'}
+                color={'theme.palette.link.main'}
                 to={`/category/${category}`}
               >
                 {toCategoryName(category)}
-              </NavLinkMUILink>
+              </Link>
             ))}
         </Stack>
       </Container>

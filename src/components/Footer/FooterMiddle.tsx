@@ -1,6 +1,5 @@
-import { Divider, Stack } from '@mui/material';
+import { Divider, Link, Stack } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import NavLinkMUILink from '../Link/NavLinkMUILink';
 import LogoScrollToTop from '../Logo/LogoScrollToTop';
 
 function FooterMiddle() {
@@ -27,14 +26,15 @@ function FooterLegacy() {
     >
       {content.map((item, index) => {
         return (
-          <NavLinkMUILink
+          <Link
+            key={index}
+            component={NavLink}
             to={`/`}
             variant={'h6'}
             underline={'none'}
-            color={'black'}
           >
             {item}
-          </NavLinkMUILink>
+          </Link>
         );
       })}
     </Stack>

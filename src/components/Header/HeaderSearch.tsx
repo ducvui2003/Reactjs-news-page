@@ -11,7 +11,7 @@ import {
 import './style.scss';
 const SearchBar: React.FC = () => {
   return (
-    <form className="form__search form-inline my-2 my-lg-0 px-2 custom-border-start">
+    <form className="form__search form-inline my-2 my-lg-0 px-2 ">
       <div className="form-grp">
         <input
           className="input-search"

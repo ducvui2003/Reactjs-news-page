@@ -1,4 +1,3 @@
-import React from 'react';
 import { NewsLoading } from '../../types/news.type';
 import {
   Box,
@@ -47,16 +46,19 @@ function CardVertical({ news, cssImage, isLoading = true }: NewsLoading) {
                 variant="h5"
                 component="div"
               >
-                {news?.thumbnail}
+                {news?.title}
               </ClampedTypography>
             )}
             {isLoading ? (
               <Skeleton width="100%" />
             ) : (
-              <Typography gutterBottom variant="caption">
-                {timeAgo(news?.publishDate)}
-              </Typography>
+              news?.publishDate && (
+                <Typography gutterBottom variant="caption">
+                  {timeAgo(news.publishDate)}
+                </Typography>
+              )
             )}
+
             {isLoading ? (
               <Skeleton width="100%" />
             ) : (
