@@ -31,8 +31,8 @@ function CardVertical({ news, cssImage, isLoading = true }: NewsLoading) {
               <CardMedia
                 component="img"
                 height="100%"
-                image={news.thumbnail}
-                alt={news.title}
+                image={news?.thumbnail}
+                alt={news?.thumbnail}
               />
             )}
           </Box>
@@ -47,21 +47,21 @@ function CardVertical({ news, cssImage, isLoading = true }: NewsLoading) {
                 variant="h5"
                 component="div"
               >
-                {news.title}
+                {news?.thumbnail}
               </ClampedTypography>
             )}
             {isLoading ? (
               <Skeleton width="100%" />
             ) : (
               <Typography gutterBottom variant="caption">
-                {timeAgo(news.publishDate)}
+                {timeAgo(news?.publishDate)}
               </Typography>
             )}
             {isLoading ? (
               <Skeleton width="100%" />
             ) : (
               <Typography variant="body2" color="text.secondary">
-                {news.description}
+                {news?.description}
               </Typography>
             )}
           </CardContent>
