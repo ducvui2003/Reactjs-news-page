@@ -1,23 +1,23 @@
-import {ConfigMUI} from "../theme";
+import { ConfigMUI } from '../theme';
 
-const buttonMUI: ConfigMUI<"MuiButton"> = {
+const buttonMUI: ConfigMUI<'MuiButton'> = {
   variants: [
     {
-      props: { variant: "contained", size: "small" },
+      props: { variant: 'contained', size: 'small' },
       style: {
-        fontSize: "1rem", // Set the font size for small contained buttons
+        fontSize: '1rem', // Set the font size for small contained buttons
       },
     },
     {
-      props: { variant: "contained", size: "medium" },
+      props: { variant: 'contained', size: 'medium' },
       style: {
-        fontSize: "1.5rem", // Set the font size for medium contained buttons
+        fontSize: '1.5rem', // Set the font size for medium contained buttons
       },
     },
     {
-      props: { variant: "contained", size: "large" },
+      props: { variant: 'contained', size: 'large' },
       style: {
-        fontSize: "2rem", // Set the font size for large contained buttons
+        fontSize: '2rem', // Set the font size for large contained buttons
       },
     },
   ],
