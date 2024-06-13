@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import { Category } from '../../constraints/category';
 import { toCategoryName } from '../../services/categoryService';
-import NavLinkMUILink from '../Link/NavLinkMUILink';
+import { Link } from '@mui/material';
 
 function CarouselHeader({ title }: { title: Category }) {
   return (
@@ -18,13 +18,9 @@ function CarouselHeader({ title }: { title: Category }) {
         onHoverStart={(e) => {}}
         onHoverEnd={(e) => {}}
       >
-        <NavLinkMUILink
-          to={`/category/${title}`}
-          underline={'hover'}
-          variant={'primary'}
-        >
+        <Link to={`/category/${title}`} underline={'hover'} component={NavLink}>
           Xem thêm
-        </NavLinkMUILink>
+        </Link>
       </motion.div>
     </Stack>
   );
