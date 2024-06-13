@@ -1,5 +1,5 @@
 export interface News {
-    title: string,
-    imgLink: string,
-    shortDes: string
+  title: string;
+  imgLink: string;
+  shortDes: string;
 }

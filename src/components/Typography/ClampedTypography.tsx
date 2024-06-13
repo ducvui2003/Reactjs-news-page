@@ -1,13 +1,42 @@
-const LINES_TO_SHOW = 2
+import { makeStyles } from '@mui/styles';
+
+const LINE_CLAMP: number = 1;
+import React from 'react';
+import { TypographyProps } from '@mui/material';
+import Typography from '@mui/material/Typography';
+
+interface LineClampTypographyProps extends TypographyProps {
+  lineClamp?: number;
+}
+
 const useStyles = makeStyles({
-    ellipsis: {
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        display: "-webkit-box",
-        "-webkit-line-clamp": LINES_TO_SHOW,
-        "-webkit-box-orient": "vertical"
-    },
-    ellipsisLine: {
-        "-webkit-line-clamp": LINES_TO_SHOW,
-    }
+  lineClamp: {
+    overflow: 'hidden',
+    display: '-webkit-box',
+    '-webkit-box-orient': 'vertical',
+  },
 });
+
+function ClampedTypography({
+  children,
+  lineClamp = LINE_CLAMP,
+  ...props
+}: LineClampTypographyProps) {
+  const style = {
+    display: '-webkit-box',
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    WebkitLineClamp: lineClamp,
+  };
+
+  // Conditionally add -webkit-line-clamp style if lineClamp is provided
+
+  return (
+    <Typography gutterBottom sx={style} {...props}>
+      {children}
+    </Typography>
+  );
+}
+
+export default ClampedTypography;
