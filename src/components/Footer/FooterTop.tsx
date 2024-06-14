@@ -1,7 +1,15 @@
-import { Col, Row, Stack } from 'react-bootstrap';
 import { EMAIL, PHONE_1, PHONE_2 } from '../../constraints/info';
 import { Email, Handshake, Phone } from '@mui/icons-material';
-import { Box, Divider, Grid, Link, List } from '@mui/material';
+import {
+  Box,
+  Divider,
+  Grid,
+  Link,
+  List,
+  Stack,
+  Theme,
+  useMediaQuery,
+} from '@mui/material';
 import {
   getMatrixCategory,
   toCategoryName,
@@ -11,30 +19,33 @@ import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
 
 function FooterTop() {
+  const isMobile = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down('sm'),
+  );
   return (
-    <Grid container sx={{ marginBlock: '10px' }}>
-      <Grid item xs={8}>
-        <Row>
+    <Grid container sx={{ py: '10px' }}>
+      <Grid item xs={12} md={9}>
+        <Grid container spacing={2}>
           {getMatrixCategory().map((categoryArray, index) => {
             return (
-              <Col key={index}>
-                <Item
-                  bold={index == 0}
-                  key={index}
-                  categoryArray={categoryArray}
-                />
-              </Col>
+              <Grid item md key={index}>
+                <Item key={index} categoryArray={categoryArray} />
+              </Grid>
             );
           })}
-        </Row>
+        </Grid>
       </Grid>
-      <Grid item xs={1}></Grid>
-      <Grid item className=" border-secondary" xs={3}>
-        <Stack direction={'horizontal'}>
+
+      <Grid item className=" border-secondary" xs={12} md={3}>
+        <Stack direction={isMobile ? 'column' : 'row'} sx={{ width: '100%' }}>
           <Divider
             flexItem
-            orientation={'vertical'}
-            sx={{ width: '1px', marginRight: '10px' }}
+            orientation={isMobile ? 'horizontal' : 'vertical'}
+            sx={
+              isMobile
+                ? { height: '1px', marginBlock: '10px' }
+                : { width: '1px', marginRight: '10px' }
+            }
           />
           <FooterContact />
         </Stack>
@@ -46,10 +57,12 @@ function FooterTop() {
 function FooterContact() {
   return (
     <Box sx={{ width: 'auto' }}>
-      <Typography variant={'h5'}>Liên hệ </Typography>
-      <Stack>
+      <Typography gutterBottom variant={'h4'}>
+        Liên hệ
+      </Typography>
+      <Stack spacing={1}>
         <Link component={NavLink} to={`/`} underline={'hover'}>
-          <Stack direction={'horizontal'}>
+          <Stack direction={'row'}>
             <Email className="pe-2" fontSize={'small'} />
             <Typography component={'p'} variant={'h6'}>
               {EMAIL}
@@ -57,7 +70,7 @@ function FooterContact() {
           </Stack>
         </Link>
         <Link component={NavLink} to={`/`} underline={'hover'}>
-          <Stack direction={'horizontal'}>
+          <Stack direction={'row'}>
             <Phone className="pe-2" fontSize={'small'} />
             <Typography component={'p'} variant={'h6'}>
               {PHONE_1}
@@ -65,7 +78,7 @@ function FooterContact() {
           </Stack>
         </Link>
         <Link component={NavLink} to={`/`} underline={'hover'}>
-          <Stack direction={'horizontal'}>
+          <Stack direction={'row'}>
             <Phone sx={{ pe: 2 }} fontSize={'small'} />
             <Typography component={'p'} variant={'h6'}>
               {PHONE_2}
@@ -77,14 +90,7 @@ function FooterContact() {
   );
 }
 
-function Item({
-  categoryArray,
-  bold,
-}: {
-  categoryArray: Category[];
-  bold: boolean;
-  key?: number;
-}) {
+function Item({ categoryArray }: { categoryArray: Category[] }) {
   return (
     <Stack gap={3}>
       {categoryArray.map((category, index) => {

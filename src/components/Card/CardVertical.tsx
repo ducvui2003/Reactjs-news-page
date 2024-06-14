@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import { timeAgo } from '../../utils/timeUtils';
 import ClampedTypography from '../Typography/ClampedTypography';
 
-function CardVertical({ news, cssImage, isLoading = true }: NewsLoading) {
+function CardVertical({ news, isLoading = true }: NewsLoading) {
   return (
     <Box sx={{ height: '100%' }}>
       <Card sx={{ height: '100%' }}>
@@ -23,7 +23,7 @@ function CardVertical({ news, cssImage, isLoading = true }: NewsLoading) {
             height: '100%',
           }}
         >
-          <Box sx={{ flexBasic: '140', ...cssImage }}>
+          <Box sx={{ flex: 1 }}>
             {isLoading ? (
               <Skeleton variant="rectangular" width={210} height={118} />
             ) : (
