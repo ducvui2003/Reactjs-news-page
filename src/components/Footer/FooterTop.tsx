@@ -19,9 +19,7 @@ import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
 
 function FooterTop() {
-  const isMobile = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down('sm'),
-  );
+
   return (
     <Grid container sx={{ py: '10px' }}>
       <Grid item xs={12} md={9}>
@@ -37,15 +35,11 @@ function FooterTop() {
       </Grid>
 
       <Grid item className=" border-secondary" xs={12} md={3}>
-        <Stack direction={isMobile ? 'column' : 'row'} sx={{ width: '100%' }}>
+        <Stack direction="row" sx={{ width: '100%' }}>
           <Divider
             flexItem
-            orientation={isMobile ? 'horizontal' : 'vertical'}
-            sx={
-              isMobile
-                ? { height: '1px', marginBlock: '10px' }
-                : { width: '1px', marginRight: '10px' }
-            }
+            orientation="vertical"
+            sx={{ width: '1px', marginRight: '10px' }}
           />
           <FooterContact />
         </Stack>

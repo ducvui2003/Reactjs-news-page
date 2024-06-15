@@ -4,13 +4,12 @@ import DarkMode from '../Nav/DarkMode/DarkMode';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
-import HeaderAfterLogin from '../Header/HeaderAfterLogin';
 import HeaderBeforeLogin from '../Header/HeaderBeforeLogin';
 
 const NavBar = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
   const authReducer = useSelector((state: RootState) => state.authenticate);
   return (
-    <Drawer open={open} onClose={onClose}>
+    <Drawer open={open} onClose={onClose} sx={{ width: '100%' }}>
       <List>
         <ListItem>
           {authReducer.email ? (

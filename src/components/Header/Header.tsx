@@ -34,7 +34,7 @@ export default function Header() {
   // Kiểm tra state user đã đăng nhập chưa
   const authReducer = useSelector((state: RootState) => state.authenticate);
   const styles = {
-    paddingBlock: '30px',
+    p: 3,
     position: 'sticky',
   };
 

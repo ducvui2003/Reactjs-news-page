@@ -10,8 +10,10 @@ import {
   IconButton,
   Link,
   Menu,
+  Theme,
   Tooltip,
   useColorScheme,
+  useMediaQuery,
 } from '@mui/material';
 import { Category } from '../../constraints/category';
 import { useTheme } from '@emotion/react';
@@ -19,9 +21,12 @@ import { NavLink } from 'react-router-dom';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import MenuExtends from './MenuExtend';
 import { motion } from 'framer-motion';
+import { is } from 'date-fns/locale';
 
 export default function Nav() {
-  const theme = useTheme();
+  const isMobile = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down('sm'),
+  );
   const style = {
     backgroundColor: 'background.paper',
     position: 'sticky',
@@ -46,7 +51,7 @@ export default function Nav() {
         >
           {categoryList
             .filter((category: Category) => category != Category.HOME)
-            .slice(0, 8)
+            .slice(0, isMobile ? 3 : 8)
             .map((category, index) => (
               <Link
                 component={NavLink}
@@ -75,8 +80,11 @@ export default function Nav() {
         style={{ overflow: 'hidden' }}
       >
         <Container>
-          <Divider orientation="horizontal" />
-          <MenuExtends />
+          <Divider
+            orientation="horizontal"
+            sx={{ height: 0.5, backgroundColor: 'black', opacity: 0.2 }}
+          />
+          <MenuExtends handleClose={() => setIsVisible(false)} />
         </Container>
         <Divider sx={{ height: 0.5, backgroundColor: 'black', opacity: 0.2 }} />
       </motion.div>
