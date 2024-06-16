@@ -38,7 +38,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'Bí thư Quận ủy quận 1 Dương Anh Đức: Xây dựng môi trường sống tử tế, văn minh',
     author: 'PHAN ANH',
-    publishDate: '05-06-24 13:37',
+    publishDate: 'Wed, 24 Jun 2005 13:37:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -90,7 +90,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A3',
     title: 'CSGT TP HCM hỗ trợ kỳ thi Tuyển sinh lớp 10 ra sao?',
     author: 'Ý Linh',
-    publishDate: '05-06-24 13:38',
+    publishDate: 'Wed, 24 Jun 2005 13:38:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -121,7 +121,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A4',
     title: 'Hơn 7.000 cú sét đánh xuống Hà Nội trong sáng 5-6 có bất thường?',
     author: 'Văn Duẩn',
-    publishDate: '05-06-24 14:30',
+    publishDate: 'Wed, 24 Jun 2005 14:30:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -175,7 +175,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A5',
     title: 'Thầy giáo bị điện giật tử vong khi sửa điện',
     author: 'Hoàng Thanh',
-    publishDate: '05-06-24 14:48',
+    publishDate: 'Wed, 24 Jun 2005 14:48:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -280,7 +280,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'Vụ 112 hồ sơ ở dự án cao tốc Biên Hòa - Vũng Tàu có dấu hiệu chỉnh sửa: Công an nói gì?',
     author: 'Nguyễn Tuấn',
-    publishDate: '05-06-24 15:19',
+    publishDate: 'Wed, 24 Jun 2005 14:52:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -309,7 +309,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'Bộ trưởng Nguyễn Văn Hùng trả lời câu hỏi “bỏ 300 tỉ đồng vào ngân hàng để lấy lãi”',
     author: 'Nhóm PV',
-    publishDate: '05-06-24 15:21',
+    publishDate: 'Wed, 24 Jun 2005 15:19:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -361,7 +361,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A9',
     title: 'Đường nối Ninh Thuận - Lâm Đồng vướng đất rừng',
     author: 'Trường Nguyên',
-    publishDate: '05-06-24 15:22',
+    publishDate: 'Wed, 24 Jun 2005 15:21:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -399,7 +399,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A10',
     title: 'Đang ngủ bị tảng đá nặng 3 tấn lăn từ trên núi xuống đè tử vong',
     author: 'Như Quỳnh',
-    publishDate: '05-06-24 15:22',
+    publishDate: 'Wed, 24 Jun 2005 15:22:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -427,7 +427,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A11',
     title: 'TP HCM có tân Chánh Thanh tra',
     author: 'PHAN ANH',
-    publishDate: '05-06-24 15:27',
+    publishDate: 'Wed, 24 Jun 2005 15:22:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -460,7 +460,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'Bộ trưởng VH-TT-DL nói về việc "ăn chặn" tiền thưởng, khẩu phần ăn của vận động viên',
     author: 'Văn Duẩn - Minh Chiến - Huy Thanh',
-    publishDate: '05-06-24 15:32',
+    publishDate: 'Wed, 24 Jun 2005 15:27:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -521,7 +521,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'Tổng cục Thuế có công điện khẩn kiểm tra toàn diện việc livestream bán hàng',
     author: 'Minh Chiến',
-    publishDate: '05-06-24 15:40',
+    publishDate: 'Wed, 24 Jun 2005 15:32:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -565,7 +565,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A14',
     title: '1 phụ nữ tử vong sau khi sửa mũi ở trung tâm TP HCM',
     author: 'Anh Vũ',
-    publishDate: '05-06-24 15:43',
+    publishDate: 'Wed, 24 Jun 2005 15:40:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -596,7 +596,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A15',
     title: 'Tuyến đường nào "đắt khách" nhất khi quận 1 cho thuê vỉa hè?',
     author: 'PHAN ANH',
-    publishDate: '05-06-24 15:46',
+    publishDate: 'Wed, 24 Jun 2005 15:43:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -640,7 +640,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A16',
     title: 'Tạm đình chỉ hoạt động một trung tâm Đăng kiểm ở Gia Lai',
     author: 'Hoàng Thanh',
-    publishDate: '05-06-24 16:36',
+    publishDate: 'Wed, 24 Jun 2005 15:46:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -664,7 +664,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'Ông Nguyễn Văn Nên làm Trưởng Tiểu ban Nhân sự Đại hội Đại biểu Đảng bộ TP HCM lần thứ XII',
     author: 'LÊ VĨNH',
-    publishDate: '05-06-24 16:41',
+    publishDate: 'Wed, 24 Jun 2005 16:36:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -696,7 +696,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A18',
     title: 'Tra cứu thực tế vé bay cao điểm hè hôm nay 5-6',
     author: 'Tin-ảnh: Dương Ngọc',
-    publishDate: '05-06-24 16:45',
+    publishDate: 'Wed, 24 Jun 2005 16:41:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -758,7 +758,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'Đại biểu Quốc hội chất vấn về đường đua F1 được xây dựng "hoành tráng" nhưng đang bỏ không',
     author: 'Minh Chiến - Huy Thanh - Văn Duẩn',
-    publishDate: '05-06-24 16:51',
+    publishDate: 'Wed, 24 Jun 2005 16:45:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -793,7 +793,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A20',
     title: 'Xe chở keo lao xuống vực, 2 người chết',
     author: 'Trần Thường',
-    publishDate: '05-06-24 16:55',
+    publishDate: 'Wed, 24 Jun 2005 16:51:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -831,7 +831,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A21',
     title: 'Ra mắt 2 công trình ý nghĩa trên xã đảo Thạnh An',
     author: 'Tin-ảnh: Minh Diễm',
-    publishDate: '05-06-24 16:59',
+    publishDate: 'Wed, 24 Jun 2005 16:55:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -892,7 +892,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'Bình Dương: 6 người trên xe tải lao xuống cây xăng gây hỗn chiến kinh hoàng',
     author: 'Thanh Thảo',
-    publishDate: '05-06-24 17:03',
+    publishDate: 'Wed, 24 Jun 2005 16:59:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
