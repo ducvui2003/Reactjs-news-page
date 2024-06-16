@@ -15,6 +15,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/category/:id" element={<NewsList />} />
         <Route path="/detail/:id" element={<Detail />} />
+        {/* <Route path='/search/:id' element={NewsListSearch }/> */}
       </Route>
       <Route path="/mobile/">
         <Route path="login" element={<Login />} />

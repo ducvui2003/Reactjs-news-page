@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import details from '../data/newsDetail';
 import CommentSection from '../components/Comment/CommentSection';
@@ -19,13 +19,19 @@ import 'lightbox.js-react/dist/index.css';
 import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { toCategoryName } from '../services/categoryService';
+import { de } from 'date-fns/locale';
 function Detail() {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   if (!id) return;
-  const detail = details.find((item) => item.id == id);
+
+  const getLastNum = 'A' + id.substring(id.length - 1, id.length);
+
+  const detail = details.find((item) => item.id == getLastNum);
+
   if (!detail) {
     return <p>Không tìm thấy thông tin chi tiết</p>;
   }
+
   // Xử lý cho việc view ảnh
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const handleShowImage = () => {

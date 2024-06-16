@@ -31,6 +31,11 @@ export default function Header() {
   );
   const [open, setOpen] = useState(false);
 
+  // const handleSearch = (query: string) => {
+  //   // Xử lý tìm kiếm ở đây, ví dụ dispatch action search với query
+  //   console.log('Searching for:', query);
+  // };
+
   // Kiểm tra state user đã đăng nhập chưa
   const authReducer = useSelector((state: RootState) => state.authenticate);
   const styles = {
@@ -81,7 +86,7 @@ export default function Header() {
               color={'black'}
               sx={{ mx: 2 }}
             />
-            <SearchBar />
+            {/* <SearchBar onSearch={handleSearch} /> */}
             <DarkMode />
             {authReducer.email ? <HeaderAfterLogin /> : <HeaderBeforeLogin />}
           </>

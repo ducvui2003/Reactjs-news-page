@@ -25,7 +25,6 @@ const convertToNews = (rawNews: any): News[] => {
       item.description['_cdata'],
       'text/html',
     );
-
     const link = item.link['_text'];
     const thumbnail = doc.body.querySelector('img')?.getAttribute('src') || '';
     const description = doc.body.textContent?.trim() || '';

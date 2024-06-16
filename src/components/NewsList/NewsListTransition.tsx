@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 import NewsItem from './NewsItem';
 import Pagination from '@mui/material/Pagination';
 import './style.scss';
+import { TextField } from '@mui/material';
 
 export default function NewsListTransition({ listNews }: { listNews: News[] }) {
   const totalNews = listNews.length;
@@ -18,24 +19,29 @@ export default function NewsListTransition({ listNews }: { listNews: News[] }) {
     setNewsItem(listNews.slice(start, end));
     setCurrentPage(pageClick);
   };
+
   useEffect(() => {
     setPageNum(Math.ceil(totalNews / size));
-    const prePage = currentPage - 1;
-    setNewsItem(listNews.slice(prePage * size, currentPage * size));
+    setCurrentPage(1); // Reset to first page when the list of news changes
   }, [listNews]);
+
+  useEffect(() => {
+    const start = (currentPage - 1) * size;
+    const end = start + size;
+    setNewsItem(listNews.slice(start, end));
+  }, [currentPage, listNews]);
+
   return (
     <>
-      <Container>
-        {newsItem.map((item: News) => (
-          <NewsItem {...item} />
-        ))}
-        <Pagination
-          onChange={(event, page) => handlePagiantion(page)}
-          count={pageNum}
-          defaultPage={currentPage}
-          siblingCount={2}
-        />
-      </Container>
+      {newsItem.map((item: News) => (
+        <NewsItem key={item.id} {...item} />
+      ))}
+      <Pagination
+        onChange={(event, page) => handlePagiantion(page)}
+        count={pageNum}
+        defaultPage={currentPage}
+        siblingCount={2}
+      />
     </>
   );
 }
