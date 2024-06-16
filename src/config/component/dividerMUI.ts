@@ -1,7 +1,10 @@
+import { defaultProps } from 'react-toastify/dist/components/ToastContainer';
+
 const dividerMUI = {
   styleOverrides: {
     root: {
-      backgroundColor: '#000',
+      borderWidth: '1px',
+      defaultProps: {},
     },
   },
 };

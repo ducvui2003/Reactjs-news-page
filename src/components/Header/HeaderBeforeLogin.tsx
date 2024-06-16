@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
 import Button from '@mui/material/Button';
 import ModalAuth from '../Dialog/ModalAuth';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 function HeaderBeforeLogin() {
   const authReducer = useSelector((state: RootState) => state.authenticate);
@@ -16,8 +17,9 @@ function HeaderBeforeLogin() {
       <Button
         variant="contained"
         size={'small'}
-        className={'ms-3'}
+        sx={{ ml: 1 }}
         onClick={() => setOpen(true)}
+        startIcon={<AccountCircleIcon />}
       >
         Đăng nhập{' '}
       </Button>

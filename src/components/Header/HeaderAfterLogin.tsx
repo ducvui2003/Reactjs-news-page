@@ -29,7 +29,7 @@ function HeaderAfterLogin() {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <FavoriteIcon color={'black'} fontSize={'medium'} />
+              <FavoriteIcon fontSize={'medium'} />
             </ListItemIcon>
             <ListItemText primary={'Bài báo yêu thích'} />
           </ListItemButton>
@@ -37,7 +37,7 @@ function HeaderAfterLogin() {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <FeedbackIcon color={'black'} fontSize={'medium'} />
+              <FeedbackIcon fontSize={'medium'} />
             </ListItemIcon>
             <ListItemText primary={'Góp ý'} />
           </ListItemButton>
@@ -45,7 +45,7 @@ function HeaderAfterLogin() {
         <ListItem disablePadding>
           <ListItemButton onClick={() => handleLogOut()}>
             <ListItemIcon>
-              <LogoutIcon color={'black'} fontSize={'medium'} />
+              <LogoutIcon fontSize={'medium'} />
             </ListItemIcon>
             <ListItemText primary={'Đăng xuất'} />
           </ListItemButton>

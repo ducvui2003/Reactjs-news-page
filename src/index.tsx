@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -11,9 +10,12 @@ import './assets/sass/custom-nprogress.scss';
 // Cấu hình react-toastify
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import { reactToastifyConfig, theme } from './config';
-import { CssBaseline } from '@mui/material';
-import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles';
+import {
+  CssBaseline,
+  Experimental_CssVarsProvider as CssVarsProvider,
+} from '@mui/material';
+import { reactToastifyConfig } from './config/reactToastify';
+import theme from './config/theme';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

@@ -1,4 +1,3 @@
-import React from 'react';
 import { NewsLoading } from '../../types/news.type';
 import {
   Box,
@@ -12,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import { timeAgo } from '../../utils/timeUtils';
 import ClampedTypography from '../Typography/ClampedTypography';
 
-function CardVertical({ news, cssImage, isLoading = true }: NewsLoading) {
+function CardVertical({ news, isLoading = true }: NewsLoading) {
   return (
     <Box sx={{ height: '100%' }}>
       <Card sx={{ height: '100%' }}>
@@ -24,7 +23,7 @@ function CardVertical({ news, cssImage, isLoading = true }: NewsLoading) {
             height: '100%',
           }}
         >
-          <Box sx={{ flexBasic: '140', ...cssImage }}>
+          <Box sx={{ flex: 1 }}>
             {isLoading ? (
               <Skeleton variant="rectangular" width={210} height={118} />
             ) : (
@@ -47,16 +46,19 @@ function CardVertical({ news, cssImage, isLoading = true }: NewsLoading) {
                 variant="h5"
                 component="div"
               >
-                {news?.thumbnail}
+                {news?.title}
               </ClampedTypography>
             )}
             {isLoading ? (
               <Skeleton width="100%" />
             ) : (
-              <Typography gutterBottom variant="caption">
-                {timeAgo(news?.publishDate)}
-              </Typography>
+              news?.publishDate && (
+                <Typography gutterBottom variant="caption">
+                  {timeAgo(news.publishDate)}
+                </Typography>
+              )
             )}
+
             {isLoading ? (
               <Skeleton width="100%" />
             ) : (

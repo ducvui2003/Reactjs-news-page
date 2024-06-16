@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import details from '../data/newsDetail';
 import CommentSection from '../components/Comment/CommentSection';
-import { Box, Breadcrumbs, CardMedia, Container, Grid } from '@mui/material';
+import {
+  Box,
+  Breadcrumbs,
+  CardMedia,
+  Container,
+  Grid,
+  Link,
+} from '@mui/material';
 import SideBarDetailLeft from '../components/SideBar/SideBarDetailLeft';
 import SideBarDetailRight from '../components/SideBar/SideBarDetailRight';
 import Typography from '@mui/material/Typography';
@@ -11,9 +18,7 @@ import { SlideshowLightbox } from 'lightbox.js-react';
 import 'lightbox.js-react/dist/index.css';
 import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import NavLinkMUILink from '../components/Link/NavLinkMUILink';
 import { toCategoryName } from '../services/categoryService';
-
 function Detail() {
   const { id } = useParams();
   if (!id) return;
@@ -48,14 +53,14 @@ function Detail() {
             alignItems={'center'}
           >
             <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
-              <NavLinkMUILink component={NavLink} top={'/'} underline="hover">
+              <Link component={NavLink} to={'/'} underline="hover">
                 <Typography variant={'subtitle1'}> Trang chủ</Typography>
-              </NavLinkMUILink>
-              <NavLinkMUILink component={NavLink} top={'/'} underline="hover">
+              </Link>
+              <Link component={NavLink} to={'/'} underline="hover">
                 <Typography variant={'subtitle1'}>
                   {toCategoryName(detail.category)}
                 </Typography>
-              </NavLinkMUILink>
+              </Link>
             </Breadcrumbs>
             <Typography variant={'subtitle1'}>{detail.publishDate}</Typography>
           </Stack>

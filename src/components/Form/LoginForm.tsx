@@ -52,7 +52,7 @@ function LoginForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack>
-        <FormControl variant="standard" fullWidth sx={{ mt: 3 }}>
+        <FormControl variant="standard" fullWidth>
           <TextField
             error={!!errors.email}
             label="Email"
@@ -75,8 +75,8 @@ function LoginForm() {
           />
         </FormControl>
 
-        <Button type="submit" variant={'contained'} sx={{ mt: 3 }}>
-          <Typography variant={'body1'}> Đăng nhập</Typography>
+        <Button size="small" type="submit" variant={'contained'} sx={{ mt: 3 }}>
+          Đăng nhập
         </Button>
       </Stack>
     </form>
