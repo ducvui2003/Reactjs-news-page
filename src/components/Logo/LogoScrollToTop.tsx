@@ -1,25 +1,20 @@
-import React from 'react';
-import { Stack } from 'react-bootstrap';
 import logo from '../../assets/image/logo.svg';
+import ImageListItem from '@mui/material/ImageListItem';
 
 function LogoScrollToTop() {
   const handleToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   return (
-    <Stack
-      as="a"
-      direction="horizontal"
-      className="align-items-center"
-      onClick={() => handleToTop()}
-    >
+    <ImageListItem onClick={() => handleToTop()}>
       <img
+        srcSet={logo}
         src={logo}
         alt="logo"
         className=" ms-1 p-2"
         style={{ height: '50px' }}
       />
-    </Stack>
+    </ImageListItem>
   );
 }
 

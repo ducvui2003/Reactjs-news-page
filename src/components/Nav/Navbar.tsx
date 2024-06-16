@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import Stack from '@mui/material/Stack';
 import './Navbar.scss';
 import { categoryList, toCategoryName } from '../../services/categoryService';
-import NavLinkMUILink from '../Link/NavLinkMUILink';
-import { Box, Container, Divider, Link, useColorScheme } from '@mui/material';
+import {
+  Box,
+  Container,
+  Divider,
+  Drawer,
+  IconButton,
+  Link,
+  Menu,
+  Theme,
+  Tooltip,
+  useColorScheme,
+  useMediaQuery,
+} from '@mui/material';
 import { Category } from '../../constraints/category';
 import { useTheme } from '@emotion/react';
 import { NavLink } from 'react-router-dom';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import MenuExtends from './MenuExtend';
+import { motion } from 'framer-motion';
+import { is } from 'date-fns/locale';
 
 export default function Nav() {
-  const theme = useTheme();
+  const isMobile = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down('sm'),
+  );
   const style = {
     backgroundColor: 'background.paper',
     position: 'sticky',
@@ -18,17 +35,27 @@ export default function Nav() {
     right: 0,
     zIndex: 1000,
   };
+  const [isVisible, setIsVisible] = useState(false);
 
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible);
+  };
   return (
     <Box sx={style}>
       <Divider sx={{ height: 0.5, backgroundColor: 'black', opacity: 0.2 }} />
       <Container sx={{ paddingBlock: '16px' }}>
-        <Stack direction={'row'} justifyContent={'space-between'}>
+        <Stack
+          direction={'row'}
+          justifyContent={'space-between'}
+          alignContent={'center'}
+        >
           {categoryList
             .filter((category: Category) => category != Category.HOME)
-            .map((category) => (
+            .slice(0, isMobile ? 3 : 8)
+            .map((category, index) => (
               <Link
                 component={NavLink}
+                key={index}
                 variant={'h6'}
                 underline={'none'}
                 color={'theme.palette.link.main'}
@@ -37,9 +64,30 @@ export default function Nav() {
                 {toCategoryName(category)}
               </Link>
             ))}
+          <Tooltip title="Xem thêm" arrow>
+            <IconButton sx={{ p: 0 }} onClick={toggleVisibility}>
+              <ArrowDropDownIcon fontSize="large" />
+            </IconButton>
+          </Tooltip>
         </Stack>
       </Container>
-      <Divider sx={{ height: 0.5, backgroundColor: 'black', opacity: 0.2 }} />
+      <motion.div
+        initial={{ height: 0 }}
+        animate={{
+          height: isVisible ? 'auto' : 0,
+        }}
+        transition={{ duration: 0.5 }}
+        style={{ overflow: 'hidden' }}
+      >
+        <Container>
+          <Divider
+            orientation="horizontal"
+            sx={{ height: 0.5, backgroundColor: 'black', opacity: 0.2 }}
+          />
+          <MenuExtends handleClose={() => setIsVisible(false)} />
+        </Container>
+        <Divider sx={{ height: 0.5, backgroundColor: 'black', opacity: 0.2 }} />
+      </motion.div>
     </Box>
   );
 }

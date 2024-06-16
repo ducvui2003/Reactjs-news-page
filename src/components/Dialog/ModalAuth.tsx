@@ -8,33 +8,31 @@ import TabPanel from '@mui/lab/TabPanel';
 import { useTheme } from '@mui/material/styles';
 import Backdrop from '@mui/material/Backdrop';
 import Fade from '@mui/material/Fade';
-import { makeStyles } from '@mui/styles';
-import { DefaultTheme } from '@mui/material/styles';
+import { styled } from '@mui/system';
+
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
-const useStyles = makeStyles((theme: DefaultTheme) => ({
-  modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  paper: {
-    width: 800,
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-    zIndex: 1,
-    borderRadius: 10,
-  },
+// Define styled components
+const StyledModal = styled(Modal)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const StyledPaper = styled(Box)(({ theme }) => ({
+  width: 800,
+  backgroundColor: theme.palette.background.paper,
+  padding: theme.spacing(2, 4, 3),
+  zIndex: 1,
+  borderRadius: 10,
 }));
 function ModalAuth({ isOpen, onClose }: ModalProps) {
   if (!isOpen) return null;
 
   const theme = useTheme();
 
-  const classes = useStyles();
   const [value, setValue] = useState('1');
 
   const handleChange = (event: SyntheticEvent, newValue: string) => {
@@ -42,7 +40,7 @@ function ModalAuth({ isOpen, onClose }: ModalProps) {
   };
 
   return (
-    <Modal
+    <StyledModal
       open={isOpen}
       onClose={onClose}
       closeAfterTransition
@@ -52,10 +50,9 @@ function ModalAuth({ isOpen, onClose }: ModalProps) {
           timeout: 500,
         },
       }}
-      className={classes.modal}
     >
       <Fade in={isOpen}>
-        <Box className={classes.paper}>
+        <StyledPaper>
           <TabContext value={value}>
             <TabList onChange={handleChange}>
               <Tab
@@ -76,9 +73,9 @@ function ModalAuth({ isOpen, onClose }: ModalProps) {
               <RegisterForm />
             </TabPanel>
           </TabContext>
-        </Box>
+        </StyledPaper>
       </Fade>
-    </Modal>
+    </StyledModal>
   );
 }
 
