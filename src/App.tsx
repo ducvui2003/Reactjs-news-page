@@ -7,6 +7,7 @@ import { NewsList } from './components/NewsList/NewsList';
 import Detail from './pages/Detail';
 import Page404 from './pages/Error/Page404';
 import Login from './components/mobile/Login';
+import SaveNews from './pages/SaveNews';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/category/:id" element={<NewsList />} />
         <Route path="/detail/:id" element={<Detail />} />
+
+        <Route path="/users/savenews" element={<SaveNews />} />
         {/* <Route path='/search/:id' element={NewsListSearch }/> */}
       </Route>
       <Route path="/mobile/">

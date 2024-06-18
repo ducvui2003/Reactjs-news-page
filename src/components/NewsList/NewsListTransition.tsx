@@ -4,7 +4,6 @@ import { Container } from 'react-bootstrap';
 import NewsItem from './NewsItem';
 import Pagination from '@mui/material/Pagination';
 import './style.scss';
-import { TextField } from '@mui/material';
 
 export default function NewsListTransition({ listNews }: { listNews: News[] }) {
   const totalNews = listNews.length;

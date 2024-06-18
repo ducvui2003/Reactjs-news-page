@@ -14,19 +14,42 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
 import Zoom from '@mui/material/Zoom';
 import Typography from '@mui/material/Typography';
+import { News, NewsDetail } from '../../types/news.type';
 
-function SideBarDetailLeft() {
+interface SideBarDetailLeftProps {
+  saveNews: (news: News) => void;
+  detail?: NewsDetail;
+}
+const SideBarDetailLeft = ({ saveNews, detail }: SideBarDetailLeftProps) => {
   const navigate = useNavigate();
   const style = {
     position: 'sticky',
     left: 0,
     top: '50px',
-    paddingTop: '50px',
+    paddingTop: '10px',
   };
+
+  const handleSaveNews = () => {
+    // console.log('Đã lưu bài viết');
+    saveNews(detail);
+    console.log(detail);
+  };
+
   return (
     <Box sx={style}>
-      <List>
-        <ListItem>
+      <List
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'row', md: 'column' },
+          overflowX: { xs: 'auto', md: 'visible' },
+        }}
+      >
+        <ListItem
+          sx={{
+            flex: { xs: '0 0 auto', md: '1 0 auto' },
+            width: { xs: 'auto', md: '100%' },
+          }}
+        >
           <Tooltip
             title={
               <Typography variant="body2" style={{ fontSize: '0.8rem' }}>
@@ -53,6 +76,7 @@ function SideBarDetailLeft() {
             arrow
           >
             <IconButton
+              onClick={() => handleSaveNews()}
               sx={{ padding: '5px', backgroundColor: 'background.paper' }}
             >
               <BookmarkIcon fontSize={'small'} />
@@ -79,6 +103,6 @@ function SideBarDetailLeft() {
       </List>
     </Box>
   );
-}
+};
 
 export default SideBarDetailLeft;

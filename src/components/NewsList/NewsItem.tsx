@@ -10,6 +10,9 @@ import { Link, useParams } from 'react-router-dom';
 import newsDetail from '../../data/newsDetail';
 
 export default NewsItem;
+interface NewsItemProps extends News {
+  saveNews: (news: News) => void; // Prop để lưu bài báo
+}
 
 function NewsItem({ id, title, thumbnail, description, publishDate }: News) {
   return (

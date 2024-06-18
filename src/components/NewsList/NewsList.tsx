@@ -13,7 +13,7 @@ export function NewsList() {
     return <Navigate to="/404" />;
   }
   const [listNews, setListNews] = useState<News[]>([]);
-  const [listNewsSearch, setListNewsSearch] = useState<News[]>([]);
+  const [listNewsSearch, setListNewsSearch] = useState<News[]>([]); // Search bài báo
   useEffect(() => {
     getNewsByCategory(toCategory(id || '')).then((res: News[]) => {
       setListNews(res);

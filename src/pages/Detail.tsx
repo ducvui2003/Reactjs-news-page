@@ -13,15 +13,29 @@ import {
 import SideBarDetailLeft from '../components/SideBar/SideBarDetailLeft';
 import SideBarDetailRight from '../components/SideBar/SideBarDetailRight';
 import Typography from '@mui/material/Typography';
-import { Image, NewsDetail, Paragraph } from '../types/news.type';
+import { Image, News, NewsDetail, Paragraph } from '../types/news.type';
 import { SlideshowLightbox } from 'lightbox.js-react';
 import 'lightbox.js-react/dist/index.css';
 import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { toCategoryName } from '../services/categoryService';
 import { de } from 'date-fns/locale';
+
+interface DetailProps {
+  saveNews: (news: News) => void;
+}
 function Detail() {
   const { id } = useParams<{ id: string }>();
+  const [savedNews, setSavedNews] = useState<News[]>([]); // State để lưu các bài báo đã lưu
+
+  // const saveNews = (news: News) => {
+  //   const isNewsSaved = savedNews.find((item) => item.id === news.id);
+  //   if (!isNewsSaved) {
+  //     const updatedSavedNews = [...savedNews, news];
+  //     setSavedNews(updatedSavedNews);
+  //   }
+  // };
+
   if (!id) return;
 
   const getLastNum = 'A' + id.substring(id.length - 1, id.length);
@@ -37,6 +51,11 @@ function Detail() {
   const handleShowImage = () => {
     setIsOpen(true);
   };
+
+  const saveNews = (news: News) => {
+    setSavedNews(news); // Lưu bài báo vào state savedNews
+  };
+
   const images = detail.paragraphs.map((para: Paragraph) => {
     if (typeof para.image != undefined) {
       return {
@@ -45,11 +64,12 @@ function Detail() {
       };
     }
   });
+
   return (
     <Container>
       <Grid container spacing={3}>
         <Grid item md={1}>
-          <SideBarDetailLeft />
+          <SideBarDetailLeft saveNews={saveNews} detail={detail} />
         </Grid>
         <Grid item md={7}>
           <Stack
@@ -147,3 +167,6 @@ function NewParagraph({
 }
 
 export default Detail;
+function saveNews(news: News) {
+  throw new Error('Function not implemented.');
+}
