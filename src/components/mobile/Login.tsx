@@ -10,10 +10,16 @@ import {
 import LogoHome from '../Logo/LogoHome';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../features/store';
 
 const Login = () => {
   const navigate = useNavigate();
-
+  const authReducer = useSelector((state: RootState) => state.authenticate);
+  if (authReducer.email) {
+    navigate('/');
+    return null;
+  }
   return (
     <Box
       sx={{

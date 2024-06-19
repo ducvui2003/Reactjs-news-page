@@ -1,5 +1,3 @@
-import { defaultProps } from 'react-toastify/dist/components/ToastContainer';
-
 const dividerMUI = {
   styleOverrides: {
     root: {

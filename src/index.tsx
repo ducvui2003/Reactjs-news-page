@@ -16,23 +16,24 @@ import {
 } from '@mui/material';
 import { reactToastifyConfig } from './config/reactToastify';
 import theme from './config/theme';
+import React from 'react';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 
 root.render(
-  // <React.StrictMode>
-  <BrowserRouter>
-    <Provider store={store}>
-      <CssVarsProvider theme={theme}>
-        <CssBaseline />
-        <App />
-        <ToastContainer {...reactToastifyConfig} />
-      </CssVarsProvider>
-    </Provider>
-  </BrowserRouter>,
-  // </React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter>
+      <Provider store={store}>
+        <CssVarsProvider theme={theme}>
+          <CssBaseline />
+          <App />
+          <ToastContainer {...reactToastifyConfig} />
+        </CssVarsProvider>
+      </Provider>
+    </BrowserRouter>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function
