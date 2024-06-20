@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Stack from '@mui/material/Stack';
-import './Navbar.scss';
 import { categoryList, toCategoryName } from '../../services/categoryService';
 import {
   Box,
@@ -76,13 +75,10 @@ function Nav() {
         style={{ overflow: 'hidden' }}
       >
         <Container>
-          <Divider
-            orientation="horizontal"
-            sx={{ height: 0.5, backgroundColor: 'black', opacity: 0.2 }}
-          />
+          <Divider orientation="horizontal" />
           <MenuExtends handleClose={() => setIsVisible(false)} />
         </Container>
-        <Divider sx={{ height: 0.5, backgroundColor: 'black', opacity: 0.2 }} />
+        <Divider />
       </motion.div>
     </Box>
   );

@@ -1,8 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import ModalAuth from '../Dialog/ModalAuth';
-import Button from '@mui/material/Button';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../features/store';
+import { useDispatch } from 'react-redux';
 import { exit } from '../../features/authenticate/authenticate.slice';
 import { toast } from 'react-toastify';
 import PopoverUser from '../Popover/PopoverUser';
