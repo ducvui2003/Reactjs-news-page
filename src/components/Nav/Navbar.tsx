@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Stack from '@mui/material/Stack';
 import './Navbar.scss';
 import { categoryList, toCategoryName } from '../../services/categoryService';
@@ -6,24 +6,20 @@ import {
   Box,
   Container,
   Divider,
-  Drawer,
   IconButton,
   Link,
-  Menu,
   Theme,
   Tooltip,
-  useColorScheme,
   useMediaQuery,
 } from '@mui/material';
 import { Category } from '../../constraints/category';
-import { useTheme } from '@emotion/react';
 import { NavLink } from 'react-router-dom';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import MenuExtends from './MenuExtend';
 import { motion } from 'framer-motion';
-import { is } from 'date-fns/locale';
+import { zIndex } from '../../config/zindex';
 
-export default function Nav() {
+function Nav() {
   const isMobile = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down('sm'),
   );
@@ -33,7 +29,7 @@ export default function Nav() {
     top: 0,
     left: 0,
     right: 0,
-    zIndex: 1000,
+    zIndex: zIndex.navbar,
   };
   const [isVisible, setIsVisible] = useState(false);
 
@@ -91,3 +87,4 @@ export default function Nav() {
     </Box>
   );
 }
+export default Nav;

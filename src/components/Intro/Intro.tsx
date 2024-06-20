@@ -1,5 +1,3 @@
-import './Intro.scss';
-import '../../assets/sass/utils.scss';
 import React, { useEffect, useState } from 'react';
 import { getNewsByCategory } from '../../services/newsService';
 import { Category } from '../../constraints/category';
@@ -20,7 +18,7 @@ function Intro() {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={8}>
+      <Grid item xs={12} md={8}>
         <CardHorizontal
           news={news[0]}
           cssImage={{ flexBasis: '500px' }}
@@ -37,13 +35,13 @@ function Intro() {
         />
         <Grid container spacing={2}>
           {news.slice(1, 4).map((item: News) => (
-            <Grid item xs>
+            <Grid item xs={12} md>
               <CardVertical key={item.id} news={item} isLoading={loading} />
             </Grid>
           ))}
         </Grid>
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} md={4}>
         {news[4] && (
           <CardVertical
             key={news[4].id}
