@@ -39,7 +39,7 @@ function NewsItem({ id, title, thumbnail, description, publishDate }: News) {
                 <Card.Title className="h1">
                   <Typography level="h3">{title || ''}</Typography>
                 </Card.Title>
-                {timeAgo(publishDate)}
+                {/* {timeAgo(publishDate)} */}
                 <Card.Text className={'line-clamp'}>
                   {description || ''}
                 </Card.Text>

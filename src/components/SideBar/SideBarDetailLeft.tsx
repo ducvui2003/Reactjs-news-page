@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Avatar,
   Box,
@@ -14,14 +14,23 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
 import Zoom from '@mui/material/Zoom';
 import Typography from '@mui/material/Typography';
-import { News, NewsDetail } from '../../types/news.type';
+import { useDispatch, useSelector } from 'react-redux';
+import { save, unsave } from '../../features/thenews/news.slice';
+import { RootState } from '../../features/store';
 
 interface SideBarDetailLeftProps {
-  saveNews: (news: News) => void;
-  detail?: NewsDetail;
+  id: string;
 }
-const SideBarDetailLeft = ({ saveNews, detail }: SideBarDetailLeftProps) => {
+const SideBarDetailLeft = ({ id }: SideBarDetailLeftProps) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const savedNewsIds = useSelector((state: RootState) => state.news);
+  const [isSaved, setIsSaved] = useState(false);
+
+  useEffect(() => {
+    setIsSaved(savedNewsIds.includes(id));
+  }, [savedNewsIds, id]);
+
   const style = {
     position: 'sticky',
     left: 0,
@@ -30,9 +39,13 @@ const SideBarDetailLeft = ({ saveNews, detail }: SideBarDetailLeftProps) => {
   };
 
   const handleSaveNews = () => {
-    // console.log('Đã lưu bài viết');
-    saveNews(detail);
-    console.log(detail);
+    const getLastNum = 'A' + id.substring(id.length - 1, id.length);
+    if (isSaved) {
+      dispatch(unsave(getLastNum));
+    } else {
+      dispatch(save(getLastNum));
+    }
+    setIsSaved(!isSaved);
   };
 
   return (
@@ -77,7 +90,11 @@ const SideBarDetailLeft = ({ saveNews, detail }: SideBarDetailLeftProps) => {
           >
             <IconButton
               onClick={() => handleSaveNews()}
-              sx={{ padding: '5px', backgroundColor: 'background.paper' }}
+              sx={{
+                padding: '5px',
+                backgroundColor: 'background.paper',
+                color: savedNewsIds.includes(id) ? '#0d6efd' : '#757575',
+              }}
             >
               <BookmarkIcon fontSize={'small'} />
             </IconButton>

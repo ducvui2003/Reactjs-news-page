@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authenticateReducer from './authenticate/authenticate.slice';
+import newsReducer from './thenews/news.slice';
 
 export const store = configureStore({
   reducer: {
     authenticate: authenticateReducer,
+    news: newsReducer,
   },
 });
 

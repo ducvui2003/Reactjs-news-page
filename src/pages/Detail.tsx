@@ -19,22 +19,9 @@ import 'lightbox.js-react/dist/index.css';
 import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { toCategoryName } from '../services/categoryService';
-import { de } from 'date-fns/locale';
 
-interface DetailProps {
-  saveNews: (news: News) => void;
-}
 function Detail() {
   const { id } = useParams<{ id: string }>();
-  const [savedNews, setSavedNews] = useState<News[]>([]); // State để lưu các bài báo đã lưu
-
-  // const saveNews = (news: News) => {
-  //   const isNewsSaved = savedNews.find((item) => item.id === news.id);
-  //   if (!isNewsSaved) {
-  //     const updatedSavedNews = [...savedNews, news];
-  //     setSavedNews(updatedSavedNews);
-  //   }
-  // };
 
   if (!id) return;
 
@@ -52,10 +39,6 @@ function Detail() {
     setIsOpen(true);
   };
 
-  const saveNews = (news: News) => {
-    setSavedNews(news); // Lưu bài báo vào state savedNews
-  };
-
   const images = detail.paragraphs.map((para: Paragraph) => {
     if (typeof para.image != undefined) {
       return {
@@ -69,7 +52,7 @@ function Detail() {
     <Container>
       <Grid container spacing={3}>
         <Grid item md={1}>
-          <SideBarDetailLeft saveNews={saveNews} detail={detail} />
+          <SideBarDetailLeft id={getLastNum} />
         </Grid>
         <Grid item md={7}>
           <Stack
