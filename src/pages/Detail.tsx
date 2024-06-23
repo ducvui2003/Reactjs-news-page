@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import details from '../data/newsDetail';
-import CommentSection from '../components/Comment/CommentSection';
+import Comment from '../components/Comment/Comment';
 import {
   Box,
   Breadcrumbs,
@@ -90,7 +90,7 @@ function Detail() {
           <SideBarDetailRight category={detail.category} />
         </Grid>
       </Grid>
-      <CommentSection />
+      <Comment />
     </Container>
   );
 }
