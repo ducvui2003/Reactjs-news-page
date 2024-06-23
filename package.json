@@ -38,6 +38,7 @@
     "i": "^0.3.7",
     "lightbox.js-react": "^1.0.9",
     "react": "^18.2.0",
+    "react-animated-weather": "^4.0.1",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.4",

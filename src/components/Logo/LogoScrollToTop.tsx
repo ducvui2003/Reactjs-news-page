@@ -1,20 +1,14 @@
-import logo from '../../assets/image/logo.svg';
-import ImageListItem from '@mui/material/ImageListItem';
+import Logo from './Logo';
+import { Button } from '@mui/material';
 
 function LogoScrollToTop() {
   const handleToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   return (
-    <ImageListItem onClick={() => handleToTop()}>
-      <img
-        srcSet={logo}
-        src={logo}
-        alt="logo"
-        className=" ms-1 p-2"
-        style={{ height: '50px' }}
-      />
-    </ImageListItem>
+    <Button onClick={() => handleToTop()}>
+      <Logo />
+    </Button>
   );
 }
 
