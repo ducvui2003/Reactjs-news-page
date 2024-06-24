@@ -19,6 +19,7 @@ import 'lightbox.js-react/dist/index.css';
 import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { toCategoryName } from '../services/categoryService';
+
 function Detail() {
   const { id } = useParams();
   if (!id) return;
