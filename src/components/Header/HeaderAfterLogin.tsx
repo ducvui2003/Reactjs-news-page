@@ -18,6 +18,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
+import { Bookmark } from '@mui/icons-material';
 
 function HeaderAfterLogin() {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ function HeaderAfterLogin() {
         <ListItem disablePadding>
           <ListItemButton onClick={() => navigate('/users/savenews')}>
             <ListItemIcon>
-              <Icon fontSize={'medium'} />
+              <Bookmark fontSize={'medium'} />
             </ListItemIcon>
             <ListItemText primary={'Báo đã lưu'} />
           </ListItemButton>
