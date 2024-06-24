@@ -1,0 +1,6 @@
+interface CardItemProps extends News {
+  titleClassName?: string;
+  desClassName?: string;
+}
+
+export default function CardSaveItem() {}
