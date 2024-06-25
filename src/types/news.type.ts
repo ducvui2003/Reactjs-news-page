@@ -10,12 +10,9 @@ export interface News {
   thumbnail: string | undefined;
 }
 
-export interface NewsDetail {
-  id: string;
-  title: string;
+export interface NewsDetail
+  extends Omit<News, 'link' | 'description' | 'thumbnail'> {
   author: string;
-  publishDate: Date;
-  thumbnail: string;
   paragraphs: Paragraph[];
   category: Category;
 }

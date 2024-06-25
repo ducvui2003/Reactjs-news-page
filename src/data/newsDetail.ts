@@ -6,9 +6,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A1',
     title: 'Trà Vinh vận động gây quỹ xây dựng Khu Lưu niệm NSND Viễn Châu',
     author: 'Ca Linh',
-    thumbnail:
-      'https://nld.mediacdn.vn/zoom/600_315/291774122806476800/2024/6/4/screenshot-2024-06-04-at-144633-17174873376092059502960-9-0-600-946-crop-1717487348677962697330.png',
-    publishDate: 'Tue, 28 May 2024 12:42:00 +07',
+    publishDate: new Date(Date.parse('Tue, 28 May 2024 12:42:00 +07')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -38,7 +36,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'Bí thư Quận ủy quận 1 Dương Anh Đức: Xây dựng môi trường sống tử tế, văn minh',
     author: 'PHAN ANH',
-    publishDate: '05-06-24 13:37',
+    publishDate: new Date(Date.parse('05-06-24 13:37')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -90,7 +88,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A3',
     title: 'CSGT TP HCM hỗ trợ kỳ thi Tuyển sinh lớp 10 ra sao?',
     author: 'Ý Linh',
-    publishDate: '05-06-24 13:38',
+    publishDate: new Date(Date.parse('05-06-24 13:38')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -121,7 +119,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A4',
     title: 'Hơn 7.000 cú sét đánh xuống Hà Nội trong sáng 5-6 có bất thường?',
     author: 'Văn Duẩn',
-    publishDate: '05-06-24 14:30',
+    publishDate: new Date(Date.parse('05-06-24 14:30')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -175,7 +173,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A5',
     title: 'Thầy giáo bị điện giật tử vong khi sửa điện',
     author: 'Hoàng Thanh',
-    publishDate: '05-06-24 14:48',
+    publishDate: new Date(Date.parse('05-06-24 14:48')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -202,7 +200,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'TP HCM: Giám đốc Kho bạc Nhà nước được bổ nhiệm làm Giám đốc Sở Tài chính',
     author: 'PHAN ANH',
-    publishDate: '05-06-24 14:52',
+    publishDate: new Date(Date.parse('05-06-24 14:52')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -280,7 +278,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'Vụ 112 hồ sơ ở dự án cao tốc Biên Hòa - Vũng Tàu có dấu hiệu chỉnh sửa: Công an nói gì?',
     author: 'Nguyễn Tuấn',
-    publishDate: '05-06-24 15:19',
+    publishDate: new Date(Date.parse('05-06-24 15:19')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -309,7 +307,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'Bộ trưởng Nguyễn Văn Hùng trả lời câu hỏi “bỏ 300 tỉ đồng vào ngân hàng để lấy lãi”',
     author: 'Nhóm PV',
-    publishDate: '05-06-24 15:21',
+    publishDate: new Date(Date.parse('05-06-24 15:21')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -361,7 +359,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A9',
     title: 'Đường nối Ninh Thuận - Lâm Đồng vướng đất rừng',
     author: 'Trường Nguyên',
-    publishDate: '05-06-24 15:22',
+    publishDate: new Date(Date.parse('05-06-24 15:22')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -399,7 +397,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A10',
     title: 'Đang ngủ bị tảng đá nặng 3 tấn lăn từ trên núi xuống đè tử vong',
     author: 'Như Quỳnh',
-    publishDate: '05-06-24 15:22',
+    publishDate: new Date(Date.parse('05-06-24 15:22')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -427,7 +425,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A11',
     title: 'TP HCM có tân Chánh Thanh tra',
     author: 'PHAN ANH',
-    publishDate: '05-06-24 15:27',
+    publishDate: new Date(Date.parse('05-06-24 15:27')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -460,7 +458,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'Bộ trưởng VH-TT-DL nói về việc "ăn chặn" tiền thưởng, khẩu phần ăn của vận động viên',
     author: 'Văn Duẩn - Minh Chiến - Huy Thanh',
-    publishDate: '05-06-24 15:32',
+    publishDate: new Date(Date.parse('05-06-24 15:32')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -521,7 +519,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'Tổng cục Thuế có công điện khẩn kiểm tra toàn diện việc livestream bán hàng',
     author: 'Minh Chiến',
-    publishDate: '05-06-24 15:40',
+    publishDate: new Date(Date.parse('05-06-24 15:40')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -565,7 +563,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A14',
     title: '1 phụ nữ tử vong sau khi sửa mũi ở trung tâm TP HCM',
     author: 'Anh Vũ',
-    publishDate: '05-06-24 15:43',
+    publishDate: new Date(Date.parse('05-06-24 15:43')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -596,7 +594,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A15',
     title: 'Tuyến đường nào "đắt khách" nhất khi quận 1 cho thuê vỉa hè?',
     author: 'PHAN ANH',
-    publishDate: '05-06-24 15:46',
+    publishDate: new Date(Date.parse('05-06-24 15:46')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -640,7 +638,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A16',
     title: 'Tạm đình chỉ hoạt động một trung tâm Đăng kiểm ở Gia Lai',
     author: 'Hoàng Thanh',
-    publishDate: '05-06-24 16:36',
+    publishDate: new Date(Date.parse('05-06-24 16:36')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -664,7 +662,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'Ông Nguyễn Văn Nên làm Trưởng Tiểu ban Nhân sự Đại hội Đại biểu Đảng bộ TP HCM lần thứ XII',
     author: 'LÊ VĨNH',
-    publishDate: '05-06-24 16:41',
+    publishDate: new Date(Date.parse('05-06-24 16:41')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -696,7 +694,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A18',
     title: 'Tra cứu thực tế vé bay cao điểm hè hôm nay 5-6',
     author: 'Tin-ảnh: Dương Ngọc',
-    publishDate: '05-06-24 16:45',
+    publishDate: new Date(Date.parse('05-06-24 16:45')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -758,7 +756,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'Đại biểu Quốc hội chất vấn về đường đua F1 được xây dựng "hoành tráng" nhưng đang bỏ không',
     author: 'Minh Chiến - Huy Thanh - Văn Duẩn',
-    publishDate: '05-06-24 16:51',
+    publishDate: new Date(Date.parse('05-06-24 16:51')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -793,7 +791,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A20',
     title: 'Xe chở keo lao xuống vực, 2 người chết',
     author: 'Trần Thường',
-    publishDate: '05-06-24 16:55',
+    publishDate: new Date(Date.parse('05-06-24 16:55')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -831,7 +829,7 @@ const newsDetail: NewsDetail[] = [
     id: 'A21',
     title: 'Ra mắt 2 công trình ý nghĩa trên xã đảo Thạnh An',
     author: 'Tin-ảnh: Minh Diễm',
-    publishDate: '05-06-24 16:59',
+    publishDate: new Date(Date.parse('05-06-24 16:59')),
     category: Category.THOI_SU,
     paragraphs: [
       {
@@ -892,7 +890,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'Bình Dương: 6 người trên xe tải lao xuống cây xăng gây hỗn chiến kinh hoàng',
     author: 'Thanh Thảo',
-    publishDate: '05-06-24 17:03',
+    publishDate: new Date(Date.parse('05-06-24 17:03')),
     category: Category.THOI_SU,
     paragraphs: [
       {

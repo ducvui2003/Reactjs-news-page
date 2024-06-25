@@ -62,7 +62,9 @@ function Detail() {
                 </Typography>
               </Link>
             </Breadcrumbs>
-            <Typography variant={'subtitle1'}>{detail.publishDate}</Typography>
+            <Typography variant={'subtitle1'}>
+              {detail.publishDate.toString()}
+            </Typography>
           </Stack>
 
           <Box sx={{ display: 'none' }}>
