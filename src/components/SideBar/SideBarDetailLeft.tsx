@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Avatar,
   Box,
@@ -14,19 +14,55 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
 import Zoom from '@mui/material/Zoom';
 import Typography from '@mui/material/Typography';
+import { useDispatch, useSelector } from 'react-redux';
+import { save, unsave } from '../../features/thenews/news.slice';
+import { RootState } from '../../features/store';
 
-function SideBarDetailLeft() {
+interface SideBarDetailLeftProps {
+  id: string;
+}
+const SideBarDetailLeft = ({ id }: SideBarDetailLeftProps) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const savedNewsIds = useSelector((state: RootState) => state.news);
+  const [isSaved, setIsSaved] = useState(false);
+
+  useEffect(() => {
+    setIsSaved(savedNewsIds.includes(id));
+  }, [savedNewsIds, id]);
+
   const style = {
     position: 'sticky',
     left: 0,
     top: '50px',
-    paddingTop: '50px',
+    paddingTop: '10px',
   };
+
+  const handleSaveNews = () => {
+    const getLastNum = 'A' + id.substring(id.length - 1, id.length);
+    if (isSaved) {
+      dispatch(unsave(getLastNum));
+    } else {
+      dispatch(save(getLastNum));
+    }
+    setIsSaved(!isSaved);
+  };
+
   return (
     <Box sx={style}>
-      <List>
-        <ListItem>
+      <List
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'row', md: 'column' },
+          overflowX: { xs: 'auto', md: 'visible' },
+        }}
+      >
+        <ListItem
+          sx={{
+            flex: { xs: '0 0 auto', md: '1 0 auto' },
+            width: { xs: 'auto', md: '100%' },
+          }}
+        >
           <Tooltip
             title={
               <Typography variant="body2" style={{ fontSize: '0.8rem' }}>
@@ -53,7 +89,12 @@ function SideBarDetailLeft() {
             arrow
           >
             <IconButton
-              sx={{ padding: '5px', backgroundColor: 'background.paper' }}
+              onClick={() => handleSaveNews()}
+              sx={{
+                padding: '5px',
+                backgroundColor: 'background.paper',
+                color: savedNewsIds.includes(id) ? '#0d6efd' : '#757575',
+              }}
             >
               <BookmarkIcon fontSize={'small'} />
             </IconButton>
@@ -79,6 +120,6 @@ function SideBarDetailLeft() {
       </List>
     </Box>
   );
-}
+};
 
 export default SideBarDetailLeft;

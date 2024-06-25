@@ -18,7 +18,6 @@ export const categoryList: Category[] = Object.values(Category);
 export const toCategoryName = (category: Category): string => {
   return categoryName[category];
 };
-
 export const getMatrixCategory = (start: number = 0): Category[][] => {
   const listCategory = categoryList.slice(start);
   const categoryMatrix: Category[][] = [];
