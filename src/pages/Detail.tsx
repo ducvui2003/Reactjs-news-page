@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import details from '../data/newsDetail';
 import Comment from '../components/Comment/Comment';
@@ -13,7 +13,7 @@ import {
 import SideBarDetailLeft from '../components/SideBar/SideBarDetailLeft';
 import SideBarDetailRight from '../components/SideBar/SideBarDetailRight';
 import Typography from '@mui/material/Typography';
-import { Image, NewsDetail, Paragraph } from '../types/news.type';
+import { Image, News, NewsDetail, Paragraph } from '../types/news.type';
 import { SlideshowLightbox } from 'lightbox.js-react';
 import 'lightbox.js-react/dist/index.css';
 import Stack from '@mui/material/Stack';
@@ -21,17 +21,24 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { toCategoryName } from '../services/categoryService';
 
 function Detail() {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
+
   if (!id) return;
-  const detail = details.find((item) => item.id == id);
+
+  const getLastNum = 'A' + id.substring(id.length - 1, id.length);
+
+  const detail = details.find((item) => item.id == getLastNum);
+
   if (!detail) {
     return <p>Không tìm thấy thông tin chi tiết</p>;
   }
+
   // Xử lý cho việc view ảnh
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const handleShowImage = () => {
     setIsOpen(true);
   };
+
   const images = detail.paragraphs.map((para: Paragraph) => {
     if (typeof para.image != undefined) {
       return {
@@ -40,11 +47,12 @@ function Detail() {
       };
     }
   });
+
   return (
     <Container>
       <Grid container spacing={3}>
         <Grid item md={1}>
-          <SideBarDetailLeft />
+          <SideBarDetailLeft id={getLastNum} />
         </Grid>
         <Grid item md={7}>
           <Stack
@@ -142,3 +150,6 @@ function NewParagraph({
 }
 
 export default Detail;
+function saveNews(news: News) {
+  throw new Error('Function not implemented.');
+}
