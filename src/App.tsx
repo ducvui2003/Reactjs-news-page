@@ -7,6 +7,8 @@ import { NewsList } from './components/NewsList/NewsList';
 import Detail from './pages/Detail';
 import Page404 from './pages/Error/Page404';
 import Login from './components/mobile/Login';
+import React from 'react';
+import Register from './components/mobile/Register';
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
       </Route>
       <Route path="/mobile/">
         <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
       </Route>
       <Route path="/404" element={<Page404 />} />
       <Route path="*" element={<Page404 />} />

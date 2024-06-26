@@ -3,12 +3,13 @@ import { User } from '../../types/user.type';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { FormControl, TextField } from '@mui/material';
+import { FormControl, TextField, Theme, useMediaQuery } from '@mui/material';
 import { register as registerServices } from '../../services/userServices';
 import { toast } from 'react-toastify';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
 // Quy định các message đối với từng trường
 const PASSWORD_CONFIRM_TEXT =
   'Mật khẩu nhập lại không trùng với mật khẩu đã nhập ';
@@ -44,6 +45,10 @@ const schema = yup
   .required();
 
 function RegisterForm() {
+  const isMobile = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down('sm'),
+  );
+  const navigate = useNavigate();
   // Quy định các rule đối với mỗi trường dữ liệu
   const {
     register,
@@ -60,6 +65,7 @@ function RegisterForm() {
     if (registerSuccess) {
       toast.success('Đăng ký thành công, vui lòng tiến hành đăng nhập');
       reset();
+      isMobile && navigate('/mobile/login');
     } else {
       toast.error('Đăng ký thất bại, vui lòng thử lại');
     }

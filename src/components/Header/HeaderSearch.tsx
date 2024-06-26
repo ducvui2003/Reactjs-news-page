@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import {
-  FormControl,
-  Input,
-  InputAdornment,
-  InputLabel,
-  TextField,
-} from '@mui/material';
 import './style.scss';
 const SearchBar: React.FC = () => {
   return (
