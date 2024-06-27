@@ -3,6 +3,10 @@ import parserRSS from '../utils/parseRss';
 import { News, NewsDetail } from '../types/news.type';
 import newsDetail from '../data/newsDetail';
 
+const getNewsById = (id: string): NewsDetail | undefined => {
+  return newsDetail.find((news) => news.id == id);
+};
+
 const getNewsByCategory = (category: Category): Promise<News[]> => {
   return parserRSS(category).then((res: any) => {
     const rawNews = res.rss.channel.item;
@@ -25,7 +29,6 @@ const convertToNews = (rawNews: any): News[] => {
       item.description['_cdata'],
       'text/html',
     );
-
     const link = item.link['_text'];
     const thumbnail = doc.body.querySelector('img')?.getAttribute('src') || '';
     const description = doc.body.textContent?.trim() || '';
@@ -48,4 +51,4 @@ const getNewsDetail = (news: News): NewsDetail | undefined => {
   return newsDetail.find((item: NewsDetail) => item.id == id);
 };
 
-export { getNewsByCategory, getNewsDetail };
+export { getNewsByCategory, getNewsDetail, getNewsById };

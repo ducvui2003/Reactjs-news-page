@@ -3,6 +3,7 @@ import { exit } from '../../features/authenticate/authenticate.slice';
 import { toast } from 'react-toastify';
 import PopoverUser from '../Popover/PopoverUser';
 import {
+  Icon,
   List,
   ListItem,
   ListItemButton,
@@ -12,8 +13,11 @@ import {
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useNavigate } from 'react-router-dom';
+import { Bookmark } from '@mui/icons-material';
 
 function HeaderAfterLogin() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleLogOut = () => {
     dispatch(exit());
@@ -36,6 +40,14 @@ function HeaderAfterLogin() {
               <FeedbackIcon fontSize={'medium'} />
             </ListItemIcon>
             <ListItemText primary={'Góp ý'} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton onClick={() => navigate('/users/savenews')}>
+            <ListItemIcon>
+              <Bookmark fontSize={'medium'} />
+            </ListItemIcon>
+            <ListItemText primary={'Báo đã lưu'} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
