@@ -17,6 +17,7 @@ import {
 import { reactToastifyConfig } from './config/reactToastify';
 import theme from './config/theme';
 import React from 'react';
+import GlobalCSS from './config/GlobalCSS';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -27,6 +28,7 @@ root.render(
     <BrowserRouter>
       <Provider store={store}>
         <CssVarsProvider theme={theme}>
+          <GlobalCSS />
           <CssBaseline />
           <App />
           <ToastContainer {...reactToastifyConfig} />

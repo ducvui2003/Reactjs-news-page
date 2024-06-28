@@ -2,14 +2,16 @@
 import typography from './typography';
 import buttonMUI from './component/buttonMUI';
 import dividerMUI from './component/dividerMUI';
-import { Container } from '@mui/material';
 import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
-export const sameConfig = {};
 
 const theme = extendTheme({
   colorSchemes: {
     light: {
       palette: {
+        primary: {
+          main: '#0d6efd',
+          contrastText: '#fff',
+        },
         text: {
           primary: '#000',
           secondary: '#555555',
@@ -18,15 +20,18 @@ const theme = extendTheme({
           default: '#fff',
           paper: '#fff',
         },
+        divider: 'rgba(255,255,255,0,12)',
       },
     },
     dark: {
       palette: {
         text: {
           primary: '#fff',
+          secondary: '#555555',
         },
         background: {
-          default: '#333',
+          default: '#121212',
+          paper: '#121212',
         },
         grey: {
           50: '#fafafa',
@@ -40,6 +45,7 @@ const theme = extendTheme({
           800: '#424242',
           900: '#212121',
         },
+        divider: 'rgba(255,255,255,0,12)',
       },
     },
   },
@@ -64,12 +70,13 @@ const theme = extendTheme({
         },
       },
     },
+
+    MuiContainer: {
+      defaultProps: {
+        maxWidth: 'xl',
+      },
+    },
   },
 });
-
-// @ts-ignore
-Container.defaultProps = {
-  maxWidth: 'xl', // Set the default maxWidth to "xl"
-};
 
 export default theme;

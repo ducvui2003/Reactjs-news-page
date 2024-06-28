@@ -16,7 +16,7 @@ function CardHorizontal({ news, isLoading = false }: NewsLoading) {
   return (
     <Box
       component={NavLink}
-      to={isLoading ? `/detail/` : ''}
+      to={`/detail/${news?.id}`}
       sx={{ textDecoration: 'none' }}
     >
       <Card>

@@ -16,9 +16,9 @@ function Footer() {
         </>
       )}
 
-      <Divider sx={{ height: 1.5, backgroundColor: 'black', opacity: 0.2 }} />
+      <Divider />
       <FooterMiddle />
-      <Divider sx={{ height: 1.5, backgroundColor: 'black', opacity: 0.2 }} />
+      <Divider />
       <FooterBottom />
     </Container>
   );

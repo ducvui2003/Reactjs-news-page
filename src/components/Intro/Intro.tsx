@@ -27,15 +27,12 @@ function Intro() {
         <Divider
           orientation="horizontal"
           sx={{
-            height: '5px',
-            backgroundColor: 'black',
-            opacity: 0.2,
             marginBlock: '10px',
           }}
         />
         <Grid container spacing={2}>
-          {news.slice(1, 4).map((item: News) => (
-            <Grid item xs={12} md>
+          {news.slice(1, 4).map((item: News, index) => (
+            <Grid item xs={12} md key={index}>
               <CardVertical key={item.id} news={item} isLoading={loading} />
             </Grid>
           ))}
