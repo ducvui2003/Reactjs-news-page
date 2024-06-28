@@ -8,7 +8,7 @@ const getNewsById = (id: string): NewsDetail | undefined => {
 };
 
 const getNewsByCategory = (category: Category): Promise<News[]> => {
-  return parserRSS(category).then((res: any) => {
+  return parserRSS(category).then((res) => {
     const rawNews = res.rss.channel.item;
     return convertToNews(rawNews);
   });

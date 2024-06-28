@@ -93,6 +93,7 @@ const weatherIconMapping: WeatherIconMapping = {
   ['Partly Cloudy']: 'PARTLY_CLOUDY_DAY',
   ['Cloudy']: 'CLOUDY',
   ['Heavy Rain']: 'RAIN',
+  ['Thunderstorm']: '',
   undefined: 'CLEAR_DAY',
 };
 
@@ -126,6 +127,7 @@ const Weather = () => {
         if (province == 'Ho Chi Minh' || province == 'Hồ Chí Minh') {
           province = 'TP HCM';
         }
+
         handleSelectLocation(province);
       })
       .catch(() => {
@@ -139,6 +141,7 @@ const Weather = () => {
     const selectedLocation = weather?.find((item: LocationWeather) =>
       getProvinceName(item).includes(location),
     );
+    console.log(selectedLocation);
     setCurrent(selectedLocation || {});
   };
 

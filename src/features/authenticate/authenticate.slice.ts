@@ -5,10 +5,10 @@ import {
   getUser,
   removeUser,
 } from '../../services/sessionStorageService';
-import { get } from '../../services/userServices';
 
 const userStorage = getUser();
 const initialState: User = {
+  id: userStorage?.id ?? '',
   email: userStorage?.email ?? '',
   password: userStorage?.password ?? '',
 };

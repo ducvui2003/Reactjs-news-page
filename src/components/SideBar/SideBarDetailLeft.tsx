@@ -35,7 +35,7 @@ const SideBarDetailLeft = ({ id }: SideBarDetailLeftProps) => {
     position: 'sticky',
     left: 0,
     top: '50px',
-    paddingTop: '10px',
+    paddingTop: '50px',
   };
 
   const handleSaveNews = () => {
