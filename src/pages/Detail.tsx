@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import details from '../data/newsDetail';
 import Comment from '../components/Comment/Comment';
@@ -13,12 +13,13 @@ import {
 import SideBarDetailLeft from '../components/SideBar/SideBarDetailLeft';
 import SideBarDetailRight from '../components/SideBar/SideBarDetailRight';
 import Typography from '@mui/material/Typography';
-import { Image, News, NewsDetail, Paragraph } from '../types/news.type';
+import { Image, News, Paragraph } from '../types/news.type';
 import { SlideshowLightbox } from 'lightbox.js-react';
 import 'lightbox.js-react/dist/index.css';
 import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { toCategoryName } from '../services/categoryService';
+import { timeAgo } from '../utils/timeUtils';
 
 function Detail() {
   const { id } = useParams<{ id: string }>();
@@ -47,7 +48,7 @@ function Detail() {
       };
     }
   });
-
+  const publishDate = new Date(detail.publishDate);
   return (
     <Container>
       <Grid container spacing={3}>
@@ -71,7 +72,9 @@ function Detail() {
                 </Typography>
               </Link>
             </Breadcrumbs>
-            <Typography variant={'subtitle1'}>{detail.publishDate}</Typography>
+            <Typography variant={'subtitle1'}>
+              {timeAgo(publishDate)}
+            </Typography>
           </Stack>
 
           <Box sx={{ display: 'none' }}>
@@ -99,7 +102,7 @@ function Detail() {
           <SideBarDetailRight category={detail.category} />
         </Grid>
       </Grid>
-      <Comment />
+      <Comment newsId={getLastNum} />
     </Container>
   );
 }
@@ -150,6 +153,7 @@ function NewParagraph({
 }
 
 export default Detail;
+
 function saveNews(news: News) {
   throw new Error('Function not implemented.');
 }

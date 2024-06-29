@@ -8,18 +8,18 @@ const getListComment = (): Comment[] => {
 
 const addComment = (comment: Comment) => {
     comment.id = uuidv4();
-    commentData.push(comment);
+    getListComment().push(comment);
 };
 
 const getCommentListByNewsId = (newsId: string): Comment[] => {
-    return getListComment().filter((comment: Comment) => comment.newsId == newsId);
+    return getListComment().filter((comment: Comment) => comment.newsId === newsId);
 };
 
 const removeComment = (id: string) => {
-    const index = commentData.findIndex((comment) => comment.id == id);
+    const index = commentData.findIndex((comment) => comment.id === id);
     if (index !== -1) {
-        commentData.splice(index, 1); // Remove the comment from the data array
+        commentData.splice(index, 1);
     }
 };
 
-export { addComment, getCommentListByNewsId, removeComment };
+export { addComment, getCommentListByNewsId, removeComment, getListComment };

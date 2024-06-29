@@ -1,11 +1,11 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState } from 'react';
 import { Typography, Snackbar, Alert } from '@mui/material';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
 import CommentForm from './CommentForm';
 import CommentList from './CommentList';
 
-function Comment() {
+function Comment({ newsId }: { newsId: string }) {
     const user = useSelector((state: RootState) => state.authenticate);
     const [open, setOpen] = useState<boolean>(false);
 
@@ -24,8 +24,8 @@ function Comment() {
                     Bạn cần đăng nhập để bình luận.
                 </Alert>
             )}
-            <CommentForm />
-            <CommentList newsId="current-news-id" />
+            <CommentForm newsId={newsId} />
+            <CommentList newsId={newsId} />
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="warning" sx={{ width: '100%' }}>
                     Bạn cần đăng nhập để bình luận.
@@ -33,6 +33,6 @@ function Comment() {
             </Snackbar>
         </div>
     );
-}
+};
 
 export default Comment;

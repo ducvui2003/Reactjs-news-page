@@ -1,13 +1,11 @@
-import React, {ChangeEvent, FormEvent, useState} from 'react'; // If using React
-import { Button, TextField } from '@mui/material'; // Example MUI components
-import {useDispatch, useSelector} from 'react-redux';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { Button, TextField } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
 import { Comment } from '../../types/comment.type';
-import { add } from '../../features/Comment/comment.slice'; // Example service function
+import { add } from '../../features/Comment/comment.slice';
 
-
-
-function CommentForm() {
+function CommentForm({ newsId }: { newsId: string }) {
     const user = useSelector((state: RootState) => state.authenticate);
     const dispatch = useDispatch();
 
@@ -23,9 +21,9 @@ function CommentForm() {
             const commentData: Comment = {
                 id: '', // Will be generated in the reducer
                 user: user,
-                newsId: 'current-news-id', // Replace with actual newsId
+                newsId: newsId,
                 content: newComment,
-                createAt: new Date(),
+                createAt: new Date().toISOString(),
             };
             dispatch(add(commentData));
             setNewComment('');
@@ -52,4 +50,5 @@ function CommentForm() {
         </form>
     );
 };
+
 export default CommentForm;

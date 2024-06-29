@@ -1,5 +1,4 @@
-// src/components/CommentList.tsx
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Box } from '@mui/material';
 import { RootState } from '../../features/store';

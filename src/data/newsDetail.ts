@@ -202,7 +202,7 @@ const newsDetail: NewsDetail[] = [
     title:
       'TP HCM: Giám đốc Kho bạc Nhà nước được bổ nhiệm làm Giám đốc Sở Tài chính',
     author: 'PHAN ANH',
-    publishDate: '05-06-24 14:52',
+    publishDate: 'Wed, 24 Jun 2005 15:22:00 +07',
     category: Category.THOI_SU,
     paragraphs: [
       {
