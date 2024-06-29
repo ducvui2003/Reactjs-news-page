@@ -61,5 +61,4 @@ const typography: TypographyOptions = {
     lineHeight: 1.5, // Ensure adequate line spacing
   },
 };
-// @ts-ignore
 export default typography;

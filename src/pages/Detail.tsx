@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import details from '../data/newsDetail';
 import CommentSection from '../components/Comment/CommentSection';
 import {
@@ -13,7 +13,7 @@ import {
 import SideBarDetailLeft from '../components/SideBar/SideBarDetailLeft';
 import SideBarDetailRight from '../components/SideBar/SideBarDetailRight';
 import Typography from '@mui/material/Typography';
-import { Image, News, NewsDetail, Paragraph } from '../types/news.type';
+import { Image, Paragraph } from '../types/news.type';
 import { SlideshowLightbox } from 'lightbox.js-react';
 import 'lightbox.js-react/dist/index.css';
 import Stack from '@mui/material/Stack';
@@ -21,16 +21,20 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { toCategoryName } from '../services/categoryService';
 
 function Detail() {
+  const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
-
-  if (!id) return;
+  if (!id) {
+    navigate('/404');
+    return null;
+  }
 
   const getLastNum = 'A' + id.substring(id.length - 1, id.length);
 
   const detail = details.find((item) => item.id == getLastNum);
 
   if (!detail) {
-    return <p>Không tìm thấy thông tin chi tiết</p>;
+    navigate('/404');
+    return null;
   }
 
   // Xử lý cho việc view ảnh
@@ -39,14 +43,14 @@ function Detail() {
     setIsOpen(true);
   };
 
-  const images = detail.paragraphs.map((para: Paragraph) => {
-    if (typeof para.image != undefined) {
+  const images = detail.paragraphs
+    .filter((para: Paragraph) => para.image?.link)
+    .map((para: Paragraph) => {
       return {
         src: para.image?.link,
         alt: para.image?.capture,
       };
-    }
-  });
+    });
 
   return (
     <Container>
@@ -71,7 +75,9 @@ function Detail() {
                 </Typography>
               </Link>
             </Breadcrumbs>
-            <Typography variant={'subtitle1'}>{detail.publishDate}</Typography>
+            <Typography variant={'subtitle1'}>
+              {detail.publishDate.toString()}
+            </Typography>
           </Stack>
 
           <Box sx={{ display: 'none' }}>
@@ -92,7 +98,11 @@ function Detail() {
             {`Tác giả ${detail.author}`}
           </Typography>
           {detail.paragraphs.map((para, index) => (
-            <NewParagraph paragraph={para} showImage={handleShowImage} />
+            <NewParagraph
+              key={index}
+              paragraph={para}
+              showImage={handleShowImage}
+            />
           ))}
         </Grid>
         <Grid item md={4}>
@@ -150,6 +160,6 @@ function NewParagraph({
 }
 
 export default Detail;
-function saveNews(news: News) {
-  throw new Error('Function not implemented.');
-}
+// function saveNews(news: News) {
+//   throw new Error('Function not implemented.');
+// }

@@ -1,5 +1,5 @@
 import Typography from '@mui/material/Typography';
-import { Box, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import Stack from '@mui/material/Stack';
 
 function FooterBottom() {

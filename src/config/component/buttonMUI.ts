@@ -1,6 +1,4 @@
-import { ConfigMUI } from '../theme';
-
-const buttonMUI: ConfigMUI<'MuiButton'> = {
+const buttonMUI = {
   variants: [
     {
       props: { variant: 'contained', size: 'small' },

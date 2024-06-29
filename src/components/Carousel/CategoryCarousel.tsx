@@ -37,19 +37,11 @@ function CategoryCarousel({
   }, [category]);
   return (
     <>
-      <Divider
-        orientation="horizontal"
-        sx={{
-          height: '1.5px',
-          backgroundColor: 'black',
-          opacity: 0.2,
-          marginBlock: '10px',
-        }}
-      />
+      <Divider orientation="horizontal" />
       <Carousel title={category}>
-        {news.slice(0, quantity).map((item: NewsLoading): any => {
+        {news.slice(0, quantity).map((item: NewsLoading, index) => {
           return (
-            <SwiperSlide style={{ height: '100%' }}>
+            <SwiperSlide key={index} style={{ height: '100%' }}>
               <CardHorizontal news={item.news} isLoading={loading} />
             </SwiperSlide>
           );

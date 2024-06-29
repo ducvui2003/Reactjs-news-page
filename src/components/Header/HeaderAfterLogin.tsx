@@ -1,8 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import ModalAuth from '../Dialog/ModalAuth';
-import Button from '@mui/material/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../features/store';
 import { exit } from '../../features/authenticate/authenticate.slice';
 import { toast } from 'react-toastify';
 import PopoverUser from '../Popover/PopoverUser';
@@ -14,44 +10,53 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, NavLink, useNavigate } from 'react-router-dom';
 import { Bookmark } from '@mui/icons-material';
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { RootState } from '../../features/store';
+import { getUser } from '../../services/sessionStorageService';
+import { get } from '../../services/userServices';
 function HeaderAfterLogin() {
-  const navigate = useNavigate();
+  const authenticateReducer = useSelector(
+    (state: RootState) => state.authenticate,
+  );
   const dispatch = useDispatch();
   const handleLogOut = () => {
     dispatch(exit());
     toast.success('Đăng xuất thành công');
   };
+  const user = get(authenticateReducer.email);
+  console.log('user:', user);
+  if (!user) {
+    return <Navigate to={'/404'} />;
+  }
   return (
     <PopoverUser>
       <List>
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton component={NavLink} to={`/users/${user.id}/info`}>
             <ListItemIcon>
-              <FavoriteIcon fontSize={'medium'} />
+              <AccountCircleIcon fontSize={'medium'} />
             </ListItemIcon>
-            <ListItemText primary={'Bài báo yêu thích'} />
+            <ListItemText primary={'Thông tin cá nhân'} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <FeedbackIcon fontSize={'medium'} />
-            </ListItemIcon>
-            <ListItemText primary={'Góp ý'} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton onClick={() => navigate('/users/savenews')}>
+          <ListItemButton component={NavLink} to={'/users/save-news'}>
             <ListItemIcon>
               <Bookmark fontSize={'medium'} />
             </ListItemIcon>
             <ListItemText primary={'Báo đã lưu'} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton component={NavLink} to={'/users/comment '}>
+            <ListItemIcon>
+              <FeedbackIcon fontSize={'medium'} />
+            </ListItemIcon>
+            <ListItemText primary={'Bình luận'} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>

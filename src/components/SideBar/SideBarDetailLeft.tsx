@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Avatar,
-  Box,
-  List,
-  ListItem,
-  ListItemAvatar,
-  Tooltip,
-} from '@mui/material';
+import { Box, List, ListItem, Tooltip } from '@mui/material';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import IconButton from '@mui/material/IconButton';
@@ -17,6 +10,9 @@ import Typography from '@mui/material/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { save, unsave } from '../../features/thenews/news.slice';
 import { RootState } from '../../features/store';
+import { User } from '../../types/user.type';
+import LoginForm from '../Form/LoginForm';
+import { toast } from 'react-toastify';
 
 interface SideBarDetailLeftProps {
   id: string;
@@ -25,6 +21,7 @@ const SideBarDetailLeft = ({ id }: SideBarDetailLeftProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const savedNewsIds = useSelector((state: RootState) => state.news);
+  const user: User = useSelector((state: RootState) => state.authenticate); // Lấy trạng thái đăng nhập
   const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
@@ -35,10 +32,14 @@ const SideBarDetailLeft = ({ id }: SideBarDetailLeftProps) => {
     position: 'sticky',
     left: 0,
     top: '50px',
-    paddingTop: '10px',
+    paddingTop: '50px',
   };
 
   const handleSaveNews = () => {
+    if (!user.email) {
+      toast.error('Bạn cần đăng nhập để lưu bài viết !');
+      return;
+    }
     const getLastNum = 'A' + id.substring(id.length - 1, id.length);
     if (isSaved) {
       dispatch(unsave(getLastNum));

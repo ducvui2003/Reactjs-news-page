@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../features/store';
 import Button from '@mui/material/Button';
 import ModalAuth from '../Dialog/ModalAuth';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -19,7 +17,7 @@ function HeaderBeforeLogin() {
         onClick={() => setOpen(true)}
         startIcon={<AccountCircleIcon />}
       >
-        Đăng nhập{' '}
+        Đăng nhập
       </Button>
       <ModalAuth isOpen={open} onClose={handleClose} />
     </>
