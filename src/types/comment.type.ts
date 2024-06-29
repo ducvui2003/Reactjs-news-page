@@ -5,5 +5,5 @@ export interface Comment {
   user: User;
   newsId: string;
   content: string;
-  createAt: Date;
+  createAt: string;
 }
