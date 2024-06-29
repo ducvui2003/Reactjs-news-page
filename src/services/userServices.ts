@@ -1,4 +1,4 @@
-import { User } from '../types/user.type';
+import { User, UserLogin } from '../types/user.type';
 import { userData } from '../data/userData';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -25,8 +25,10 @@ const register = (user: User): boolean => {
   return true;
 };
 
-const login = (user: User): boolean => {
+const login = (user: UserLogin): User | undefined => {
   const userExist = get(user.email);
-  return userExist != undefined;
+  if (userExist != undefined && userExist.password == user.password)
+    return userExist;
+  return undefined;
 };
 export { add, get, remove, register, login };

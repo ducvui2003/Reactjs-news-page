@@ -4,6 +4,8 @@ export interface User {
   password: string;
 }
 
+export interface UserLogin extends Omit<User, 'id'> {}
+
 export interface UserInfo extends User {
   fullName?: string;
   phone?: string;

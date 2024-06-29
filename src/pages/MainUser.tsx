@@ -21,14 +21,17 @@ const MainUser = () => {
     dispatch(exit());
     toast.success('Đăng xuất thành công');
   };
-
-  if (id || authenticateReducer.id != id) return <Navigate to={'/404'} />;
+  console.log(id, authenticateReducer.id);
+  if (!id || authenticateReducer.id != id) return <Navigate to={'/404'} />;
   return (
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12} md={3}>
           <List>
-            <NavLink to="/users/info" style={{ textDecoration: 'none' }}>
+            <NavLink
+              to={`/users/${id}/info`}
+              style={{ textDecoration: 'none' }}
+            >
               {({ isActive }) => (
                 <ListItemButton
                   sx={{
@@ -45,15 +48,15 @@ const MainUser = () => {
             <ListItemButton
               sx={{ gap: '10px' }}
               component={NavLink}
-              to={'/users/save-news'}
+              to={`/users/${id}/save-news`}
             >
               <FavoriteIcon fontSize={'medium'} />
-              <Typography variant="h6">Bài báo yêu thích</Typography>
+              <Typography variant="h6">Báo đã lưu </Typography>
             </ListItemButton>
             <ListItemButton
               sx={{ gap: '10px' }}
               component={NavLink}
-              to={'/users/comment'}
+              to={`/users/${id}/comment`}
             >
               <FeedbackIcon fontSize={'medium'} />
               <Typography variant="h6">Bình luận</Typography>
