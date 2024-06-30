@@ -3,7 +3,6 @@ import { exit } from '../../features/authenticate/authenticate.slice';
 import { toast } from 'react-toastify';
 import PopoverUser from '../Popover/PopoverUser';
 import {
-  Icon,
   List,
   ListItem,
   ListItemButton,
@@ -12,11 +11,10 @@ import {
 } from '@mui/material';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { Navigate, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Bookmark } from '@mui/icons-material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { RootState } from '../../features/store';
-import { getUser } from '../../services/sessionStorageService';
 import { get } from '../../services/userServices';
 function HeaderAfterLogin() {
   const authenticateReducer = useSelector(
@@ -28,15 +26,14 @@ function HeaderAfterLogin() {
     toast.success('Đăng xuất thành công');
   };
   const user = get(authenticateReducer.email);
-  console.log('user:', user);
   if (!user) {
-    return <Navigate to={'/404'} />;
+    return null;
   }
   return (
     <PopoverUser>
       <List>
         <ListItem disablePadding>
-          <ListItemButton component={NavLink} to={`/users/${user.id}/info`}>
+          <ListItemButton component={NavLink} to={`/users/info`}>
             <ListItemIcon>
               <AccountCircleIcon fontSize={'medium'} />
             </ListItemIcon>

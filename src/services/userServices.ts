@@ -1,23 +1,24 @@
-import { User } from '../types/user.type';
-import { userData } from '../data/userData';
+import { User, UserLogin } from '../types/user.type';
 import { v4 as uuidv4 } from 'uuid';
+import { getListUser, setListUser } from './sessionStorageService';
 
-const getListUser = (): User[] => {
-  return userData;
-};
+const userData: User[] = getListUser();
 
 const add = (user: User) => {
   user.id = uuidv4();
-  getListUser().push(user);
+  userData.push(user);
+  setListUser(userData);
 };
 
 const get = (email: string): User | undefined =>
-  getListUser().find((item: User) => email == item.email);
+  userData.find((item: User) => email == item.email);
 
 const remove = (id: string) => {
-  const newDataUser = getListUser().find((item: User): User => item.id == id);
-  if (newDataUser) userData.slice(newDataUser.id, 1);
+  const index = userData.findIndex((item: User) => item.id == id);
+  if (index != -1) userData.slice(index, 1);
+  setListUser(userData);
 };
+
 const register = (user: User): boolean => {
   const userExist = get(user.email);
   if (userExist) return false;
@@ -25,8 +26,18 @@ const register = (user: User): boolean => {
   return true;
 };
 
-const login = (user: User): boolean => {
+const login = (user: UserLogin): User | undefined => {
   const userExist = get(user.email);
-  return userExist != undefined;
+  if (userExist != undefined && userExist.password == user.password)
+    return userExist;
+  return undefined;
 };
-export { add, get, remove, register, login };
+
+const updateInfo = (userInfo: User) => {
+  const index = userData.findIndex(
+    (item: User) => item.email == userInfo.email,
+  );
+  if (index != -1) userData[index] = userInfo;
+  setListUser(userData);
+};
+export { add, get, remove, register, login, updateInfo };

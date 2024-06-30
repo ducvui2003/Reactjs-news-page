@@ -4,9 +4,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import IconButton from '@mui/material/IconButton';
 
 function PopoverUser({ children }: { children: React.ReactNode }) {
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
-    null,
-  );
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);

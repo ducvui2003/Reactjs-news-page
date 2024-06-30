@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { save } from '../../features/authenticate/authenticate.slice';
-import { User } from '../../types/user.type';
-import { useForm } from 'react-hook-form';
+import { User, UserLogin } from '../../types/user.type';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormControl, TextField, Theme, useMediaQuery } from '@mui/material';
@@ -16,6 +16,11 @@ import { NavLink } from 'react-router-dom';
 // Quy định các message đối với từng trường
 const EMAIL_INVALID = 'Email không đúng định dạng ';
 const REQUIRED = 'Vui lòng nhập không bỏ trống trường này ';
+
+interface FormInputs {
+  email: string;
+  password: string;
+}
 
 // Handle validator form
 const schema = yup
@@ -36,18 +41,23 @@ function LoginForm() {
     handleSubmit,
     formState: { errors, isValid },
     reset,
-  } = useForm({
+  } = useForm<FormInputs>({
     mode: 'onSubmit',
     resolver: yupResolver(schema),
   });
 
   // Gọi tới store để tiến hành đăng nhập
-  const onSubmit = (data: User) => {
+  const onSubmit: SubmitHandler<FormInputs> = (data) => {
     if (!isValid) return;
-    if (login(data)) {
+    const user: UserLogin = {
+      email: data.email,
+      password: data.password,
+    };
+    const userExist = login(user);
+    if (userExist) {
       toast.success('Đăng nhập thành công');
       reset();
-      dispatch(save(data));
+      dispatch(save(userExist));
     } else {
       toast.error('Đăng nhập thất bại, vui lòng thử lại');
     }
