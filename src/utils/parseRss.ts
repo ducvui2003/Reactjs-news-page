@@ -14,7 +14,6 @@ const parserRSS = async (category: Category) => {
       return JSON.parse(json);
     })
     .catch((error) => {
-      console.log(error);
       if (error.response.status == 500) return;
       if (error.response.status == 400) return;
     });

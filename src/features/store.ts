@@ -1,14 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authenticateReducer from './authenticate/authenticate.slice';
-import darkModeReducer from './darkmode/darkmode.slice';
-import commentsReducer from './Comment/comment.slice';
 import newsReducer from './thenews/news.slice';
 
 export const store = configureStore({
   reducer: {
     authenticate: authenticateReducer,
-    darkMode: darkModeReducer,
-    comments: commentsReducer,
     news: newsReducer,
   },
 });

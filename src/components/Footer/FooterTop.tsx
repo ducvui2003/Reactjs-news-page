@@ -1,15 +1,6 @@
 import { EMAIL, PHONE_1, PHONE_2 } from '../../constraints/info';
-import { Email, Handshake, Phone } from '@mui/icons-material';
-import {
-  Box,
-  Divider,
-  Grid,
-  Link,
-  List,
-  Stack,
-  Theme,
-  useMediaQuery,
-} from '@mui/material';
+import { Email, Phone } from '@mui/icons-material';
+import { Box, Divider, Grid, Link, Stack } from '@mui/material';
 import {
   getMatrixCategory,
   toCategoryName,
@@ -19,7 +10,6 @@ import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
 
 function FooterTop() {
-
   return (
     <Grid container sx={{ py: '10px' }}>
       <Grid item xs={12} md={9}>
@@ -56,24 +46,24 @@ function FooterContact() {
       </Typography>
       <Stack spacing={1}>
         <Link component={NavLink} to={`/`} underline={'hover'}>
-          <Stack direction={'row'}>
-            <Email className="pe-2" fontSize={'small'} />
+          <Stack direction={'row'} alignItems={'center'}>
+            <Email sx={{ mr: 2 }} fontSize={'small'} />
             <Typography component={'p'} variant={'h6'}>
               {EMAIL}
             </Typography>
           </Stack>
         </Link>
         <Link component={NavLink} to={`/`} underline={'hover'}>
-          <Stack direction={'row'}>
-            <Phone className="pe-2" fontSize={'small'} />
+          <Stack direction={'row'} alignItems={'center'}>
+            <Phone sx={{ mr: 2 }} fontSize={'small'} />
             <Typography component={'p'} variant={'h6'}>
               {PHONE_1}
             </Typography>
           </Stack>
         </Link>
         <Link component={NavLink} to={`/`} underline={'hover'}>
-          <Stack direction={'row'}>
-            <Phone sx={{ pe: 2 }} fontSize={'small'} />
+          <Stack direction={'row'} alignItems={'center'}>
+            <Phone sx={{ mr: 2 }} fontSize={'small'} />
             <Typography component={'p'} variant={'h6'}>
               {PHONE_2}
             </Typography>

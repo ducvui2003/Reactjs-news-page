@@ -1,10 +1,21 @@
-import { defaultProps } from 'react-toastify/dist/components/ToastContainer';
+import { DividerProps } from '@mui/material';
 
+// Define the type for the ownerState
+interface DividerOwnerState extends DividerProps {
+  orientation?: 'horizontal' | 'vertical';
+}
 const dividerMUI = {
   styleOverrides: {
-    root: {
-      borderWidth: '1px',
-      defaultProps: {},
+    root: ({ ownerState }: { ownerState: DividerOwnerState }) => {
+      return {
+        ...(ownerState.orientation === 'vertical'
+          ? {
+              borderWidth: '1.5px',
+            }
+          : {
+              borderWidth: '1.5px',
+            }),
+      };
     },
   },
 };

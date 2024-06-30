@@ -2,29 +2,45 @@
 import { User } from '../types/user.type';
 
 export enum SessionStorage {
-  USER = 'user',
+  LIST_USER = 'list_user',
+  LIST_COMMENT = 'list_comment',
 }
 
-const setUser = (user: User) => {
-  sessionStorage.setItem(SessionStorage.USER, JSON.stringify(user));
-};
-
 const getUser = (): User | null => {
-  const jsonUser = sessionStorage.getItem(SessionStorage.USER);
-  if (jsonUser == null) return null;
-  try {
-    const user: User = JSON.parse(jsonUser);
-    return user;
-  } catch (error) {
-    return null;
-  }
+  const listUser: User[] = getListUser();
+
+  const user: User | undefined = listUser.find(
+    (user) => user.email == user.email,
+  );
+  if (user == undefined) return null;
+  return user;
 };
 const addUser = (user: User): void => {
-  sessionStorage.setItem(SessionStorage.USER, JSON.stringify(user));
+  const listUser: User[] = getListUser();
+  listUser.push(user);
+  setListUser(listUser);
 };
 
-const removeUser = (): void => {
-  sessionStorage.removeItem(SessionStorage.USER);
+const removeUser = (email: string): void => {
+  const listUser: User[] = getListUser();
+  const index = listUser.findIndex((user) => user.email == email);
+  index != -1 && listUser.splice(index, 1);
+  setListUser(listUser);
+};
+// List user
+const setListUser = (listUser: User[]) => {
+  sessionStorage.setItem(SessionStorage.LIST_USER, JSON.stringify(listUser));
 };
 
-export { addUser, getUser, removeUser };
+const getListUser = (): User[] => {
+  const jsonUser = sessionStorage.getItem(SessionStorage.LIST_USER);
+  if (jsonUser == null) return [];
+  try {
+    const listUser: User[] = JSON.parse(jsonUser);
+    return listUser;
+  } catch (error) {
+    return [];
+  }
+};
+
+export { addUser, getUser, removeUser, getListUser, setListUser };

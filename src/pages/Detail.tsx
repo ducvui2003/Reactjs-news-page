@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import details from '../data/newsDetail';
 import Comment from '../components/Comment/Comment';
 import {
@@ -19,19 +19,22 @@ import 'lightbox.js-react/dist/index.css';
 import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { toCategoryName } from '../services/categoryService';
-import { timeAgo } from '../utils/timeUtils';
 
 function Detail() {
+  const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
-
-  if (!id) return;
+  if (!id) {
+    navigate('/404');
+    return null;
+  }
 
   const getLastNum = 'A' + id.substring(id.length - 1, id.length);
 
   const detail = details.find((item) => item.id == getLastNum);
 
   if (!detail) {
-    return <p>Không tìm thấy thông tin chi tiết</p>;
+    navigate('/404');
+    return null;
   }
 
   // Xử lý cho việc view ảnh
@@ -40,15 +43,16 @@ function Detail() {
     setIsOpen(true);
   };
 
-  const images = detail.paragraphs.map((para: Paragraph) => {
-    if (typeof para.image != undefined) {
+  const images = detail.paragraphs
+    .filter((para: Paragraph) => para.image?.link)
+    .map((para: Paragraph) => {
       return {
         src: para.image?.link,
         alt: para.image?.capture,
       };
     }
   });
-  const publishDate = new Date(detail.publishDate);
+
   return (
     <Container>
       <Grid container spacing={3}>
@@ -73,7 +77,7 @@ function Detail() {
               </Link>
             </Breadcrumbs>
             <Typography variant={'subtitle1'}>
-              {timeAgo(publishDate)}
+              {detail.publishDate.toString()}
             </Typography>
           </Stack>
 
@@ -95,7 +99,11 @@ function Detail() {
             {`Tác giả ${detail.author}`}
           </Typography>
           {detail.paragraphs.map((para, index) => (
-            <NewParagraph paragraph={para} showImage={handleShowImage} />
+            <NewParagraph
+              key={index}
+              paragraph={para}
+              showImage={handleShowImage}
+            />
           ))}
         </Grid>
         <Grid item md={4}>
@@ -153,7 +161,6 @@ function NewParagraph({
 }
 
 export default Detail;
-
-function saveNews(news: News) {
-  throw new Error('Function not implemented.');
-}
+// function saveNews(news: News) {
+//   throw new Error('Function not implemented.');
+// }

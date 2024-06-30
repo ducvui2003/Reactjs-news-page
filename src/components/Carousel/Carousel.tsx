@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Swiper } from 'swiper/react';
 import { Autoplay, Pagination, Scrollbar } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
+import 'swiper/scss';
+import 'swiper/scss/pagination';
 import CarouselHeader from './CarouselHeader';
 import { toCategory } from '../../services/categoryService';
 import { useMediaQuery } from '@mui/material';
 import { Theme } from '@mui/system';
+import { SwiperOptions } from 'swiper/types';
 
-function Carousel({ title, children }: { title: string; children: any }) {
+function Carousel({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactElement[];
+}) {
   const isMobile = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down('sm'),
   );
 
-  const settings = {
+  const settings: SwiperOptions = {
     slidesPerView: isMobile ? 1 : 2,
     spaceBetween: 30,
     pagination: {
@@ -26,7 +33,7 @@ function Carousel({ title, children }: { title: string; children: any }) {
       pauseOnMouseEnter: true,
     },
     scrollbar: {
-      enable: true,
+      enabled: true,
       draggable: true,
     },
     modules: [Pagination, Autoplay, Scrollbar],

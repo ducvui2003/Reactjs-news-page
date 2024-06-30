@@ -7,16 +7,10 @@ import LogoHome from '../Logo/LogoHome';
 import DarkMode from '../Nav/DarkMode/DarkMode';
 import HeaderBeforeLogin from './HeaderBeforeLogin';
 import HeaderAfterLogin from './HeaderAfterLogin';
-import {
-  Container,
-  Divider,
-  IconButton,
-  Link,
-  useMediaQuery,
-} from '@mui/material';
+import { Container, Divider, IconButton, useMediaQuery } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { Theme } from '@mui/material/styles';
+import { Theme, useTheme } from '@mui/material/styles';
 import { NavLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import NavBar from '../mobile/NavBar';
@@ -29,6 +23,8 @@ export default function Header() {
   const isMobile = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down('sm'),
   );
+  const theme = useTheme();
+
   const [open, setOpen] = useState(false);
 
   // Kiểm tra state user đã đăng nhập chưa
@@ -65,7 +61,11 @@ export default function Header() {
 
           {!isMobile && (
             <>
-              <Typography variant={'body2'} sx={{ px: 2 }}>
+              <Typography
+                variant={'body2'}
+                sx={{ px: 2 }}
+                color={theme.palette.grey[500]}
+              >
                 {dayOfWeek}, {formattedDate}
               </Typography>
               <Weather />
@@ -74,20 +74,11 @@ export default function Header() {
         </Stack>
 
         {!isMobile && (
-          <Stack direction={'row'} alignContent={'center'} spacing={1}>
-            <Link
-              component={NavLink}
-              to={'/'}
-              sx={{ marginLeft: 'auto !important' }}
-            >
+          <Stack direction={'row'} alignItems={'center'} spacing={1}>
+            <Typography component={NavLink} to={'/'} sx={{ lineHeight: 1 }}>
               Mới nhất
-            </Link>
-            <Divider
-              orientation="vertical"
-              variant="middle"
-              flexItem
-              color={'black'}
-            />
+            </Typography>
+            <Divider orientation="vertical" flexItem />
             <DarkMode />
             {authReducer.email ? <HeaderAfterLogin /> : <HeaderBeforeLogin />}
           </Stack>

@@ -1,14 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User } from '../../types/user.type';
-import {
-  addUser,
-  getUser,
-  removeUser,
-} from '../../services/sessionStorageService';
-import { get } from '../../services/userServices';
+import { getUser, removeUser } from '../../services/sessionStorageService';
 
 const userStorage = getUser();
 const initialState: User = {
+  id: userStorage?.id ?? '',
   email: userStorage?.email ?? '',
   password: userStorage?.password ?? '',
 };
@@ -21,12 +17,11 @@ const authenticateSlice = createSlice({
       const user = action.payload;
       state.email = user.email;
       state.password = user.password;
-      addUser(user);
     },
     exit: (state) => {
-      state.email = '';
-      state.password = '';
-      removeUser();
+        removeUser(state.email);
+        state.email = '';
+        state.password = '';
     },
   },
 });
