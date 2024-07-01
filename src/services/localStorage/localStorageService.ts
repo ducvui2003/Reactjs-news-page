@@ -9,7 +9,7 @@ const saveToLocalStorage = (key: string, data: any) => {
     }
 };
 
-const getFromLocalStorage = <T>(key: string): T | null => {
+const getFromLocalStorage = <T>(key: string): T | [] => {
     try {
         const data = localStorage.getItem(key);
         if (data) {
@@ -19,7 +19,7 @@ const getFromLocalStorage = <T>(key: string): T | null => {
         console.error('Error fetching from localStorage:', error);
         throw new Error('Failed to fetch from localStorage');
     }
-    return null;
+    return [];
 };
 
 export { COMMENTS_STORAGE_KEY, saveToLocalStorage, getFromLocalStorage };
