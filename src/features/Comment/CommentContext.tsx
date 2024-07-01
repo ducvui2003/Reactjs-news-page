@@ -1,9 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { Comment } from '../../types/comment.type';
 import {
-    addComment,
-    getCommentListByNewsId,
-    removeComment,
     getListComment,
 } from '../../services/commentServices';
 import {
@@ -21,7 +18,7 @@ interface CommentContextProps {
 
 const CommentContext = createContext<CommentContextProps | undefined>(undefined);
 
-export const CommentProvider: React.FC = ({ children }) => {
+export const CommentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [comments, setComments] = useState<Comment[]>(() => {
         const savedComments = getFromLocalStorage<Comment[]>(COMMENTS_STORAGE_KEY);
         return savedComments || getListComment();
