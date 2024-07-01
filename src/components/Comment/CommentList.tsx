@@ -1,19 +1,23 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Box } from '@mui/material';
-import { RootState } from '../../features/store';
 import CommentItem from './CommentItem';
+import { useComments } from '../../features/Comment/CommentContext';
 
 interface CommentListProps {
-    newsId: string;
+    newsId?: string;
+    userId?: string;
 }
 
-const CommentList: React.FC<CommentListProps> = ({ newsId }) => {
-    const comments = useSelector((state: RootState) => state.comments.filter(comment => comment.newsId === newsId));
+const CommentList: React.FC<CommentListProps> = ({ newsId, userId }) => {
+    const { comments } = useComments();
+
+    const filteredComments = comments.filter(
+        (comment) => (!newsId || comment.newsId === newsId) && (!userId || comment.user.id === userId),
+    );
 
     return (
         <Box mt={4}>
-            {comments.map((comment) => (
+            {filteredComments.map((comment) => (
                 <CommentItem key={comment.id} comment={comment} />
             ))}
         </Box>

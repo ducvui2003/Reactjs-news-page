@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
 import CommentForm from './CommentForm';
 import CommentList from './CommentList';
+import { CommentProvider } from '../../features/Comment/CommentContext';
 
 function Comment({ newsId }: { newsId: string }) {
     const user = useSelector((state: RootState) => state.authenticate);
@@ -18,14 +19,16 @@ function Comment({ newsId }: { newsId: string }) {
 
     return (
         <div className="mt-4">
-            <Typography variant="h5" gutterBottom>Ý kiến</Typography>
+            <Typography variant="h5" gutterBottom sx={{ fontSize: '2rem'}}>Ý kiến</Typography>
             {!user.email && (
                 <Alert severity="warning">
                     Bạn cần đăng nhập để bình luận.
                 </Alert>
             )}
-            <CommentForm newsId={newsId} />
-            <CommentList newsId={newsId} />
+            <CommentProvider>
+                <CommentForm newsId={newsId} />
+                <CommentList newsId={newsId} />
+            </CommentProvider>
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="warning" sx={{ width: '100%' }}>
                     Bạn cần đăng nhập để bình luận.

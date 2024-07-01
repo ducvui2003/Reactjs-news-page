@@ -50,8 +50,7 @@ function Detail() {
         src: para.image?.link,
         alt: para.image?.capture,
       };
-    }
-  });
+    });
 
   return (
     <Container>
