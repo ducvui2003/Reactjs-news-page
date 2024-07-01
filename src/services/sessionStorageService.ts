@@ -1,5 +1,6 @@
 // Thêm user
 import { User } from '../types/user.type';
+import { userData } from '../data/userData';
 
 export enum SessionStorage {
   LIST_USER = 'list_user',
@@ -34,7 +35,10 @@ const setListUser = (listUser: User[]) => {
 
 const getListUser = (): User[] => {
   const jsonUser = sessionStorage.getItem(SessionStorage.LIST_USER);
-  if (jsonUser == null) return [];
+  if (jsonUser == null) {
+    setListUser(userData);
+    return userData;
+  }
   try {
     const listUser: User[] = JSON.parse(jsonUser);
     return listUser;
