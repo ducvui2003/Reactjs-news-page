@@ -21,7 +21,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/category/:id" element={<NewsList />} />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/users/:id" element={<MainUser />}>
+        <Route path="/users/" element={<MainUser />}>
           <Route path="info" element={<Info />} />
           <Route path="save-news" element={<SaveNews />} />
           <Route path="comment" element={<Comment />} />

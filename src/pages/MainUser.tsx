@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Grid, List, ListItemButton } from '@mui/material';
-import { Navigate, NavLink, Outlet, useParams } from 'react-router-dom';
+import { Container, Grid, List, ListItemButton, styled } from '@mui/material';
+import { Navigate, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import PersonIcon from '@mui/icons-material/Person';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -10,62 +10,68 @@ import { useDispatch, useSelector } from 'react-redux';
 import { exit } from '../features/authenticate/authenticate.slice';
 import { toast } from 'react-toastify';
 import { RootState } from '../features/store';
+import { User } from '../types/user.type';
+import { get } from '../services/userServices';
+
+const StyledListItemButton = styled(ListItemButton)(({ selected }) => ({
+  color: selected ? 'inherit' : 'black',
+  gap: '10px',
+}));
 
 const MainUser = () => {
-  const { id } = useParams<{ id: string }>();
-  const authenticateReducer = useSelector(
+  const navigate = useNavigate();
+  const authenticateReducer: User = useSelector(
     (root: RootState) => root.authenticate,
   );
   const dispatch = useDispatch();
   const handleLogOut = () => {
     dispatch(exit());
+    navigate('/');
     toast.success('Đăng xuất thành công');
   };
-
-  if (id || authenticateReducer.id != id) return <Navigate to={'/404'} />;
+  const userExist = get(authenticateReducer.email);
+  if (!userExist) return <Navigate to={'/404'} />;
   return (
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12} md={3}>
           <List>
-            <NavLink to="/users/info" style={{ textDecoration: 'none' }}>
+            <NavLink to={`/users/info`} style={{ textDecoration: 'none' }}>
               {({ isActive }) => (
-                <ListItemButton
-                  sx={{
-                    gap: '10px',
-                  }}
-                  component="li"
-                  selected={isActive}
-                >
+                <StyledListItemButton selected={isActive}>
                   <PersonIcon fontSize="medium" />
                   <Typography variant="h6">Thông tin cá nhân</Typography>
-                </ListItemButton>
+                </StyledListItemButton>
               )}
             </NavLink>
+            <NavLink to={`/users/save-news`} style={{ textDecoration: 'none' }}>
+              {({ isActive }) => (
+                <StyledListItemButton selected={isActive}>
+                  <FavoriteIcon fontSize={'medium'} />
+                  <Typography variant="h6">Báo đã lưu </Typography>
+                </StyledListItemButton>
+              )}
+            </NavLink>
+            <NavLink to={`/users/comment`} style={{ textDecoration: 'none' }}>
+              {({ isActive }) => (
+                <StyledListItemButton selected={isActive}>
+                  <FeedbackIcon fontSize={'medium'} />
+                  <Typography variant="h6">Bình luận</Typography>
+                </StyledListItemButton>
+              )}
+            </NavLink>
+
             <ListItemButton
-              sx={{ gap: '10px' }}
-              component={NavLink}
-              to={'/users/save-news'}
+              sx={{ gap: '10px', color: 'red' }}
+              onClick={() => handleLogOut()}
             >
-              <FavoriteIcon fontSize={'medium'} />
-              <Typography variant="h6">Bài báo yêu thích</Typography>
-            </ListItemButton>
-            <ListItemButton
-              sx={{ gap: '10px' }}
-              component={NavLink}
-              to={'/users/comment'}
-            >
-              <FeedbackIcon fontSize={'medium'} />
-              <Typography variant="h6">Bình luận</Typography>
-            </ListItemButton>
-            <ListItemButton sx={{ gap: '10px' }} onClick={() => handleLogOut()}>
               <LogoutIcon fontSize={'medium'} />
               <Typography variant="h6">Đăng xuất</Typography>
             </ListItemButton>
           </List>
         </Grid>
         <Grid item xs={12} md>
-          <Outlet context={id} />
+          <Outlet />
         </Grid>
       </Grid>
     </Container>

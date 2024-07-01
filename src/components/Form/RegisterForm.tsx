@@ -3,12 +3,11 @@ import { User } from '../../types/user.type';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { FormControl, TextField, Theme, useMediaQuery } from '@mui/material';
+import { TextField, Theme, useMediaQuery } from '@mui/material';
 import { register as registerServices } from '../../services/userServices';
 import { toast } from 'react-toastify';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 // Quy định các message đối với từng trường
 const PASSWORD_CONFIRM_TEXT =
