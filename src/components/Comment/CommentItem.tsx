@@ -16,16 +16,16 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Comment } from '../../types/comment.type';
-import { timeAgo } from '../../utils/timeUtils';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
 import { useComments } from '../../services/commentServices';
 
 interface CommentItemProps {
     comment: Comment;
+    onDelete: (commentId: string) => void;
 }
 
-const CommentItem: React.FC<CommentItemProps> = ({ comment }) => {
+const CommentItem: React.FC<CommentItemProps> = ({ comment, onDelete }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [editedComment, setEditedComment] = useState(comment.content);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -51,11 +51,9 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment }) => {
         const updatedComment = { ...comment, content: editedComment };
         try {
             editComment(updatedComment);
-            console.log('editComment>>>>>>>>>', updatedComment);
             setIsEditing(false);
         } catch (error) {
             console.error('Failed to edit comment:', error);
-            // Optionally, add user feedback for failure
         } finally {
             setIsLoading(false);
         }
@@ -64,10 +62,10 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment }) => {
     const handleDeleteClick = async () => {
         setIsLoading(true);
         try {
-            removeComment(comment.id);
+            await removeComment(comment.id);
+            onDelete(comment.id); // Callback để cập nhật state ở component cha
         } catch (error) {
             console.error('Failed to delete comment:', error);
-            // Optionally, add user feedback for failure
         } finally {
             setIsLoading(false);
         }
