@@ -1,9 +1,9 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { Button, TextField } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
 import { Comment } from '../../types/comment.type';
-import {useComments} from "../../features/Comment/CommentContext";
+import { useComments } from '../../services/commentServices';
 import { v4 as uuidv4 } from 'uuid';
 
 function CommentForm({ newsId }: { newsId: string }) {
@@ -24,7 +24,7 @@ function CommentForm({ newsId }: { newsId: string }) {
                 user: user,
                 newsId: newsId,
                 content: newComment,
-                createAt: new Date().toISOString(),
+                createAt: new Date(),
             };
             addComment(commentData);
             setNewComment('');

@@ -19,7 +19,7 @@ import { Comment } from '../../types/comment.type';
 import { timeAgo } from '../../utils/timeUtils';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
-import { useComments } from '../../features/Comment/CommentContext';
+import { useComments } from '../../services/commentServices';
 
 interface CommentItemProps {
     comment: Comment;
@@ -76,9 +76,9 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment }) => {
     const handleCommentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setEditedComment(event.target.value);
     };
-
-    const createAtDate = new Date(comment.createAt);
-    const timeAgoString = timeAgo(createAtDate);
+    // Để tạm thời gian là ngày tháng vì dùng timeAgo đang bị lỗi không convert đúng định dạng được
+    const createAtDate = new Date(comment.createAt).toDateString();
+    // const convertToTimeAgo = timeAgo(createAtDate);
 
     return (
         <Paper elevation={2} sx={{ padding: 2, marginBottom: 2, position: 'relative' }}>
@@ -105,7 +105,7 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment }) => {
                     )}
                     <Box display="flex" alignItems="center" mt={1}>
                         <Typography variant="caption" color="textSecondary">
-                            {timeAgoString}
+                            {createAtDate}
                         </Typography>
                     </Box>
                 </Box>

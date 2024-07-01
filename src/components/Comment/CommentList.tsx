@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import CommentItem from './CommentItem';
-import { useComments } from '../../features/Comment/CommentContext';
+import { useComments } from '../../services/commentServices';
 
 interface CommentListProps {
     newsId?: string;

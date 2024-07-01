@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
 import CommentForm from './CommentForm';
 import CommentList from './CommentList';
-import { CommentProvider } from '../../features/Comment/CommentContext';
+import { CommentProvider } from '../../services/commentServices';
 
 function Comment({ newsId }: { newsId: string }) {
     const user = useSelector((state: RootState) => state.authenticate);
