@@ -1,13 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authenticateReducer from './authenticate/authenticate.slice';
 import newsReducer from './thenews/news.slice';
-// import commentsReducer from './Comment/comment.slice';
 
 export const store = configureStore({
   reducer: {
     authenticate: authenticateReducer,
-    news: newsReducer,
-    // comments: commentsReducer
+    news: newsReducer
   },
 });
 

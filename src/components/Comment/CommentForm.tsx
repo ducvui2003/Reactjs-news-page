@@ -3,7 +3,6 @@ import { Button, TextField } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
 import { Comment } from '../../types/comment.type';
-// import { add } from '../../features/Comment/comment.slice';
 import {useComments} from "../../features/Comment/CommentContext";
 import { v4 as uuidv4 } from 'uuid';
 

@@ -19,7 +19,6 @@ import { Comment } from '../../types/comment.type';
 import { timeAgo } from '../../utils/timeUtils';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
-// import { edit, remove } from '../../features/Comment/comment.slice';
 import { useComments } from '../../features/Comment/CommentContext';
 
 interface CommentItemProps {
