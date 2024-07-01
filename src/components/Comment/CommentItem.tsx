@@ -105,7 +105,7 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment }) => {
                     )}
                     <Box display="flex" alignItems="center" mt={1}>
                         <Typography variant="caption" color="textSecondary">
-                            {timeAgoString + ' --- ' + createAtDate + ' --- ' + comment.createAt}
+                            {timeAgoString}
                         </Typography>
                     </Box>
                 </Box>
