@@ -9,10 +9,12 @@ import {
 
 const getListComment = (): Comment[] => {
     const commentsFromLocalStorage = getFromLocalStorage<Comment[]>(COMMENTS_STORAGE_KEY);
-    if (commentsFromLocalStorage !== null) {
-        return commentsFromLocalStorage;
+    if (commentsFromLocalStorage === null) {
+        saveToLocalStorage(COMMENTS_STORAGE_KEY, commentData);
+        return commentData;
+    }else {
+     return commentsFromLocalStorage; // Đã convert từ JSON sang object
     }
-    return commentData;
 };
 
 const getCommentListByUserId = (userId: string): Comment[] => {
