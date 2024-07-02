@@ -6,6 +6,7 @@ import CommentItem from "../../components/Comment/CommentItem";
 import { Comment } from '../../types/comment.type';
 import { CardContent } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import CommentList from "../../components/Comment/CommentList";
 
 function Comment() {
     const userId = useSelector((state: RootState) => state.authenticate.id);
@@ -19,6 +20,9 @@ function Comment() {
     const handleDeleteComment = (commentId: string) => {
         setUserComments(prevComments => prevComments.filter(comment => comment.id !== commentId));
     };
+    const handleUpdateComment = (comment: Comment) => {
+        setUserComments(prevComments => prevComments.map(item => item.id === comment.id ? comment : item));
+    }
 
     return (
         <div>
@@ -31,7 +35,7 @@ function Comment() {
                     {userComments.map((comment) => (
                         <CardContent key={comment.id}>
                             <CommentProvider>
-                                <CommentItem comment={comment} onDelete={handleDeleteComment} />
+                                <CommentItem comment={comment} onDelete={handleDeleteComment} onUpdate={handleUpdateComment} />
                             </CommentProvider>
                         </CardContent>
                     ))}
