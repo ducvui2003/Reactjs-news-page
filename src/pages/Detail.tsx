@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import details from '../data/newsDetail';
 import Comment from '../components/Comment/Comment';
@@ -21,7 +21,7 @@ import 'lightbox.js-react/dist/index.css';
 import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { toCategoryName } from '../services/categoryService';
-import FloatButton from '../components/mobile/FloatButton';
+import { formatDate } from '../utils/timeUtils';
 
 function Detail() {
   const isMobile = useMediaQuery((theme: Theme) =>
@@ -43,6 +43,7 @@ function Detail() {
     return null;
   }
 
+  const targetComment = useRef<HTMLElement>(null);
   // Xử lý cho việc view ảnh
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const handleShowImage = () => {
@@ -61,16 +62,19 @@ function Detail() {
   return (
     <>
       <Container>
-        <Grid container spacing={3}>
-          <Grid item md={1}>
-            <SideBarDetailLeft id={getLastNum} />
-          </Grid>
+        <Grid
+          sx={{ position: isMobile ? 'relative' : 'static' }}
+          container
+          spacing={3}
+        >
+          <SideBarDetailLeft id={getLastNum} targetComment={targetComment} />
           <Grid item md={7} xs={12}>
             <Stack
               sx={{ py: 3 }}
-              direction={'row'}
+              gap={isMobile ? 1 : 2}
+              direction={isMobile ? 'column' : 'row'}
               justifyContent={'space-between'}
-              alignItems={'center'}
+              alignItems={isMobile ? 'flex-start' : 'center'}
             >
               <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
                 <Link component={NavLink} to={'/'} underline="hover">
@@ -83,7 +87,7 @@ function Detail() {
                 </Link>
               </Breadcrumbs>
               <Typography variant={'subtitle1'}>
-                {detail.publishDate.toString()}
+                {formatDate(detail.publishDate)}
               </Typography>
             </Stack>
 
@@ -116,9 +120,10 @@ function Detail() {
             <SideBarDetailRight category={detail.category} />
           </Grid>
         </Grid>
-        <Comment newsId={getLastNum} />
+        <Box ref={targetComment}>
+          <Comment newsId={getLastNum} />
+        </Box>
       </Container>
-      {isMobile && <FloatButton />}
     </>
   );
 }
@@ -169,6 +174,3 @@ function NewParagraph({
 }
 
 export default Detail;
-// function saveNews(news: News) {
-//   throw new Error('Function not implemented.');
-// }

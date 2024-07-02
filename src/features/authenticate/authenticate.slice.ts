@@ -24,9 +24,9 @@ const authenticateSlice = createSlice({
       setUser(user);
     },
     exit: (state) => {
-        removeUser();
-        state.email = '';
-        state.password = '';
+      removeUser();
+      state.email = '';
+      state.password = '';
     },
   },
 });

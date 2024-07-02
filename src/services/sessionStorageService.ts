@@ -88,6 +88,7 @@ const removeNews = (id: string) => {
 export {
   addUser,
   getUser,
+  setUser,
   removeUser,
   getListUser,
   setListUser,

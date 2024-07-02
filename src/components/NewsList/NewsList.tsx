@@ -8,7 +8,7 @@ import NewsListTransition from './NewsListTransition';
 import { Chip, Container, Grid, Stack, TextField } from '@mui/material';
 import { Search } from '@mui/icons-material';
 
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -86,7 +86,7 @@ export function NewsList() {
     setListNewsSearch(listNews);
   };
 
-  const handleDateChange = (date: Date | null) => {
+  const handleDateChange = (date: Dayjs | null) => {
     if (date) {
       const dateSelected = date.toDate();
       const dateCurrent = new Date();

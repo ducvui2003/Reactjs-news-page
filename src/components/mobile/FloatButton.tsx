@@ -4,28 +4,16 @@ import {
   ClickAwayListener,
   SpeedDial,
   SpeedDialAction,
+  SpeedDialActionProps,
+  SpeedDialIcon,
 } from '@mui/material';
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
 import AddIcon from '@mui/icons-material/Add';
-function FloatButton() {
+function FloatButton({ actions }: { actions: SpeedDialActionProps[] }) {
   const [open, setOpen] = useState(false);
 
   const handleClose = () => setOpen(false);
   const handleToggle = () => setOpen((prevOpen) => !prevOpen);
 
-  const actions = [
-    {
-      icon: <ChatBubbleIcon />,
-      name: '  Bình luận',
-      onClick: () => {},
-    },
-    {
-      icon: <BookmarkIcon />,
-      name: 'Lưu bài viết',
-      onClick: () => {},
-    },
-  ];
   return (
     <ClickAwayListener onClickAway={handleClose}>
       <Box
@@ -35,21 +23,17 @@ function FloatButton() {
           right: '16px',
           transform: 'translateZ(0px)',
           flexGrow: 1,
+          zIndex: 1,
         }}
       >
         <SpeedDial
           ariaLabel="SpeedDial openIcon example"
-          icon={<AddIcon />}
+          icon={<SpeedDialIcon icon={<AddIcon />} />}
           onClick={handleToggle}
           open={open}
         >
-          {actions.map((action) => (
-            <SpeedDialAction
-              key={action.name}
-              icon={action.icon}
-              tooltipTitle={action.name}
-              onClick={action.onClick}
-            />
+          {actions.map((action, index) => (
+            <SpeedDialAction key={index} {...action} />
           ))}
         </SpeedDial>
       </Box>

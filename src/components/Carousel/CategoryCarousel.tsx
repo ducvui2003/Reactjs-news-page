@@ -41,7 +41,7 @@ function CategoryCarousel({
   }, [category]);
   return (
     <>
-      <Divider orientation="horizontal" />
+      <Divider orientation="horizontal" sx={{ mt: 5 }} />
       <Carousel title={category}>
         {news.slice(0, quantity).map((item: NewsLoading, index) => {
           return (
