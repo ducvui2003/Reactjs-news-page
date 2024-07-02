@@ -11,12 +11,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { save, unsave } from '../../features/thenews/news.slice';
 import { RootState } from '../../features/store';
 import { User } from '../../types/user.type';
-import LoginForm from '../Form/LoginForm';
 import { toast } from 'react-toastify';
 
 interface SideBarDetailLeftProps {
   id: string;
 }
+
 const SideBarDetailLeft = ({ id }: SideBarDetailLeftProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -122,5 +122,4 @@ const SideBarDetailLeft = ({ id }: SideBarDetailLeftProps) => {
     </Box>
   );
 };
-
 export default SideBarDetailLeft;

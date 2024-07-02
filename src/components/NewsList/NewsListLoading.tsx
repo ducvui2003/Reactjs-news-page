@@ -6,7 +6,7 @@ function NewsListLoading({ newsList = [] }: { newsList: News[] }) {
   if (loading) {
     newsList = Array.from({ length: 10 });
   }
-  return newsList.map();
+  return newsList.map((item) => item);
 }
 
 export default NewsListLoading;
