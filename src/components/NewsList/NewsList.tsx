@@ -33,7 +33,6 @@ export function NewsList() {
     date: new Date(),
     select: [false, false],
   });
-  // const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
 
   useEffect(() => {
     getNewsByCategory(toCategory(id || '')).then((res: News[]) => {
@@ -84,7 +83,7 @@ export function NewsList() {
       newSelect[index] = !newSelect[index];
       return { ...item, select: newSelect };
     });
-    setListNewsSearch(listNews); // Reset lại danh sách bài báo về đầy đủ
+    setListNewsSearch(listNews);
   };
 
   const handleDateChange = (date: Date | null) => {
@@ -107,16 +106,15 @@ export function NewsList() {
   ) => {
     const keyword = e.target.value;
     setSearch({ ...search, keyword });
-    // setIsSearchActive(keyword !== '');
     if (!keyword) {
-      setListNewsSearch(listNews); // Reset lại danh sách bài báo về đầy đủ nếu keyword trống
+      setListNewsSearch(listNews);
     }
   };
 
   return (
     <Container>
       <Grid container spacing={3}>
-        <Grid item xs={7}>
+        <Grid item xs={12} sm={7}>
           <Stack direction={'row'} justifyContent={'center'}>
             <TextField
               required
@@ -133,7 +131,7 @@ export function NewsList() {
             />
           </Stack>
         </Grid>
-        <Grid item xs={2} sx={{ my: 3 }}>
+        <Grid item xs={12} sm={2} sx={{ my: 3 }}>
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
             spacing={1}
@@ -156,8 +154,8 @@ export function NewsList() {
             />
           </Stack>
         </Grid>
-        <Grid item xs={3}>
-          <Stack direction="row" justifyContent="center">
+        <Grid item xs={12} sm={3}>
+          <Stack direction="row" justifyContent="center" sx={{ mb: 3 }}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DemoContainer components={['DatePicker']}>
                 <DatePicker
@@ -172,7 +170,4 @@ export function NewsList() {
       <NewsListTransition listNews={listNewsSearch} />
     </Container>
   );
-}
-function setIsSearchActive(arg0: boolean) {
-  throw new Error('Function not implemented.');
 }
