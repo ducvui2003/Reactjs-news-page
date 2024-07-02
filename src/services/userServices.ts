@@ -29,7 +29,9 @@ const register = (user: User): boolean => {
 const login = (user: UserLogin): User | undefined => {
   const userExist = get(user.email);
   if (userExist != undefined && userExist.password == user.password)
-    return userExist;
+   {
+     return userExist;
+   }
   return undefined;
 };
 

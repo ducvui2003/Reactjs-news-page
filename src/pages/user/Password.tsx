@@ -44,11 +44,13 @@ const schema = yup
       .required(REQUIRED),
   })
   .required();
+
 interface ChangePasswordFormInput {
   oldPassword: string;
   newPassword: string;
   confirmPassword: string;
 }
+
 function Password({
   password,
   onUpdate,
@@ -162,4 +164,5 @@ function Password({
     </>
   );
 }
+
 export default Password;
