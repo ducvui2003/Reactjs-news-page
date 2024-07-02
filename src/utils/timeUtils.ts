@@ -12,7 +12,6 @@ export const timeAgo = (date: Date): string => {
   if (interval > 1) {
     return interval + ' giờ trước';
   }
-
   interval = Math.floor(milliSeconds / MONTH);
   if (interval > 1) {
     return interval + ' tháng trước';
