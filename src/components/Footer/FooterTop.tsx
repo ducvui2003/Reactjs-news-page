@@ -29,7 +29,7 @@ function FooterTop() {
           <Divider
             flexItem
             orientation="vertical"
-            sx={{ width: '1px', marginRight: '10px' }}
+            sx={{ width: '1px', mr: '10px' }}
           />
           <FooterContact />
         </Stack>

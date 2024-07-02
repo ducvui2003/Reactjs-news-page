@@ -9,14 +9,14 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Theme,
+  useMediaQuery,
 } from '@mui/material';
 import React from 'react';
 import DarkMode from '../Nav/DarkMode/DarkMode';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
-import HeaderBeforeLogin from '../Header/HeaderBeforeLogin';
-import HeaderAfterLogin from './HeaderAfterLogin';
 import { styled } from '@mui/material/styles';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Typography from '@mui/material/Typography';
@@ -34,12 +34,20 @@ const DrawerStyled = styled(Drawer)`
 
 const NavBar = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
   const authReducer = useSelector((state: RootState) => state.authenticate);
+  const isMobile = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down('sm'),
+  );
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleLogOut = () => {
     dispatch(exit());
     toast.success('Đăng xuất thành công');
   };
+
+  const handleCloseNavBar = () => {
+    if (isMobile) onClose();
+  };
+
   return (
     <DrawerStyled open={open} onClose={onClose} sx={{ width: '100%' }}>
       <List>
@@ -63,6 +71,7 @@ const NavBar = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
               sx={{ gap: '10px' }}
               component={NavLink}
               to={'/users/info'}
+              onClick={handleCloseNavBar}
             >
               <PersonIcon fontSize={'medium'} />{' '}
               <Typography variant={'h6'}>Thông tin cá nhân</Typography>
@@ -71,6 +80,7 @@ const NavBar = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
               sx={{ gap: '10px' }}
               component={NavLink}
               to={'/users/save-news'}
+              onClick={handleCloseNavBar}
             >
               <FavoriteIcon fontSize={'medium'} />
               <Typography variant="h6">Bài báo yêu thích</Typography>
@@ -79,6 +89,7 @@ const NavBar = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
               sx={{ gap: '10px' }}
               component={NavLink}
               to={'/users/comment'}
+              onClick={handleCloseNavBar}
             >
               <FeedbackIcon fontSize={'medium'} />
               <Typography variant="h6">Bình luận</Typography>
