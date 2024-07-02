@@ -34,6 +34,8 @@ export function NewsList() {
     date: new Date(),
     select: [false, false],
   });
+  // const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
+
   useEffect(() => {
     getNewsByCategory(toCategory(id || '')).then((res: News[]) => {
       setListNews(res);
@@ -42,7 +44,11 @@ export function NewsList() {
   }, [id]);
 
   useEffect(() => {
-    handleSearch();
+    if (search.keyword) {
+      handleSearch();
+    } else {
+      setListNewsSearch(listNews);
+    }
   }, [search]);
 
   const handleSearch = () => {
@@ -56,13 +62,17 @@ export function NewsList() {
       })
       .filter((item: News) => {
         if (search.select[0]) {
-          return item.title?.includes(search.keyword);
+          return item.title
+            ?.toLowerCase()
+            .includes(search.keyword.toLowerCase());
         }
         return true;
       })
       .filter((item: News) => {
         if (search.select[1]) {
-          return item.description?.includes(search.keyword);
+          return item.description
+            ?.toLowerCase()
+            .includes(search.keyword.toLowerCase());
         }
         return true;
       });
@@ -75,33 +85,8 @@ export function NewsList() {
       newSelect[index] = !newSelect[index];
       return { ...item, select: newSelect };
     });
+    setListNewsSearch(listNews); // Reset lại danh sách bài báo về đầy đủ
   };
-
-  function parseDateString(inputDateString: string): Date | null {
-    const parts = inputDateString.split('/');
-    if (parts.length !== 3) {
-      return null; // Nếu định dạng không đúng thì trả về null
-    }
-
-    const day = parseInt(parts[0], 10); // Lấy ngày
-    const month = parseInt(parts[1], 10); // Lấy tháng
-    const year = parseInt(parts[2], 10); // Lấy năm
-
-    // Kiểm tra tính hợp lệ của ngày tháng năm
-    if (isNaN(day) || isNaN(month) || isNaN(year)) {
-      return null;
-    }
-
-    // Tạo đối tượng Date từ ngày tháng năm
-    const dateObject = new Date(year, month - 1, day); // Tháng trong JavaScript bắt đầu từ 0
-
-    // Kiểm tra đối tượng Date có hợp lệ hay không
-    if (isNaN(dateObject.getTime())) {
-      return null;
-    }
-
-    return dateObject;
-  }
 
   const handleDateChange = (date: Date | null) => {
     if (date) {
@@ -118,6 +103,17 @@ export function NewsList() {
     }
   };
 
+  const handleSearchKeywordChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const keyword = e.target.value;
+    setSearch({ ...search, keyword });
+    setIsSearchActive(keyword !== '');
+    if (!keyword) {
+      setListNewsSearch(listNews); // Reset lại danh sách bài báo về đầy đủ nếu keyword trống
+    }
+  };
+
   return (
     <Container>
       <Grid container spacing={3}>
@@ -130,9 +126,10 @@ export function NewsList() {
               defaultValue={search.keyword}
               variant="filled"
               sx={{ width: '100%', my: 1 }}
-              onChange={(e) =>
-                setSearch({ ...search, keyword: e.target.value })
-              }
+              // onChange={(e) =>
+              //   setSearch({ ...search, keyword: e.target.value })
+              // }
+              onChange={handleSearchKeywordChange}
             />
           </Stack>
         </Grid>

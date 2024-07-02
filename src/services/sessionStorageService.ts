@@ -36,8 +36,8 @@ const setListUser = (listUser: User[]) => {
 const getListUser = (): User[] => {
   const jsonUser = sessionStorage.getItem(SessionStorage.LIST_USER);
   if (jsonUser == null) {
-    setListUser(userData);
-    return userData;
+        setListUser(userData);
+        return userData;
   }
   try {
     const listUser: User[] = JSON.parse(jsonUser);
