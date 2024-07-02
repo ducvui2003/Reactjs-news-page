@@ -19,18 +19,21 @@ import { Comment } from '../../types/comment.type';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
 import { useComments } from '../../services/commentServices';
+import { toast } from 'react-toastify';
+
 
 interface CommentItemProps {
     comment: Comment;
     onDelete: (commentId: string) => void;
+    onUpdate: (comment: Comment) => void;
 }
 
-const CommentItem: React.FC<CommentItemProps> = ({ comment, onDelete }) => {
+const CommentItem: React.FC<CommentItemProps> = ({ comment, onDelete , onUpdate}) => {
     const [isEditing, setIsEditing] = useState(false);
     const [editedComment, setEditedComment] = useState(comment.content);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [isLoading, setIsLoading] = useState(false);
-    const userId = useSelector((state: RootState) => state.authenticate.id);
+    const user = useSelector((state: RootState) => state.authenticate);
     const { editComment, removeComment } = useComments();
 
     const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -51,9 +54,12 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment, onDelete }) => {
         const updatedComment = { ...comment, content: editedComment };
         try {
             editComment(updatedComment);
+            toast.success('Chỉnh sửa bình luận thành công');
+            onUpdate(updatedComment); // Callback để cập nhật state ở component cha
             setIsEditing(false);
         } catch (error) {
             console.error('Failed to edit comment:', error);
+            toast.error('Chỉnh sửa bình luận thất bại');
         } finally {
             setIsLoading(false);
         }
@@ -63,9 +69,11 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment, onDelete }) => {
         setIsLoading(true);
         try {
             await removeComment(comment.id);
+            toast.success('Xóa bình luận thành công');
             onDelete(comment.id); // Callback để cập nhật state ở component cha
         } catch (error) {
             console.error('Failed to delete comment:', error);
+            toast.error('Xóa bình luận thất bại');
         } finally {
             setIsLoading(false);
         }
@@ -81,12 +89,12 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment, onDelete }) => {
     return (
         <Paper elevation={2} sx={{ padding: 2, marginBottom: 2, position: 'relative' }}>
             <Box display="flex" alignItems="flex-start">
-                <Avatar alt={comment.user.email} src={undefined} sx={{ marginRight: 2 }}>
+                <Avatar alt={user.email} src={undefined} sx={{ marginRight: 2 }}>
                     <AccountCircleIcon />
                 </Avatar>
                 <Box flexGrow={1}>
                     <Typography variant="subtitle2" color="primary">
-                        {comment.user.email}
+                        {user.email}
                     </Typography>
                     {isEditing ? (
                         <TextField
@@ -107,7 +115,7 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment, onDelete }) => {
                         </Typography>
                     </Box>
                 </Box>
-                {userId === comment.user.id && (
+                {user.id === comment.userId && (
                     <Box sx={{ position: 'absolute', top: 8, right: 8 }}>
                         <IconButton
                             aria-label="more"
