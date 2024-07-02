@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import details from '../data/newsDetail';
-import CommentSection from '../components/Comment/CommentSection';
+import Comment from '../components/Comment/Comment';
 import {
   Box,
   Breadcrumbs,
@@ -13,7 +13,7 @@ import {
 import SideBarDetailLeft from '../components/SideBar/SideBarDetailLeft';
 import SideBarDetailRight from '../components/SideBar/SideBarDetailRight';
 import Typography from '@mui/material/Typography';
-import { Image, Paragraph } from '../types/news.type';
+import { Image, News, Paragraph } from '../types/news.type';
 import { SlideshowLightbox } from 'lightbox.js-react';
 import 'lightbox.js-react/dist/index.css';
 import Stack from '@mui/material/Stack';
@@ -109,7 +109,7 @@ function Detail() {
           <SideBarDetailRight category={detail.category} />
         </Grid>
       </Grid>
-      <CommentSection />
+      <Comment newsId={getLastNum} />
     </Container>
   );
 }

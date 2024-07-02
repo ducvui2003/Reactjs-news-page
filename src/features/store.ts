@@ -5,7 +5,7 @@ import newsReducer from './thenews/news.slice';
 export const store = configureStore({
   reducer: {
     authenticate: authenticateReducer,
-    news: newsReducer,
+    news: newsReducer
   },
 });
 

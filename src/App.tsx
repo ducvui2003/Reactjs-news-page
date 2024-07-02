@@ -16,25 +16,24 @@ import Comment from './pages/user/Comment';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Main />}>
-        <Route index element={<Home />} />
-        <Route path="/category/:id" element={<NewsList />} />
-        <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/users/" element={<MainUser />}>
-          <Route path="info" element={<Info />} />
-          <Route path="save-news" element={<SaveNews />} />
-          <Route path="comment" element={<Comment />} />
+      <Routes>
+          <Route path="/" element={<Main />}>
+              <Route index element={<Home />} />
+              <Route path="/category/:id" element={<NewsList />} />
+              <Route path="/detail/:id" element={<Detail />} />
+              <Route path="/users/" element={<MainUser />}>
+                  <Route path="info" element={<Info />} />
+                  <Route path="save-news" element={<SaveNews />} />
+                  <Route path="comment" element={<Comment />} />
+                  <Route path="*" element={<Page404 />} />
+              </Route>
+          </Route>
+          <Route path="/mobile/">
+              <Route path="login" element={<Login />} />
+          </Route>
+          <Route path="/404" element={<Page404 />} />
           <Route path="*" element={<Page404 />} />
-        </Route>
-      </Route>
-      <Route path="/mobile/">
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-      </Route>
-      <Route path="/404" element={<Page404 />} />
-      <Route path="*" element={<Page404 />} />
-    </Routes>
+      </Routes>
   );
 }
 
