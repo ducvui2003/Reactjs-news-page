@@ -1,5 +1,4 @@
 import { News } from '../../../types/news.type';
-import '../../../assets/sass/utils.scss';
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {

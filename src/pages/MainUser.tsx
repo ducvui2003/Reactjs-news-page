@@ -49,7 +49,7 @@ const MainUser = () => {
         <Grid item xs={12} md={3}>
           <Stack
             direction={isMobile ? 'row' : 'column'}
-            sx={{ overflowX: 'scroll' }}
+            sx={{ overflowX: isMobile ? 'scroll' : 'auto' }}
           >
             <NavLink to={`/users/info`} style={{ textDecoration: 'none' }}>
               {({ isActive }) => (

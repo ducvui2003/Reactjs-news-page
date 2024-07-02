@@ -16,7 +16,7 @@ function Info() {
     (root: RootState) => root.authenticate,
   );
   const initialUserInfo = get(authenticateReducer.email);
-  if (!initialUserInfo) return;
+  if (!initialUserInfo) return null;
   const [userInfo, setUserInfo] = useState<User>(initialUserInfo);
   const setUserInfoProperty = <K extends keyof User>(
     key: K,
@@ -32,42 +32,46 @@ function Info() {
   const theme = useTheme();
   return (
     <Box>
-      <Typography variant={'h3'}>Thông tin tài khoản</Typography>
-      <Section>
-        <Stack
-          direction={'row'}
-          justifyContent={'space-between'}
-          alignItems={'center'}
-        >
-          <Box>
-            <Typography gutterBottom={true}>Email</Typography>
-            <Typography color={theme.palette.grey[500]}>
-              {userInfo?.email || 'Chưa thiết lập'}
-            </Typography>
-          </Box>
-        </Stack>
-      </Section>
-      <Section>
-        <Password
-          password={userInfo?.password}
-          onUpdate={setUserInfoProperty}
-        />
-      </Section>
-      <Section>
-        <FullName
-          fullName={userInfo?.fullName}
-          onUpdate={setUserInfoProperty}
-        />
-      </Section>
-      <Section>
-        <BirthDay
-          birthDay={userInfo?.birthDay}
-          onUpdate={setUserInfoProperty}
-        />
-      </Section>
-      <Section>
-        <Phone phone={userInfo?.phone} onUpdate={setUserInfoProperty} />
-      </Section>
+      <Typography component={'h3'} variant={'h4'}>
+        Thông tin tài khoản
+      </Typography>
+      <Stack divider={<Divider orientation={'horizontal'} />}>
+        <Section>
+          <Stack
+            direction={'row'}
+            justifyContent={'space-between'}
+            alignItems={'center'}
+          >
+            <Box>
+              <Typography gutterBottom={true}>Email</Typography>
+              <Typography color={theme.palette.grey[500]}>
+                {userInfo?.email || 'Chưa thiết lập'}
+              </Typography>
+            </Box>
+          </Stack>
+        </Section>
+        <Section>
+          <Password
+            password={userInfo?.password}
+            onUpdate={setUserInfoProperty}
+          />
+        </Section>
+        <Section>
+          <FullName
+            fullName={userInfo?.fullName}
+            onUpdate={setUserInfoProperty}
+          />
+        </Section>
+        <Section>
+          <BirthDay
+            birthDay={userInfo?.birthDay}
+            onUpdate={setUserInfoProperty}
+          />
+        </Section>
+        <Section>
+          <Phone phone={userInfo?.phone} onUpdate={setUserInfoProperty} />
+        </Section>
+      </Stack>
     </Box>
   );
 }
@@ -76,7 +80,6 @@ function Section({ children }: { children: React.ReactNode }) {
   return (
     <Stack direction={'column'} paddingY={'20px'}>
       {children}
-      <Divider orientation={'horizontal'} sx={{ mt: 2 }} />
     </Stack>
   );
 }

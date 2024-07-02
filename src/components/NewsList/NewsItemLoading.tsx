@@ -1,12 +1,10 @@
 import { Card, Col, Row } from 'react-bootstrap';
 import { News } from '../../types/news.type';
-import '../../assets/sass/utils.scss';
 import Typography from '@mui/joy/Typography';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { timeAgo } from '../../utils/timeUtils';
 import { Skeleton } from '@mui/material';
-import NavLinkMUILink from '../Link/NavLinkMUILink';
 
 export default NewsItemLoading;
 type NewsItemProp = {
