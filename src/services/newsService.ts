@@ -51,4 +51,8 @@ const getNewsDetail = (news: News): NewsDetail | undefined => {
   return newsDetail.find((item: NewsDetail) => item.id == id);
 };
 
-export { getNewsByCategory, getNewsDetail, getNewsById };
+const getNewsListByIds = (ids: string[]): NewsDetail[] => {
+    return newsDetail.filter(news => ids.includes(news.id));
+};
+
+export { getNewsByCategory, getNewsDetail, getNewsById, getNewsListByIds };
