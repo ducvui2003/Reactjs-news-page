@@ -8,13 +8,12 @@ import NewsListTransition from './NewsListTransition';
 import { Chip, Container, Grid, Stack, TextField } from '@mui/material';
 import { Search } from '@mui/icons-material';
 
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { toast } from 'react-toastify';
-import { log } from 'console';
 
 type Search = {
   keyword: string;
@@ -108,7 +107,7 @@ export function NewsList() {
   ) => {
     const keyword = e.target.value;
     setSearch({ ...search, keyword });
-    setIsSearchActive(keyword !== '');
+    // setIsSearchActive(keyword !== '');
     if (!keyword) {
       setListNewsSearch(listNews); // Reset lại danh sách bài báo về đầy đủ nếu keyword trống
     }
@@ -125,27 +124,35 @@ export function NewsList() {
               label="Tìm kiếm bài báo"
               defaultValue={search.keyword}
               variant="filled"
-              sx={{ width: '100%', my: 1 }}
-              // onChange={(e) =>
-              //   setSearch({ ...search, keyword: e.target.value })
-              // }
+              sx={{
+                width: '100%',
+                my: 1,
+                fontSize: { xs: '0.5rem', sm: '1rem' },
+              }}
               onChange={handleSearchKeywordChange}
             />
           </Stack>
         </Grid>
         <Grid item xs={2} sx={{ my: 3 }}>
-          <Stack direction="row" spacing={1} justifyContent="center">
+          <Stack
+            direction={{ xs: 'column', sm: 'row' }}
+            spacing={1}
+            justifyContent="center"
+            sx={{ my: -2 }}
+          >
             <Chip
               label="Tiêu đề"
               color="primary"
               variant={search.select[0] ? 'filled' : 'outlined'}
               onClick={() => handleChipClick(0)}
+              sx={{ fontSize: { xs: '0.8rem', sm: '1rem' }, py: 1 }}
             />
             <Chip
               label="Mô tả"
               color="primary"
               variant={search.select[1] ? 'filled' : 'outlined'}
               onClick={() => handleChipClick(1)}
+              sx={{ fontSize: { xs: '0.8rem', sm: '1rem' }, py: 1 }}
             />
           </Stack>
         </Grid>
@@ -165,4 +172,7 @@ export function NewsList() {
       <NewsListTransition listNews={listNewsSearch} />
     </Container>
   );
+}
+function setIsSearchActive(arg0: boolean) {
+  throw new Error('Function not implemented.');
 }
