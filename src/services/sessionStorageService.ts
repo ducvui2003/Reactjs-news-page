@@ -1,5 +1,6 @@
 // Thêm user
 import { User } from '../types/user.type';
+import { userData } from '../data/userData';
 
 export enum SessionStorage {
   LIST_USER = 'list_user',
@@ -34,7 +35,10 @@ const setListUser = (listUser: User[]) => {
 
 const getListUser = (): User[] => {
   const jsonUser = sessionStorage.getItem(SessionStorage.LIST_USER);
-  if (jsonUser == null) return [];
+  if (jsonUser == null) {
+        setListUser(userData);
+        return userData;
+  }
   try {
     const listUser: User[] = JSON.parse(jsonUser);
     return listUser;
@@ -43,4 +47,38 @@ const getListUser = (): User[] => {
   }
 };
 
-export { addUser, getUser, removeUser, getListUser, setListUser };
+// SAVE NEWS
+const NEWS_KEY = 'savedNews';
+
+const getNews = (): string[] => {
+  const savedNews = sessionStorage.getItem(NEWS_KEY);
+  return savedNews ? JSON.parse(savedNews) : [];
+};
+
+const saveNews = (id: string) => {
+  const savedNews = getNews();
+  if (!savedNews.includes(id)) {
+    savedNews.push(id);
+    sessionStorage.setItem(NEWS_KEY, JSON.stringify(savedNews));
+  }
+};
+
+const removeNews = (id: string) => {
+  const savedNews = getNews();
+  const index = savedNews.indexOf(id);
+  if (index !== -1) {
+    savedNews.splice(index, 1);
+    sessionStorage.setItem(NEWS_KEY, JSON.stringify(savedNews));
+  }
+};
+
+export {
+  addUser,
+  getUser,
+  removeUser,
+  getListUser,
+  setListUser,
+  getNews,
+  saveNews,
+  removeNews,
+};
