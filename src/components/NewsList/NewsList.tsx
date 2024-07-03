@@ -14,6 +14,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { toast } from 'react-toastify';
+import { log } from 'console';
 
 type Search = {
   keyword: string;
@@ -33,7 +34,6 @@ export function NewsList() {
     date: new Date(),
     select: [false, false],
   });
-
   useEffect(() => {
     getNewsByCategory(toCategory(id || '')).then((res: News[]) => {
       setListNews(res);
@@ -122,8 +122,8 @@ export function NewsList() {
               label="Tìm kiếm bài báo"
               defaultValue={search.keyword}
               variant="filled"
+              fullWidth
               sx={{
-                width: '100%',
                 my: 1,
                 fontSize: { xs: '0.5rem', sm: '1rem' },
               }}
