@@ -21,7 +21,7 @@ function CommentForm({ newsId }: { newsId: string }) {
         if (user.email && newComment.trim()) {
             const commentData: Comment = {
                 id: uuidv4(), // Generate a unique id for each comment
-                user: user,
+                userId: user.id,
                 newsId: newsId,
                 content: newComment,
                 createAt: new Date(),
