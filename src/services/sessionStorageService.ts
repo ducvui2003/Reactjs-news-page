@@ -3,32 +3,44 @@ import { User } from '../types/user.type';
 import { userData } from '../data/userData';
 
 export enum SessionStorage {
+  USER_CURRENT = 'user',
   LIST_USER = 'list_user',
   LIST_COMMENT = 'list_comment',
 }
 
 const getUser = (): User | null => {
   const listUser: User[] = getListUser();
+  const user = getUserCurrent();
+  if (user == null) return null;
 
-  const user: User | undefined = listUser.find(
-    (user) => user.email == user.email,
+  const userExist: User | undefined = listUser.find(
+    (item) => item.email == user.email,
   );
-  if (user == undefined) return null;
+  if (userExist == undefined) return null;
   return user;
 };
+
+const getUserCurrent = (): User | null => {
+  const user = sessionStorage.getItem(SessionStorage.USER_CURRENT);
+  if (user == null) return null;
+  return JSON.parse(user);
+};
+
+const setUser = (user: User): void => {
+  sessionStorage.setItem(SessionStorage.USER_CURRENT, JSON.stringify(user));
+};
+
+const removeUser = (): void => {
+  sessionStorage.removeItem(SessionStorage.USER_CURRENT);
+};
+
+// List user
+// Thêm user vào user list (sử dụng cho đăng ký)
 const addUser = (user: User): void => {
   const listUser: User[] = getListUser();
   listUser.push(user);
   setListUser(listUser);
 };
-
-const removeUser = (email: string): void => {
-  const listUser: User[] = getListUser();
-  const index = listUser.findIndex((user) => user.email == email);
-  index != -1 && listUser.splice(index, 1);
-  setListUser(listUser);
-};
-// List user
 const setListUser = (listUser: User[]) => {
   sessionStorage.setItem(SessionStorage.LIST_USER, JSON.stringify(listUser));
 };
@@ -36,14 +48,15 @@ const setListUser = (listUser: User[]) => {
 const getListUser = (): User[] => {
   const jsonUser = sessionStorage.getItem(SessionStorage.LIST_USER);
   if (jsonUser == null) {
-        setListUser(userData);
-        return userData;
+    setListUser(userData);
+    return userData;
   }
   try {
     const listUser: User[] = JSON.parse(jsonUser);
     return listUser;
   } catch (error) {
-    return [];
+    setListUser(userData);
+    return userData;
   }
 };
 
@@ -75,6 +88,7 @@ const removeNews = (id: string) => {
 export {
   addUser,
   getUser,
+  setUser,
   removeUser,
   getListUser,
   setListUser,

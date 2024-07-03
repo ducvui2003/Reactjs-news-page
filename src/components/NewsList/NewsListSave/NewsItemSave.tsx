@@ -1,6 +1,5 @@
 import { News } from '../../../types/news.type';
-import '../../../assets/sass/utils.scss';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import {
   Button,
@@ -12,10 +11,9 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { unsave } from '../../../features/thenews/news.slice';
 import { DeleteRounded } from '@mui/icons-material';
-import { RootState } from '../../../features/store';
 import { toast } from 'react-toastify';
 
 export default function NewsItemSave({

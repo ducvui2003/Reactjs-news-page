@@ -5,9 +5,6 @@ import {
 } from '../../services/categoryService';
 import { NavLink } from 'react-router-dom';
 const MenuExtends = ({ handleClose }: { handleClose: () => void }) => {
-  const isMobile = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down('sm'),
-  );
   return (
     <Grid container sx={{ pt: 3 }}>
       {getMatrixCategory(8).map((categoryArray, index) => {

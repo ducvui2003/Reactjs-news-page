@@ -1,19 +1,14 @@
 import { Card, Col, Row } from 'react-bootstrap';
 import { News } from '../../types/news.type';
-import '../../assets/sass/utils.scss';
 import Typography from '@mui/joy/Typography';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { timeAgo } from '../../utils/timeUtils';
 import { Skeleton, useMediaQuery } from '@mui/material';
 import { Link } from 'react-router-dom';
-import newsDetail from '../../data/newsDetail';
 import theme from '../../config/theme';
 
 export default NewsItem;
-interface NewsItemProps extends News {
-  saveNews: (news: News) => void; // Prop để lưu bài báo
-}
 
 function NewsItem({ id, title, thumbnail, description, publishDate }: News) {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));

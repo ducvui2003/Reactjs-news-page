@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Input,
   Link,
   Stack,
   TextField,
@@ -13,7 +12,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { User } from '../../types/user.type';
-
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 const PASSWORD_CONFIRM_TEXT =
   'Mật khẩu nhập lại không trùng với mật khẩu đã nhập ';
 const PASSWORD_MIN_LENGTH = {
@@ -44,11 +43,13 @@ const schema = yup
       .required(REQUIRED),
   })
   .required();
+
 interface ChangePasswordFormInput {
   oldPassword: string;
   newPassword: string;
   confirmPassword: string;
 }
+
 function Password({
   password,
   onUpdate,
@@ -88,21 +89,20 @@ function Password({
         justifyContent={'space-between'}
         alignItems={'center'}
       >
-        <Box>
+        <Box display={'inline-block'}>
           <Typography gutterBottom={true}>Mật khẩu</Typography>
-          <Input
-            type={'password'}
-            value={'123123213213213'}
-            disableUnderline={true}
-            disabled={true}
-          />
+          <Typography>
+            {Array.from({ length: 9 }).map(() => (
+              <FiberManualRecordIcon />
+            ))}
+          </Typography>
         </Box>
         <Link
           underline="hover"
           variant={'h6'}
           onClick={() => setOpen((open) => !open)}
         >
-          {open ? 'Đóng' : ' Chỉnh sửa'}
+          {open ? 'Đóng' : 'Chỉnh sửa'}
         </Link>
       </Stack>
       {open && (
@@ -119,6 +119,7 @@ function Password({
               sx={{ mb: 2 }}
               label="Nhập mật khẩu hiện tại "
               variant="outlined"
+              type="password"
               fullWidth={true}
               helperText={errors.oldPassword?.message}
               {...register('oldPassword')}
@@ -128,6 +129,7 @@ function Password({
               sx={{ mb: 2 }}
               label="Nhập mật khẩu mới  "
               variant="outlined"
+              type="password"
               fullWidth={true}
               helperText={errors.newPassword?.message}
               {...register('newPassword')}
@@ -136,6 +138,7 @@ function Password({
               error={!!errors.confirmPassword}
               label="Nhập lại mật khẩu mới  "
               variant="outlined"
+              type="password"
               fullWidth={true}
               helperText={errors.confirmPassword?.message}
               {...register('confirmPassword')}
@@ -162,4 +165,5 @@ function Password({
     </>
   );
 }
+
 export default Password;

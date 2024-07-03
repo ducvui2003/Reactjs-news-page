@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import { store } from './features/store';
 import { BrowserRouter } from 'react-router-dom';
 import 'nprogress/nprogress.css';
-import './assets/sass/custom-nprogress.scss';
 // Cấu hình react-toastify
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';

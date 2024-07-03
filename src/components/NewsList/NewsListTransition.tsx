@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { News } from '../../types/news.type';
-import { Container } from 'react-bootstrap';
 import NewsItem from './NewsItem';
 import Pagination from '@mui/material/Pagination';
 import './style.scss';

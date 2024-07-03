@@ -13,11 +13,7 @@ function CarouselHeader({ title }: { title: Category }) {
       <Typography level="h2" component={'h2'} className={'my-2 text-uppercase'}>
         {toCategoryName(title) || ''}
       </Typography>
-      <motion.div
-        whileHover={{ scale: 1.2 }}
-        onHoverStart={(e) => {}}
-        onHoverEnd={(e) => {}}
-      >
+      <motion.div whileHover={{ scale: 1.2 }}>
         <Link to={`/category/${title}`} underline={'hover'} component={NavLink}>
           Xem thêm
         </Link>

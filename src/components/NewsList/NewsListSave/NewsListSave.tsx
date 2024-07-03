@@ -1,7 +1,6 @@
 import {
   Container,
   Grid,
-  Icon,
   List,
   ListItem,
   ListItemButton,
