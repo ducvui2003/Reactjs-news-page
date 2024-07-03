@@ -1,14 +1,9 @@
 import {
-  Avatar,
   Button,
-  Divider,
   Drawer,
-  Link,
   List,
   ListItem,
   ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Theme,
   useMediaQuery,
 } from '@mui/material';

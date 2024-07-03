@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { News } from '../../types/news.type';
 
 function NewsListLoading({ newsList = [] }: { newsList: News[] }) {

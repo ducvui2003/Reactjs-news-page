@@ -14,7 +14,6 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { toast } from 'react-toastify';
-import { log } from 'console';
 
 type Search = {
   keyword: string;

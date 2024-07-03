@@ -8,7 +8,7 @@ import { toCategory } from '../../services/categoryService';
 import { useMediaQuery } from '@mui/material';
 import { Theme } from '@mui/system';
 
-// @ts-ignore
+// @ts-expect-error
 import { SwiperOptions } from 'swiper/types';
 
 function Carousel({

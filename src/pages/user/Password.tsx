@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Input,
   Link,
   Stack,
   TextField,
@@ -120,6 +119,7 @@ function Password({
               sx={{ mb: 2 }}
               label="Nhập mật khẩu hiện tại "
               variant="outlined"
+              type="password"
               fullWidth={true}
               helperText={errors.oldPassword?.message}
               {...register('oldPassword')}
@@ -129,6 +129,7 @@ function Password({
               sx={{ mb: 2 }}
               label="Nhập mật khẩu mới  "
               variant="outlined"
+              type="password"
               fullWidth={true}
               helperText={errors.newPassword?.message}
               {...register('newPassword')}
@@ -137,6 +138,7 @@ function Password({
               error={!!errors.confirmPassword}
               label="Nhập lại mật khẩu mới  "
               variant="outlined"
+              type="password"
               fullWidth={true}
               helperText={errors.confirmPassword?.message}
               {...register('confirmPassword')}
