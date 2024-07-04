@@ -7,7 +7,6 @@ import { motion } from 'framer-motion';
 import { timeAgo } from '../../utils/timeUtils';
 import { Skeleton, useMediaQuery } from '@mui/material';
 import { Link } from 'react-router-dom';
-import newsDetail from '../../data/newsDetail';
 import theme from '../../config/theme';
 
 export default NewsItem;

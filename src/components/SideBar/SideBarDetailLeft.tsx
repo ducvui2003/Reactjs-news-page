@@ -43,8 +43,10 @@ const SideBarDetailLeft = ({ id }: SideBarDetailLeftProps) => {
     const getLastNum = 'A' + id.substring(id.length - 1, id.length);
     if (isSaved) {
       dispatch(unsave(getLastNum));
+      toast.error('Đã hủy lưu bài báo');
     } else {
       dispatch(save(getLastNum));
+      toast.success('Đã lưu bài báo');
     }
     setIsSaved(!isSaved);
   };
