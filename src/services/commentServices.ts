@@ -18,7 +18,7 @@ const getListComment = (): Comment[] => {
 };
 
 const getCommentListByUserId = (userId: string): Comment[] => {
-    return getListComment().filter((comment: Comment) => comment.user.id === userId);
+    return getListComment().filter((comment: Comment) => comment.userId === userId);
 }
 
 interface CommentContextProps {

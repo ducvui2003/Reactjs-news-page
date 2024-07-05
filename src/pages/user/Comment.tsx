@@ -24,6 +24,12 @@ function Comment() {
       prevComments.filter((comment) => comment.id !== commentId),
     );
   };
+  const handleUpdateComment = (comment: Comment) => {
+    setUserComments((prevComments) =>
+      prevComments.map((item) => (item.id === comment.id ? comment : item)),
+    );
+  };
+
 
   return (
     <div>
@@ -34,7 +40,11 @@ function Comment() {
           {userComments.map((comment) => (
             <CardContent key={comment.id}>
               <CommentProvider>
-                <CommentItem comment={comment} onDelete={handleDeleteComment} />
+                <CommentItem
+                  comment={comment}
+                  onDelete={handleDeleteComment}
+                  onUpdate={handleUpdateComment}
+                />
               </CommentProvider>
             </CardContent>
           ))}

@@ -9,7 +9,6 @@ import Page404 from './pages/Error/Page404';
 import Login from './components/mobile/Login';
 import SaveNews from './pages/user/SaveNews';
 import React from 'react';
-import Register from './components/mobile/Register';
 import MainUser from './pages/MainUser';
 import Info from './pages/user/Info';
 import Comment from './pages/user/Comment';

@@ -86,7 +86,7 @@ export function NewsList() {
     setListNewsSearch(listNews);
   };
 
-  const handleDateChange = (date: Date | null) => {
+  const handleDateChange = (date: Dayjs | null) => {
     if (date) {
       const dateSelected = date.toDate();
       const dateCurrent = new Date();
@@ -122,6 +122,7 @@ export function NewsList() {
               label="Tìm kiếm bài báo"
               defaultValue={search.keyword}
               variant="filled"
+
               sx={{
                 width: '100%',
                 my: 1,
