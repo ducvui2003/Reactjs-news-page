@@ -1,6 +1,6 @@
 import React from 'react';
-import { User } from '../../types/user.type';
-import { useForm } from 'react-hook-form';
+import { User, UserRegister } from '../../types/user.type';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { TextField, Theme, useMediaQuery } from '@mui/material';
@@ -23,6 +23,12 @@ const PASSWORD_1_SPECIAL =
   'Mật khẩu cần có tối thiểu 1 ký tự đặc biệt như !, @, ...';
 const PASSWORD_1_DIGIT = 'Mật khẩu cần có tối thiểu 1 ký tự số';
 const REQUIRED = 'Vui lòng nhập không bỏ trống trường này ';
+
+interface FormInputs {
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
 
 // Handle validator form
 const schema = yup
@@ -54,13 +60,16 @@ function RegisterForm() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({
+  } = useForm<FormInputs>({
     mode: 'onSubmit',
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: User) => {
-    const registerSuccess = registerServices(data);
+  const onSubmit: SubmitHandler<FormInputs> = (data: FormInputs) => {
+    const user: UserRegister = {
+      ...data,
+    };
+    const registerSuccess = registerServices(user);
     if (registerSuccess) {
       toast.success('Đăng ký thành công, vui lòng tiến hành đăng nhập');
       reset();
