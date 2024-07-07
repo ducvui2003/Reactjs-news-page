@@ -4,10 +4,10 @@ import Stack from '@mui/material/Stack';
 
 function FooterBottom() {
   return (
-    <Grid container sx={{ marginBlock: '10px' }}>
+    <Grid container sx={{ my: '10px' }}>
       <Grid item xs={12} md>
         <Stack spacing={2}>
-          <Typography variant={'subtitle1'} className="fw-bold">
+          <Typography variant={'subtitle1'} fontWeight={700}>
             Báo tiếng Việt nhiều người xem nhất
           </Typography>
           <Typography variant={'subtitle1'}>
@@ -19,9 +19,8 @@ function FooterBottom() {
         </Stack>
       </Grid>
       <Grid item xs={12} md>
-        <Stack spacing={2}>
+        <Stack spacing={2} mb={2}>
           <Typography variant={'subtitle1'}>
-            {' '}
             Tổng biên tập: Phạm Hiếu
           </Typography>
           <Typography variant={'subtitle1'}>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Category } from '../../constraints/category';
 import CategoryCarousel from './CategoryCarousel';
+import { Box } from '@mui/material';
 
 const categoryFirstLoading: Category[] = [
   Category.QUOC_TE,
@@ -11,11 +12,11 @@ const categoryFirstLoading: Category[] = [
 
 function CarouselBody() {
   return (
-    <div>
+    <Box>
       {categoryFirstLoading.map((category: Category, index) => (
         <CategoryCarousel key={index} category={category} />
       ))}
-    </div>
+    </Box>
   );
 }
 

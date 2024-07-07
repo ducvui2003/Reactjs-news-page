@@ -39,15 +39,12 @@ function Intro() {
         </Grid>
       </Grid>
       <Grid item xs={12} md={4}>
-        {news[4] && (
-          <CardVertical
-            key={news[4].id}
-            {...news[4]}
-            news={news[4]}
-            isLoading={loading}
-            cssImage={{ flex: 1 }}
-          />
-        )}
+        <CardVertical
+          {...news[4]}
+          news={news[4]}
+          isLoading={loading}
+          cssImage={{ flex: 1 }}
+        />
       </Grid>
     </Grid>
   );

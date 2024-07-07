@@ -5,7 +5,6 @@ import { RootState } from '../../features/store';
 import { Box, Container, IconButton, Stack } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import LogoHome from '../Logo/LogoHome';
-import LoginForm from '../Form/LoginForm';
 import RegisterForm from '../Form/RegisterForm';
 
 const Register = () => {

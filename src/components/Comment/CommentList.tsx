@@ -9,21 +9,19 @@ interface CommentListProps {
 }
 
 const CommentList: React.FC<CommentListProps> = ({
-  newsId,
-  userId,
+  newsId
 }) => {
   const { comments } = useComments();
 
-  const filteredComments = comments.filter(
+  const filteredNewsIdComments = comments.filter(
     (comment) =>
-      (!newsId || comment.newsId === newsId) &&
-      (!userId || comment.user.id === userId),
+      (!newsId || comment.newsId === newsId)
   );
 
   return (
     <Box mt={4}>
-      {filteredComments.map((comment) => (
-        <CommentItem key={comment.id} comment={comment} onDelete={() => {}} />
+      {filteredNewsIdComments.map((comment) => (
+        <CommentItem key={comment.id} comment={comment} onDelete={() => {}} onUpdate={() => {}}/>
       ))}
     </Box>
   );

@@ -10,10 +10,15 @@ import {
 import Typography from '@mui/material/Typography';
 import { timeAgo } from '../../utils/timeUtils';
 import ClampedTypography from '../Typography/ClampedTypography';
+import { NavLink } from 'react-router-dom';
 
 function CardVertical({ news, isLoading = true }: NewsLoading) {
   return (
-    <Box sx={{ height: '100%' }}>
+    <Box
+      component={NavLink}
+      to={`/detail/${news?.id}`}
+      sx={{ textDecoration: 'none', height: '100%' }}
+    >
       <Card sx={{ height: '100%' }}>
         <CardActionArea
           sx={{
@@ -62,9 +67,13 @@ function CardVertical({ news, isLoading = true }: NewsLoading) {
             {isLoading ? (
               <Skeleton width="100%" />
             ) : (
-              <Typography variant="body2" color="text.secondary">
+              <ClampedTypography
+                lineClamp={3}
+                variant="body2"
+                color="text.secondary"
+              >
                 {news?.description}
-              </Typography>
+              </ClampedTypography>
             )}
           </CardContent>
         </CardActionArea>
