@@ -1,11 +1,15 @@
-import { User, UserLogin } from '../types/user.type';
+import { User, UserLogin, UserRegister } from '../types/user.type';
 import { v4 as uuidv4 } from 'uuid';
-import { getListUser, setListUser } from './sessionStorageService';
+import { getListUser, setListUser } from './storage/sessionStorageService';
 
 const userData: User[] = getListUser();
 
-const add = (user: User) => {
-  user.id = uuidv4();
+const add = (userRegister: UserRegister) => {
+  const id = uuidv4();
+  const user: User = {
+    id,
+    ...userRegister,
+  };
   userData.push(user);
   setListUser(userData);
 };
@@ -19,7 +23,7 @@ const remove = (id: string) => {
   setListUser(userData);
 };
 
-const register = (user: User): boolean => {
+const register = (user: UserRegister): boolean => {
   const userExist = get(user.email);
   if (userExist) return false;
   add(user);
@@ -28,10 +32,9 @@ const register = (user: User): boolean => {
 
 const login = (user: UserLogin): User | undefined => {
   const userExist = get(user.email);
-  if (userExist != undefined && userExist.password == user.password)
-   {
-     return userExist;
-   }
+  if (userExist != undefined && userExist.password == user.password) {
+    return userExist;
+  }
   return undefined;
 };
 

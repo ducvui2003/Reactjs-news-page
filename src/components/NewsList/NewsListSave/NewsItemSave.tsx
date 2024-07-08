@@ -35,7 +35,7 @@ export default function NewsItemSave({
 
   return (
     <motion.div whileHover={{ scale: 1.05 }}>
-      <Card sx={{ maxWidth: '80%', display: 'flex' }}>
+      <Card sx={{ maxWidth: '100%', display: 'flex' }}>
         <CardMedia sx={{ height: 140 }} image={thumbnail} title={title} />
         <CardContent sx={{ display: 'block' }}>
           <Typography gutterBottom variant="h4" component="div">
@@ -50,7 +50,7 @@ export default function NewsItemSave({
               onClick={() => handleDeletedNews(id)}
               sx={{
                 '&:hover .MuiSvgIcon-root': {
-                  color: 'red', // Thay đổi màu khi hover
+                  color: 'red',
                 },
               }}
             >
