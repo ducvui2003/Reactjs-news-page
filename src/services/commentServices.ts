@@ -4,8 +4,7 @@ import {
     COMMENTS_STORAGE_KEY,
     saveToLocalStorage,
     getFromLocalStorage,
-} from './localStorage/localStorageService';
-
+} from './storage/localStorageService';
 
 const getListComment = (): Comment[] => {
     const commentsFromLocalStorage = getFromLocalStorage<Comment[]>(COMMENTS_STORAGE_KEY);

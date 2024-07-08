@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
-import {
-  CommentProvider,
-  getCommentListByUserId,
-} from '../../services/commentServices';
+import { getCommentListByUserId } from '../../services/commentServices';
+import { CommentProvider } from '../../hooks/commentHook';
 import CommentItem from '../../components/Comment/CommentItem';
 import { Comment } from '../../types/comment.type';
 import { CardContent } from '@mui/material';
@@ -29,7 +27,6 @@ function Comment() {
       prevComments.map((item) => (item.id === comment.id ? comment : item)),
     );
   };
-
 
   return (
     <div>

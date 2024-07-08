@@ -18,7 +18,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Comment } from '../../types/comment.type';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
-import { useComments } from '../../services/commentServices';
+import { useComments } from '../../hooks/commentHook';
 import { toast } from 'react-toastify';
 
 

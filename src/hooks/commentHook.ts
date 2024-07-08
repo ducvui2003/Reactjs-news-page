@@ -4,7 +4,7 @@ import {
     COMMENTS_STORAGE_KEY,
     saveToLocalStorage,
     getFromLocalStorage,
-} from '../services/localStorage/localStorageService';
+} from '../services/storage/localStorageService';
 import { getListComment, getCommentListByUserId } from '../services/commentServices';
 
 interface CommentContextProps {
