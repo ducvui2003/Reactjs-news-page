@@ -15,13 +15,13 @@ import { NavLink } from 'react-router-dom';
 function CardHorizontal({ news, isLoading = false }: NewsLoading) {
   return (
     <Box
-      component={news?.id ? NavLink : 'div'}
-      to={news?.id ? `/detail/${news?.id}` : ''}
+      component={NavLink}
+      to={`/detail/${news?.id}`}
       sx={{ textDecoration: 'none' }}
     >
       <Card>
         <Stack direction="row" alignItems="stretch">
-          <Box sx={{ flex: 1, alignSelf: 'stretch' }}>
+          <Box sx={{ flex: 1 }}>
             {isLoading ? (
               <Skeleton variant="rectangular" width="100%" height={118} />
             ) : (

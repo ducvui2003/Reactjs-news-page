@@ -3,7 +3,7 @@ import {
   getNews,
   removeNews,
   saveNews,
-} from '../../services/storage/sessionStorageService';
+} from '../../services/sessionStorageService';
 
 const initial: string[] = getNews();
 

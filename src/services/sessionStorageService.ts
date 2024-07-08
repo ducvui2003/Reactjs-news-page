@@ -1,6 +1,6 @@
 // Thêm user
-import { User } from '../../types/user.type';
-import { userData } from '../../data/userData';
+import { User } from '../types/user.type';
+import { userData } from '../data/userData';
 
 export enum SessionStorage {
   USER_CURRENT = 'user',
@@ -84,7 +84,6 @@ const removeNews = (id: string) => {
     sessionStorage.setItem(NEWS_KEY, JSON.stringify(savedNews));
   }
 };
-
 
 export {
   addUser,

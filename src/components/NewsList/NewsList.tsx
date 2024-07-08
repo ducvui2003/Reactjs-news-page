@@ -121,9 +121,8 @@ export function NewsList() {
               label="Tìm kiếm bài báo"
               defaultValue={search.keyword}
               variant="filled"
-
+              fullWidth
               sx={{
-                width: '100%',
                 my: 1,
                 fontSize: { xs: '0.5rem', sm: '1rem' },
               }}

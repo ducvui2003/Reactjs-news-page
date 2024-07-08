@@ -8,7 +8,3 @@ export interface User {
 }
 
 export interface UserLogin extends Omit<User, 'id'> {}
-
-export interface UserRegister extends Omit<User, 'id'> {
-  confirmPassword: string;
-}

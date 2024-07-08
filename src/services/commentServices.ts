@@ -2,105 +2,88 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { Comment } from '../types/comment.type';
 import { commentData } from '../data/commentData';
 import {
-  COMMENTS_STORAGE_KEY,
-  saveToLocalStorage,
-  getFromLocalStorage,
-} from './storage/localStorageService';
+    COMMENTS_STORAGE_KEY,
+    saveToLocalStorage,
+    getFromLocalStorage,
+} from './localStorage/localStorageService';
 
 const getListComment = (): Comment[] => {
-  const commentsFromLocalStorage =
-    getFromLocalStorage<Comment[]>(COMMENTS_STORAGE_KEY);
-  if (commentsFromLocalStorage === null) {
-    saveToLocalStorage(COMMENTS_STORAGE_KEY, commentData);
-    return commentData;
-  } else {
-    return commentsFromLocalStorage; // Đã convert từ JSON sang object
-  }
+    const commentsFromLocalStorage = getFromLocalStorage<Comment[]>(COMMENTS_STORAGE_KEY);
+    if (commentsFromLocalStorage === null) {
+        saveToLocalStorage(COMMENTS_STORAGE_KEY, commentData);
+        return commentData;
+    }else {
+     return commentsFromLocalStorage; // Đã convert từ JSON sang object
+    }
 };
 
 const getCommentListByUserId = (userId: string): Comment[] => {
-  return getListComment().filter(
-    (comment: Comment) => comment.userId === userId,
-  );
-};
+    return getListComment().filter((comment: Comment) => comment.userId === userId);
+}
 
 interface CommentContextProps {
-  comments: Comment[];
-  addComment: (comment: Comment) => void;
-  removeComment: (id: string) => void;
-  editComment: (comment: Comment) => void;
-  getCommentsByUserId: (userId: string) => Comment[];
+    comments: Comment[];
+    addComment: (comment: Comment) => void;
+    removeComment: (id: string) => void;
+    editComment: (comment: Comment) => void;
+    getCommentsByUserId: (userId: string) => Comment[];
 }
 
-const CommentContext = createContext<CommentContextProps | undefined>(
-  undefined,
-);
+const CommentContext = createContext<CommentContextProps | undefined>(undefined);
 
 interface CommentProviderProps {
-  children: ReactNode;
+    children: ReactNode;
 }
 
-export const CommentProvider: React.FC<CommentProviderProps> = ({
-  children,
-}) => {
-  const [comments, setComments] = useState<Comment[]>(() => {
-    const savedComments = getFromLocalStorage<Comment[]>(COMMENTS_STORAGE_KEY);
-    return savedComments || getListComment();
-  });
-
-  const addComment = (newComment: Comment) => {
-    setComments((prevComments) => {
-      const updatedComments = [...prevComments, newComment];
-      saveToLocalStorage(COMMENTS_STORAGE_KEY, updatedComments);
-      return updatedComments;
+export const CommentProvider: React.FC<CommentProviderProps> = ({ children }) => {
+    const [comments, setComments] = useState<Comment[]>(() => {
+        const savedComments = getFromLocalStorage<Comment[]>(COMMENTS_STORAGE_KEY);
+        return savedComments || getListComment();
     });
-  };
 
-  const removeComment = (id: string) => {
-    setComments((prevComments) => {
-      const updatedComments = prevComments.filter(
-        (comment) => comment.id !== id,
-      );
-      saveToLocalStorage(COMMENTS_STORAGE_KEY, updatedComments);
-      return updatedComments;
-    });
-  };
+    const addComment = (newComment: Comment) => {
+        setComments((prevComments) => {
+            const updatedComments = [...prevComments, newComment];
+            saveToLocalStorage(COMMENTS_STORAGE_KEY, updatedComments);
+            return updatedComments;
+        });
+    };
 
-  const editComment = (editedComment: Comment) => {
-    setComments((prevComments) => {
-      const updatedComments = prevComments.map((comment) =>
-        comment.id === editedComment.id ? editedComment : comment,
-      );
-      saveToLocalStorage(COMMENTS_STORAGE_KEY, updatedComments);
-      return updatedComments;
-    });
-  };
+    const removeComment = (id: string) => {
+        setComments((prevComments) => {
+            const updatedComments = prevComments.filter((comment) => comment.id !== id);
+            saveToLocalStorage(COMMENTS_STORAGE_KEY, updatedComments);
+            return updatedComments;
+        });
+    };
 
-  const getCommentsByUserId = (userId: string): Comment[] => {
-    return getCommentListByUserId(userId);
-  };
+    const editComment = (editedComment: Comment) => {
+        setComments((prevComments) => {
+            const updatedComments = prevComments.map((comment) =>
+                comment.id === editedComment.id ? editedComment : comment
+            );
+            saveToLocalStorage(COMMENTS_STORAGE_KEY, updatedComments);
+            return updatedComments;
+        });
+    };
 
-  return React.createElement(
-    CommentContext.Provider,
-    {
-      value: {
-        comments,
-        addComment,
-        removeComment,
-        editComment,
-        getCommentsByUserId,
-      },
-    },
-    children,
-  );
+    const getCommentsByUserId = (userId: string): Comment[] => {
+        return getCommentListByUserId(userId);
+    };
+
+    return React.createElement(
+        CommentContext.Provider,
+        { value: { comments, addComment, removeComment, editComment, getCommentsByUserId } },
+        children
+    );
 };
 
 export const useComments = () => {
-  const context = useContext(CommentContext);
-  if (context === undefined) {
-    throw new Error('useComments must be used within a CommentProvider');
-  }
-  return context;
+    const context = useContext(CommentContext);
+    if (context === undefined) {
+        throw new Error('useComments must be used within a CommentProvider');
+    }
+    return context;
 };
 
 export { getCommentListByUserId, getListComment };
