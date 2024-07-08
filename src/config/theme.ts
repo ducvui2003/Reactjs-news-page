@@ -76,12 +76,14 @@ const theme = extendTheme({
         maxWidth: 'xl',
       },
     },
+    MuiPagination: {
+      styleOverrides: {
+        ul: {
+          justifyContent: 'center',
+        },
+      },
+    },
   },
 });
-
-// theme.typography.subtitle1 = {
-//   ...theme.typography.subtitle1,
-//   color: theme.colorSchemes.light.palette.grey[500],
-// };
 
 export default theme;

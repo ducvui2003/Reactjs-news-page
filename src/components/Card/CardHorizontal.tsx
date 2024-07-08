@@ -12,7 +12,15 @@ import { timeAgo } from '../../utils/timeUtils';
 import ClampedTypography from '../Typography/ClampedTypography';
 import { NavLink } from 'react-router-dom';
 
-function CardHorizontal({ news, isLoading = false }: NewsLoading) {
+interface CardHorizontalProps extends NewsLoading {
+  heightImage?: string;
+}
+
+function CardHorizontal({
+  news,
+  isLoading = false,
+  heightImage = '100%',
+}: CardHorizontalProps) {
   return (
     <Box
       component={news?.id ? NavLink : 'div'}
@@ -23,11 +31,15 @@ function CardHorizontal({ news, isLoading = false }: NewsLoading) {
         <Stack direction="row" alignItems="stretch">
           <Box sx={{ flex: 1, alignSelf: 'stretch' }}>
             {isLoading ? (
-              <Skeleton variant="rectangular" width="100%" height={118} />
+              <Skeleton
+                variant="rectangular"
+                width="100%"
+                height={heightImage || 118}
+              />
             ) : (
               <CardMedia
                 component="img"
-                height="100%"
+                height={heightImage}
                 image={news?.thumbnail}
                 alt={news?.thumbnail}
               />

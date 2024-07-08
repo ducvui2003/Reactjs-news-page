@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { getNewsByCategory } from '../../services/newsService';
 import { News } from '../../types/news.type';
 import { Navigate, useParams } from 'react-router-dom';
@@ -15,7 +15,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { toast } from 'react-toastify';
 
-type Search = {
+type SearchInput = {
   keyword: string;
   date: Date;
   select: boolean[];
@@ -28,15 +28,20 @@ export function NewsList() {
   }
   const [listNews, setListNews] = useState<News[]>([]);
   const [listNewsSearch, setListNewsSearch] = useState<News[]>([]); // Search bài báo
-  const [search, setSearch] = useState<Search>({
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const typingTimeout = useRef<NodeJS.Timeout | null>(null);
+  const [noResult, setNoResult] = useState<boolean>(false);
+  const [search, setSearch] = useState<SearchInput>({
     keyword: '',
     date: new Date(),
     select: [false, false],
   });
+
   useEffect(() => {
     getNewsByCategory(toCategory(id || '')).then((res: News[]) => {
       setListNews(res);
       setListNewsSearch(res);
+      setIsLoading(false);
     });
   }, [id]);
 
@@ -49,31 +54,38 @@ export function NewsList() {
   }, [search]);
 
   const handleSearch = () => {
-    const newsSearch: News[] = listNews
-      .filter((item: News) => {
-        if (search.date) {
-          const dateSelected = search.date;
-          return item.publishDate.getDate() <= dateSelected.getDate();
-        }
-        return true;
-      })
-      .filter((item: News) => {
-        if (search.select[0]) {
-          return item.title
-            ?.toLowerCase()
-            .includes(search.keyword.toLowerCase());
-        }
-        return true;
-      })
-      .filter((item: News) => {
-        if (search.select[1]) {
-          return item.description
-            ?.toLowerCase()
-            .includes(search.keyword.toLowerCase());
-        }
-        return true;
-      });
-    setListNewsSearch(newsSearch);
+    if (typingTimeout.current) clearTimeout(typingTimeout.current);
+    typingTimeout.current = setTimeout(() => {
+      console.log('handle search', search);
+      const newsSearch: News[] = listNews
+        .filter((item: News) => {
+          if (search.date) {
+            const dateSelected = search.date;
+            return item.publishDate.getDate() <= dateSelected.getDate();
+          }
+          return true;
+        })
+        .filter((item: News) => {
+          if (search.select[0]) {
+            return item.title
+              ?.toLowerCase()
+              .includes(search.keyword.toLowerCase());
+          }
+          return true;
+        })
+        .filter((item: News) => {
+          if (search.select[1]) {
+            return item.description
+              ?.toLowerCase()
+              .includes(search.keyword.toLowerCase());
+          }
+          return true;
+        });
+      console.log(newsSearch);
+      if (newsSearch.length == 0) setNoResult(true);
+      else setNoResult(false);
+      setListNewsSearch(newsSearch);
+    }, 300);
   };
 
   const handleChipClick = (index: number) => {
@@ -104,10 +116,8 @@ export function NewsList() {
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const keyword = e.target.value;
-    setSearch({ ...search, keyword });
-    if (!keyword) {
-      setListNewsSearch(listNews);
-    }
+    console.log('keyword', keyword);
+    setSearch((item) => ({ ...item, keyword }));
   };
 
   return (
@@ -121,7 +131,7 @@ export function NewsList() {
               label="Tìm kiếm bài báo"
               defaultValue={search.keyword}
               variant="filled"
-
+              disabled={!search.select[0] && !search.select[1]}
               sx={{
                 width: '100%',
                 my: 1,
@@ -167,7 +177,11 @@ export function NewsList() {
           </Stack>
         </Grid>
       </Grid>
-      <NewsListTransition listNews={listNewsSearch} />
+      {noResult ? (
+        <p>Không có bài báo nào thỏa mãn yêu cầu tìm kiếm </p>
+      ) : (
+        <NewsListTransition loading={isLoading} listNews={listNewsSearch} />
+      )}
     </Container>
   );
 }

@@ -31,5 +31,4 @@ export interface Image {
 export interface NewsLoading {
   news?: News;
   isLoading: boolean;
-  cssImage?: React.CSSProperties;
 }
