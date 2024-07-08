@@ -1,6 +1,5 @@
 import { News } from '../../../types/news.type';
-import '../../../assets/sass/utils.scss';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import {
   Button,
@@ -12,10 +11,9 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { unsave } from '../../../features/thenews/news.slice';
 import { DeleteRounded } from '@mui/icons-material';
-import { RootState } from '../../../features/store';
 import { toast } from 'react-toastify';
 
 export default function NewsItemSave({
@@ -37,7 +35,7 @@ export default function NewsItemSave({
 
   return (
     <motion.div whileHover={{ scale: 1.05 }}>
-      <Card sx={{ maxWidth: '80%', display: 'flex' }}>
+      <Card sx={{ maxWidth: '100%', display: 'flex' }}>
         <CardMedia sx={{ height: 140 }} image={thumbnail} title={title} />
         <CardContent sx={{ display: 'block' }}>
           <Typography gutterBottom variant="h4" component="div">
@@ -52,7 +50,7 @@ export default function NewsItemSave({
               onClick={() => handleDeletedNews(id)}
               sx={{
                 '&:hover .MuiSvgIcon-root': {
-                  color: 'red', // Thay đổi màu khi hover
+                  color: 'red',
                 },
               }}
             >

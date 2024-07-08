@@ -1,5 +1,3 @@
-import { User } from './user.type';
-
 export interface Comment {
   id: string;
   userId: string;

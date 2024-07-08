@@ -5,7 +5,8 @@ import Carousel from '../Carousel/Carousel';
 import { Category } from '../../constraints/category';
 import { SwiperSlide } from 'swiper/react';
 import CardHorizontal from '../Card/CardHorizontal';
-import { Divider } from '@mui/material';
+import { Divider, Theme, useMediaQuery } from '@mui/material';
+import CardVertical from '../Card/CardVertical';
 
 export const placeholderNewsItem: NewsLoading = {
   isLoading: false,
@@ -23,6 +24,9 @@ function CategoryCarousel({
   }));
   const [news, setNews] = useState<NewsLoading[]>(placeholderNewsArray);
   const [loading, setLoading] = useState(true);
+  const isMobile = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down('sm'),
+  );
   useEffect(() => {
     getNewsByCategory(category).then((res) => {
       const newsArray: NewsLoading[] = res.map((news: News) => {
@@ -37,12 +41,16 @@ function CategoryCarousel({
   }, [category]);
   return (
     <>
-      <Divider orientation="horizontal" />
+      <Divider orientation="horizontal" sx={{ mt: 5 }} />
       <Carousel title={category}>
         {news.slice(0, quantity).map((item: NewsLoading, index) => {
           return (
             <SwiperSlide key={index} style={{ height: '100%' }}>
-              <CardHorizontal news={item.news} isLoading={loading} />
+              {isMobile ? (
+                <CardVertical news={item.news} isLoading={loading} />
+              ) : (
+                <CardHorizontal news={item.news} isLoading={loading} />
+              )}
             </SwiperSlide>
           );
         })}

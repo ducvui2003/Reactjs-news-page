@@ -1,20 +1,17 @@
 import { Card, Col, Row } from 'react-bootstrap';
 import { News } from '../../types/news.type';
-import '../../assets/sass/utils.scss';
 import Typography from '@mui/joy/Typography';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { timeAgo } from '../../utils/timeUtils';
-import { Skeleton } from '@mui/material';
+import { Skeleton, useMediaQuery } from '@mui/material';
 import { Link } from 'react-router-dom';
-import newsDetail from '../../data/newsDetail';
+import theme from '../../config/theme';
 
 export default NewsItem;
-interface NewsItemProps extends News {
-  saveNews: (news: News) => void; // Prop để lưu bài báo
-}
 
 function NewsItem({ id, title, thumbnail, description, publishDate }: News) {
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   return (
     <motion.div whileHover={{ scale: 1.05 }}>
       <Link
@@ -37,7 +34,15 @@ function NewsItem({ id, title, thumbnail, description, publishDate }: News) {
             <Col md={8}>
               <Card.Body>
                 <Card.Title className="h1">
-                  <Typography level="h3">{title || ''}</Typography>
+                  <Typography
+                    level="h3"
+                    style={{
+                      fontSize: isSmallScreen ? '20px' : '24px',
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {title || ''}
+                  </Typography>
                 </Card.Title>
                 {timeAgo(publishDate)}
                 <Card.Text className={'line-clamp'}>

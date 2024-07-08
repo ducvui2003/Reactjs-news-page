@@ -5,6 +5,7 @@ import { News } from '../../types/news.type';
 import { Divider, Grid } from '@mui/material';
 import CardVertical from '../Card/CardVertical';
 import CardHorizontal from '../Card/CardHorizontal';
+import LoadingList from '../NewsList/LoadingList';
 
 function Intro() {
   const [news, setNews] = useState<News[]>([]);
@@ -31,23 +32,27 @@ function Intro() {
           }}
         />
         <Grid container spacing={2}>
-          {news.slice(1, 4).map((item: News, index) => (
-            <Grid item xs={12} md key={index}>
-              <CardVertical key={item.id} news={item} isLoading={loading} />
-            </Grid>
-          ))}
+          <LoadingList
+            data={news.slice(1, 4)}
+            isLoading={loading}
+            renderItem={(item, isLoading, index) => (
+              <CardVertical key={index} news={item} isLoading={isLoading} />
+            )}
+            wrapperComponentRenderItem={({ children }) => (
+              <Grid item xs={12} md>
+                {children}
+              </Grid>
+            )}
+          />
         </Grid>
       </Grid>
       <Grid item xs={12} md={4}>
-        {news[4] && (
-          <CardVertical
-            key={news[4].id}
-            {...news[4]}
-            news={news[4]}
-            isLoading={loading}
-            cssImage={{ flex: 1 }}
-          />
-        )}
+        <CardVertical
+          {...news[4]}
+          news={news[4]}
+          isLoading={loading}
+          cssImage={{ flex: 1 }}
+        />
       </Grid>
     </Grid>
   );

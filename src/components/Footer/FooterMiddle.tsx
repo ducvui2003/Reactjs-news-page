@@ -27,6 +27,7 @@ function FooterLegacy() {
   );
   return (
     <Stack
+      mt={2}
       direction={isMobile ? 'column' : 'row'}
       alignItems={'center'}
       divider={<Divider orientation="vertical" variant="middle" flexItem />}

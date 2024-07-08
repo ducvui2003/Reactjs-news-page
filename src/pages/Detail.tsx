@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import details from '../data/newsDetail';
 import Comment from '../components/Comment/Comment';
@@ -9,18 +9,24 @@ import {
   Container,
   Grid,
   Link,
+  Theme,
+  useMediaQuery,
 } from '@mui/material';
 import SideBarDetailLeft from '../components/SideBar/SideBarDetailLeft';
 import SideBarDetailRight from '../components/SideBar/SideBarDetailRight';
 import Typography from '@mui/material/Typography';
-import { Image, News, Paragraph } from '../types/news.type';
+import { Image, Paragraph } from '../types/news.type';
 import { SlideshowLightbox } from 'lightbox.js-react';
 import 'lightbox.js-react/dist/index.css';
 import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { toCategoryName } from '../services/categoryService';
+import { formatDate } from '../utils/timeUtils';
 
 function Detail() {
+  const isMobile = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down('sm'),
+  );
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   if (!id) {
@@ -37,6 +43,7 @@ function Detail() {
     return null;
   }
 
+  const targetComment = useRef<HTMLElement>(null);
   // Xử lý cho việc view ảnh
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const handleShowImage = () => {
@@ -54,16 +61,19 @@ function Detail() {
 
   return (
     <Container>
-      <Grid container spacing={3}>
-        <Grid item md={1}>
-          <SideBarDetailLeft id={getLastNum} />
-        </Grid>
-        <Grid item md={7}>
+      <Grid
+        sx={{ position: isMobile ? 'relative' : 'static' }}
+        container
+        spacing={3}
+      >
+        <SideBarDetailLeft id={getLastNum} targetComment={targetComment} />
+        <Grid item md={7} xs={12}>
           <Stack
             sx={{ py: 3 }}
-            direction={'row'}
+            gap={isMobile ? 1 : 2}
+            direction={isMobile ? 'column' : 'row'}
             justifyContent={'space-between'}
-            alignItems={'center'}
+            alignItems={isMobile ? 'flex-start' : 'center'}
           >
             <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
               <Link component={NavLink} to={'/'} underline="hover">
@@ -76,7 +86,7 @@ function Detail() {
               </Link>
             </Breadcrumbs>
             <Typography variant={'subtitle1'}>
-              {detail.publishDate.toString()}
+              {formatDate(detail.publishDate)}
             </Typography>
           </Stack>
 
@@ -105,11 +115,13 @@ function Detail() {
             />
           ))}
         </Grid>
-        <Grid item md={4}>
+        <Grid item md={4} xs={12}>
           <SideBarDetailRight category={detail.category} />
         </Grid>
       </Grid>
-      <Comment newsId={getLastNum} />
+      <Box ref={targetComment}>
+        <Comment newsId={getLastNum} />
+      </Box>
     </Container>
   );
 }
@@ -160,6 +172,3 @@ function NewParagraph({
 }
 
 export default Detail;
-// function saveNews(news: News) {
-//   throw new Error('Function not implemented.');
-// }

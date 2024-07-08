@@ -27,6 +27,25 @@ const GlobalCSS = () => {
                 ? theme.palette.grey[900]
                 : theme.palette.grey[100],
           },
+          //   nprogress
+          '#nprogress': {
+            '.bar': {
+              height: '5px',
+            },
+          },
+          //   line-clamp
+          '.line-clamp': {
+            display: '-webkit-box',
+            '-webkit-line-clamp': 3,
+            ' -webkit-box-orient': 'vertical',
+            overflow: 'hidden',
+          },
+          ' .line-clamp-2': {
+            display: '-webkit-box',
+            '-webkit-line-clamp': 2,
+            '-webkit-box-orient': 'vertical',
+            overflow: 'hidden',
+          },
         },
       }}
     />

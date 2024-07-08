@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { Category } from '../../constraints/category';
-import { News, NewsLoading } from '../../types/news.type';
+import { News } from '../../types/news.type';
 import { getNewsByCategory } from '../../services/newsService';
-import CardVertical from '../Card/CardVertical';
 import Stack from '@mui/material/Stack';
 import CardHorizontal from '../Card/CardHorizontal';
-import { describe } from 'node:test';
 
 function SideBarDetailRight({ category }: { category: Category }) {
   const style = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { save } from '../../features/authenticate/authenticate.slice';
-import { User, UserLogin } from '../../types/user.type';
+import { UserLogin } from '../../types/user.type';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -50,8 +50,7 @@ function LoginForm() {
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
     if (!isValid) return;
     const user: UserLogin = {
-      email: data.email,
-      password: data.password,
+      ...data,
     };
     const userExist = login(user);
     if (userExist) {
