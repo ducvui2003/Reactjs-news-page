@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import { Navigate, NavLink, useNavigate, useParams } from 'react-router-dom';
 import details from '../data/newsDetail';
 import Comment from '../components/Comment/Comment';
 import {
@@ -27,11 +27,9 @@ function Detail() {
   const isMobile = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down('sm'),
   );
-  const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   if (!id) {
-    navigate('/404');
-    return null;
+    return <Navigate to={'/404'} />;
   }
 
   const getLastNum = 'A' + id.substring(id.length - 1, id.length);
@@ -39,8 +37,7 @@ function Detail() {
   const detail = details.find((item) => item.id == getLastNum);
 
   if (!detail) {
-    navigate('/404');
-    return null;
+    return <Navigate to={'/404'} />;
   }
 
   const targetComment = useRef<HTMLElement>(null);

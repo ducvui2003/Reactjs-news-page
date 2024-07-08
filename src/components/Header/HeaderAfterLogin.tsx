@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Bookmark } from '@mui/icons-material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { RootState } from '../../features/store';
@@ -20,11 +20,13 @@ function HeaderAfterLogin() {
   const authenticateReducer = useSelector(
     (state: RootState) => state.authenticate,
   );
+  const location = useLocation();
   const dispatch = useDispatch();
   const handleLogOut = () => {
     dispatch(exit());
     toast.success('Đăng xuất thành công');
   };
+
   const user = get(authenticateReducer.email);
   if (!user) {
     return null;

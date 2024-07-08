@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
+  convertToAscii,
   getLocation,
   getProvinceName,
   getWeathers,
@@ -29,6 +30,7 @@ import { LocationWeather } from '../../types/weather.type';
 const WeatherButton = styled(Box)`
   &:hover {
     cursor: pointer;
+
     & #weather__card {
       display: block;
       width: fit-content;
@@ -42,6 +44,7 @@ const WeatherListItem = styled(ListItemButton)`
       transition: opacity 0.3s;
     }
   }
+
   :hover {
     .chip {
       opacity: 1;
@@ -127,7 +130,6 @@ const Weather = () => {
         if (province == 'Ho Chi Minh' || province == 'Hồ Chí Minh') {
           province = 'TP HCM';
         }
-
         handleSelectLocation(province);
       })
       .catch(() => {
@@ -138,10 +140,18 @@ const Weather = () => {
   //  Xử lý việc chon tỉnh thành
   const handleSelectLocation = (location: string): void => {
     if (location.trim() === '') return;
-    const selectedLocation = weather?.find((item: LocationWeather) =>
-      getProvinceName(item).includes(location),
-    );
-    console.log(selectedLocation);
+    console.log(convertToAscii(location.toLowerCase()));
+    const selectedLocation = weather?.find((item: LocationWeather) => {
+      console.log(
+        convertToAscii(getProvinceName(item).replace(/\s/g, '')).toLowerCase(),
+      );
+      return (
+        convertToAscii(
+          getProvinceName(item).replace(/\s/g, ''),
+        ).toLowerCase() ==
+        convertToAscii(location.toLowerCase().replace(/\s/g, ''))
+      );
+    });
     setCurrent(selectedLocation || {});
   };
 
@@ -150,7 +160,10 @@ const Weather = () => {
     const keyword = inputRef.current?.value;
     if (!keyword) return;
     const searchResult = weather?.filter((item: LocationWeather) =>
-      getProvinceName(item).toLowerCase().includes(keyword.toLowerCase()),
+      getProvinceName(item)
+        .replace(/\s/g, '')
+        .toLowerCase()
+        .includes(keyword.toLowerCase()),
     );
     setWeatherSearch(searchResult || []);
   };

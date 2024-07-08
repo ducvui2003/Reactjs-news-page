@@ -43,6 +43,7 @@ function Intro() {
                 {children}
               </Grid>
             )}
+            fakeItemCount={3}
           />
         </Grid>
       </Grid>

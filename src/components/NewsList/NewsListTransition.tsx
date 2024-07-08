@@ -3,8 +3,12 @@ import { News } from '../../types/news.type';
 import NewsItem from './NewsItem';
 import Pagination from '@mui/material/Pagination';
 import './style.scss';
+import { Theme, useMediaQuery } from '@mui/material';
 
 export default function NewsListTransition({ listNews }: { listNews: News[] }) {
+  const isMobile = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down('sm'),
+  );
   const totalNews = listNews.length;
   const size = 10;
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -38,6 +42,7 @@ export default function NewsListTransition({ listNews }: { listNews: News[] }) {
         onChange={(event, page) => handlePagiantion(page)}
         count={pageNum}
         defaultPage={currentPage}
+        size={isMobile ? 'small' : 'medium'}
         siblingCount={2}
       />
     </>
