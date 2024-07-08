@@ -50,8 +50,7 @@ function LoginForm() {
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
     if (!isValid) return;
     const user: UserLogin = {
-      email: data.email,
-      password: data.password,
+      ...data,
     };
     const userExist = login(user);
     if (userExist) {

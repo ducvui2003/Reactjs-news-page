@@ -15,8 +15,8 @@ import { NavLink } from 'react-router-dom';
 function CardVertical({ news, isLoading = true }: NewsLoading) {
   return (
     <Box
-      component={NavLink}
-      to={`/detail/${news?.id}`}
+      component={news?.id ? NavLink : 'div'}
+      to={news?.id ? `/detail/${news?.id}` : ''}
       sx={{ textDecoration: 'none', height: '100%' }}
     >
       <Card sx={{ height: '100%' }}>
@@ -28,9 +28,9 @@ function CardVertical({ news, isLoading = true }: NewsLoading) {
             height: '100%',
           }}
         >
-          <Box sx={{ flex: 1 }}>
+          <Box sx={{ flex: 1, alignSelf: 'stretch' }}>
             {isLoading ? (
-              <Skeleton variant="rectangular" width={210} height={118} />
+              <Skeleton variant="rectangular" width={'100%'} height={'100%'} />
             ) : (
               <CardMedia
                 component="img"

@@ -4,7 +4,7 @@ import {
   getUser,
   removeUser,
   setUser,
-} from '../../services/sessionStorageService';
+} from '../../services/storage/sessionStorageService';
 
 const userStorage = getUser();
 const initialState: User = {
