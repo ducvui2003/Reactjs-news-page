@@ -86,32 +86,6 @@ const removeNews = (id: string) => {
 };
 
 
-// SAVE NEWS
-const NEWS_KEY = 'savedNews';
-
-const getNews = (): string[] => {
-  const savedNews = sessionStorage.getItem(NEWS_KEY);
-  return savedNews ? JSON.parse(savedNews) : [];
-};
-
-const saveNews = (id: string) => {
-  const savedNews = getNews();
-  if (!savedNews.includes(id)) {
-    savedNews.push(id);
-    sessionStorage.setItem(NEWS_KEY, JSON.stringify(savedNews));
-  }
-};
-
-const removeNews = (id: string) => {
-  const savedNews = getNews();
-  const index = savedNews.indexOf(id);
-  if (index !== -1) {
-    savedNews.splice(index, 1);
-    sessionStorage.setItem(NEWS_KEY, JSON.stringify(savedNews));
-  }
-};
-
-
 export {
   addUser,
   getUser,
