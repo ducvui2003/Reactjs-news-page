@@ -3,7 +3,7 @@ import { Button, TextField } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
 import { Comment } from '../../types/comment.type';
-import { useComments } from '../../services/commentServices';
+import { useComments } from '../../hooks/commentHook';
 import { v4 as uuidv4 } from 'uuid';
 
 function CommentForm({ newsId }: { newsId: string }) {

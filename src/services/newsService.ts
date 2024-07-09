@@ -1,7 +1,7 @@
 import { Category } from '../constraints/category';
 import parserRSS from '../utils/parseRss';
 import { News, NewsDetail } from '../types/news.type';
-import newsDetail from '../data/newsDetail';
+import newsDetail from '../data/newsDetailData';
 
 const getNewsById = (id: string): NewsDetail | undefined => {
   return newsDetail.find((news) => news.id == id);

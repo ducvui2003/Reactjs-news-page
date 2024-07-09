@@ -11,7 +11,7 @@ export interface News {
 }
 
 export interface NewsDetail
-  extends Omit<News, 'link' | 'description' | 'thumbnail'> {
+  extends Omit<News, 'link' | 'description'> {
   author: string;
   paragraphs: Paragraph[];
   category: Category;
