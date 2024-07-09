@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
-import details from '../data/newsDetail';
+import details from '../data/newsDetailData';
 import Comment from '../components/Comment/Comment';
 import {
   Box,
