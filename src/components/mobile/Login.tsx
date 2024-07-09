@@ -6,12 +6,8 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
-import { Theme } from '@mui/system';
 
 const Login = () => {
-    const isMobile = useMediaQuery((theme: Theme) =>
-        theme.breakpoints.down('sm'),
-    );
     const navigate = useNavigate();
     const authReducer = useSelector((state: RootState) => state.authenticate);
     if (authReducer.email) {
@@ -35,7 +31,7 @@ const Login = () => {
                 <ArrowBackIosIcon fontSize="small" />
             </IconButton>
             <Container>
-                <Stack direction="row" justifyContent={'center'} sx={{ pb: isMobile ? 1 : 3 }}>
+                <Stack direction="row" justifyContent={'center'} sx={{ pb: 3 }}>
                     <LogoHome />
                 </Stack>
                 <LoginForm />

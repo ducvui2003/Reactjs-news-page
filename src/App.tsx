@@ -11,6 +11,7 @@ import React from 'react';
 import MainUser from './pages/MainUser';
 import Info from './pages/user/Info';
 import Comment from './pages/user/Comment';
+import Register from './components/mobile/Register';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       </Route>
       <Route path="/mobile/">
         <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
       </Route>
       <Route path="/404" element={<Page404 />} />
       <Route path="*" element={<Page404 />} />

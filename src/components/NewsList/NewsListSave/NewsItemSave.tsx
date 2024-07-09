@@ -2,67 +2,66 @@ import { News } from '../../../types/news.type';
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
+    Button,
+    Card,
+    CardActions,
+    CardContent,
+    CardMedia,
 } from '@mui/material';
-import { Link } from 'react-router-dom';
-import Typography from '@mui/material/Typography';
+import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { unsave } from '../../../features/thenews/news.slice';
 import { DeleteRounded } from '@mui/icons-material';
 import { toast } from 'react-toastify';
+import Stack from '@mui/material/Stack';
+import ClampedTypography from '../../Typography/ClampedTypography';
 
 export default function NewsItemSave({
-  id,
-  title,
-  thumbnail,
-  description,
-  publishDate,
-}: News) {
-  const dispatch = useDispatch();
+                                         id,
+                                         title,
+                                         thumbnail,
+                                     }: News) {
+    const dispatch = useDispatch();
+    console.log(thumbnail);
+    const handleDeletedNews = (id?: string) => {
+        if (id) {
+            dispatch(unsave(id));
+            toast.success('Đã xóa bài báo: ' + id);
+        }
+    };
 
-  const handleDeletedNews = (id?: string) => {
-    if (id) {
-      dispatch(unsave(id));
-      toast.success('Đã xóa bài báo: ' + id);
-    }
-  };
-
-  return (
-    <motion.div whileHover={{ scale: 1.05 }}>
-      <Card sx={{ maxWidth: '100%', display: 'flex' }}>
-        <CardMedia sx={{ height: 140 }} image={thumbnail} title={title} />
-        <CardContent sx={{ display: 'block' }}>
-          <Typography gutterBottom variant="h4" component="div">
-            {title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {description}
-          </Typography>
-          <CardActions>
-            <Button
-              size="small"
-              onClick={() => handleDeletedNews(id)}
-              sx={{
-                '&:hover .MuiSvgIcon-root': {
-                  color: 'red',
-                },
-              }}
-            >
-              <DeleteRounded sx={{ color: '#757575' }} />
-            </Button>
-            <Link
-              to={`/detail/${id}`}
-              style={{ textDecoration: 'none', color: 'inherit' }}
-            >
-              <Button size="small">Xem chi tiết</Button>
-            </Link>
-          </CardActions>
-        </CardContent>
-      </Card>
-    </motion.div>
-  );
+    return (
+        <motion.div whileHover={{ scale: 1.05 }}>
+            <CardActions>
+                <Card sx={{ maxWidth: '100%' }}>
+                    <CardMedia component={'img'} sx={{ height: 140 }} image={thumbnail} title={title} />
+                    <CardContent>
+                        <ClampedTypography lineClamp={2} gutterBottom variant="h4" component="div">
+                            {title}
+                        </ClampedTypography>
+                        <Stack direction="row" spacing={2}>
+                            <Button
+                                component={NavLink}
+                                to={`/detail/${id}`}
+                                style={{ textDecoration: 'none' }}
+                            >
+                                Xem chi tiết
+                            </Button>
+                            <Button
+                                size="small"
+                                onClick={() => handleDeletedNews(id)}
+                                sx={{
+                                    '&:hover .MuiSvgIcon-root': {
+                                        color: 'red',
+                                    },
+                                }}
+                            >
+                                <DeleteRounded sx={{ color: '#757575' }} />
+                            </Button>
+                        </Stack>
+                    </CardContent>
+                </Card>
+            </CardActions>
+        </motion.div>
+    );
 }
