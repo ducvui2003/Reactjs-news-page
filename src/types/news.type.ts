@@ -1,4 +1,3 @@
-import React from 'react';
 import { Category } from '../constraints/category';
 
 export interface News {

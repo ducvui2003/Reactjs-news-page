@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Navigate, NavLink, useParams } from 'react-router-dom';
-import details from '../data/newsDetail';
 import Comment from '../components/Comment/Comment';
 import {
     Box,
@@ -22,6 +21,7 @@ import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { toCategoryName } from '../services/categoryService';
 import { formatDate } from '../utils/timeUtils';
+import { getNewsById } from '../services/newsService';
 
 function Detail() {
     const isMobile = useMediaQuery((theme: Theme) =>
@@ -34,7 +34,7 @@ function Detail() {
 
     const getLastNum = 'A' + id.substring(id.length - 1, id.length);
 
-    const detail = details.find((item) => item.id == getLastNum);
+    const detail = getNewsById(getLastNum);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -108,6 +108,11 @@ function Detail() {
                     <Typography gutterBottom align={'right'} variant={'subtitle1'}>
                         {`Tác giả ${detail.author}`}
                     </Typography>
+
+                    <CardMedia component={'img'} sx={{ maxHeight: '100%', width: '100%', pb: 3, pt: 1 }}
+                               src={detail.thumbnail}
+                               alt="" />
+
                     {detail.paragraphs.map((para, index) => (
                         <NewParagraph
                             key={index}
