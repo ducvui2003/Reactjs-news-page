@@ -5,6 +5,8 @@ const newsDetail: NewsDetail[] = [
   {
     id: 'A1',
     title: 'Trà Vinh vận động gây quỹ xây dựng Khu Lưu niệm NSND Viễn Châu',
+    thumbnail:
+      'https://nld.mediacdn.vn/zoom/320_200/291774122806476800/2024/6/4/screenshot-2024-06-04-at-144633-17174873376092059502960-9-0-600-946-crop-1717487348677962697330.png',
     author: 'Ca Linh',
     publishDate: new Date(Date.parse('Tue, 28 May 2024 12:42:00 +07')),
     category: Category.THOI_SU,
@@ -35,6 +37,8 @@ const newsDetail: NewsDetail[] = [
     id: 'A2',
     title:
       'Bí thư Quận ủy quận 1 Dương Anh Đức: Xây dựng môi trường sống tử tế, văn minh',
+    thumbnail:
+      'https://nld.mediacdn.vn/zoom/320_200/291774122806476800/2024/5/19/ong-duong-anh-duc-1716092594786630007053-0-0-618-989-crop-1716092733142529194209.png',
     author: 'PHAN ANH',
     publishDate: new Date(Date.parse('05-06-24 13:37')),
     category: Category.THOI_SU,
@@ -87,6 +91,8 @@ const newsDetail: NewsDetail[] = [
   {
     id: 'A3',
     title: 'CSGT TP HCM hỗ trợ kỳ thi Tuyển sinh lớp 10 ra sao?',
+    thumbnail:
+      'https://nld.mediacdn.vn/zoom/320_200/291774122806476800/2024/6/5/z53991333895136dff2852c0ed56f70ec0bca4e6d6c0fe-17175670624701392253345-243-0-1843-2560-crop-17175671185441579574049.jpg',
     author: 'Ý Linh',
     publishDate: new Date(Date.parse('05-06-24 13:38')),
     category: Category.THOI_SU,
@@ -117,61 +123,75 @@ const newsDetail: NewsDetail[] = [
   },
   {
     id: 'A4',
-    title: 'Hơn 7.000 cú sét đánh xuống Hà Nội trong sáng 5-6 có bất thường?',
-    author: 'Văn Duẩn',
-    publishDate: new Date(Date.parse('05-06-24 14:30')),
+    title: 'Dự án trồng rừng của ca sĩ Hà Anh Tuấn ở Đà Nẵng: 4 năm đã tàn lụi',
+    thumbnail: '',
+    author: 'HẢI ĐỊNH',
+    publishDate: new Date(Date.parse('09/07/2024 14:56')),
     category: Category.THOI_SU,
     paragraphs: [
       {
-        text: 'Liên quan đến việc Hà Nội và vùng phụ cận trong sáng 5-6 phải đón nhận hơn 7.000 cú sét đánh xuống đất, ông Nguyễn Đức Phương - Trưởng phòng rada thời tiết, Trung tâm Mạng lưới khí tượng thủy văn quốc gia (Tổng cục Khí tượng Thủy văn) cho biết hiện nay mạng lưới định vị sét của Việt Nam có 18 trạm định vị sét. Mạng lưới định vị sét này được kết nối với hệ thống định vị sét quốc tế.',
+        text: '- Nhiều người tiếc rẻ khi chứng kiến cảnh cây chết khô, còi cọc sau 4 năm thực hiện dự án trồng rừng của ca sĩ Hà Anh Tuấn tại Bán đảo Sơn Trà, TP Đà Nẵng',
       },
       {
-        text: 'Mạng lưới định vị sét của nước ta hiện nay được thiết kế để phát hiện, định vị, phân tích, hiển thị, lưu trữ và phân phối số liệu theo thời gian thực các sự kiện sét trong mây và xuống mặt đất (CG) và trong mây (IC).',
+        text: 'Sáng 9-7, theo ghi nhận của PV, khu vực trồng cây (bên cạnh đỉnh Bàn cờ, Bán đảo Sơn Trà, TP Đà Nẵng) cỏ dại mọc um tùm. Hàng chục cây đã chết khô, còi cọc, không đạt tiêu chuẩn sau gần 4 năm thực hiện dự án.',
+        image: {
+          link: 'https://nld.mediacdn.vn/thumb_w/640/291774122806476800/2024/7/9/4-17205068656751229577259.jpg',
+          capture:
+            'Dự án "Rừng Việt Nam" của ca sĩ Hà Anh Tuấn phối hợp cùng Thành đoàn Đà Nẵng thực hiện tại đỉnh núi Sơn Trà',
+        },
       },
       {
-        text: 'Với mạng lưới các đầu đo hiện tại thì khoảng cách mà các đầu đo có thể phát hiện được sét trong dải từ 400-600 km.',
+        text: 'Theo tìm hiểu, tháng 10-2020, ca sĩ Hà Anh Tuấn thực hiện dự án cộng đồng "Rừng Việt Nam", trồng hơn 300 cây bản địa (dầu rái, sao đen, lim xẹt) trên diện tích 0,25 ha đất trống chưa có rừng (bên cạnh đỉnh Bàn cờ).',
       },
       {
-        text: 'Như vậy ngoài khu vực đất liền của Việt Nam thì các trạm định vị sét có thể phát hiện cả sét trên biển và khu vực gần biên giới của các nước lân cận Việt Nam.',
+        text: 'Chương trình do phía công ty của ca sĩ này phối hợp với Thành đoàn Đà Nẵng thực hiện, cùng Hạt Kiểm lâm liên quận Sơn Trà – Ngũ Hành Sơn chăm sóc, quản lý nhằm tạo nguồn cây xanh, góp phần bảo vệ môi trường, phòng chống biến đổi khí hậu.',
+        image: {
+          link: 'https://nld.mediacdn.vn/thumb_w/640/291774122806476800/2024/7/9/1a-17205068654891967927966.jpg',
+          capture:
+            'Ca sĩ Hà Anh Tuấn cùng Thành đoàn Đà Nẵng trồng cây vào tháng 10-2020 (ảnh Thành đoàn Đà Nẵng)',
+        },
       },
       {
-        text: 'Ông Phương cho biết với một khoảng không gian rộng như trên thì việc thống kê được 400 cú sét đánh xuống đất là trong vòng 10 phút là hoàn toàn có thể xảy ra.',
+        text: 'Dự án trồng rừng nằm cạnh đỉnh Bàn cờ, là nơi có lượng lớn du khách tham quan mỗi ngày. Chứng kiến cảnh tượng trên, nhiều du khách tỏ ra tiếc nuối. Ông Nguyễn Văn Trọng (du khách từ Hà Nội) cho hay nếu các cây dầu rái, sao đen, lim xẹt… phát triển như kỳ vọng thì nơi đây sẽ là địa điểm tham quan, chụp ảnh lý tưởng cho du khách khi đến đỉnh Bàn cờ.',
+        image: {
+          link: 'https://nld.mediacdn.vn/thumb_w/640/291774122806476800/2024/7/9/5-17205068657861229875282.jpg',
+          capture:
+            'Tuy nhiên, sau gần 4 năm thực hiện, hàng loạt cây rừng phát triển còi cọc, nhiều cây thậm chí chết khô',
+        },
       },
       {
-        text: 'Nếu thống kê cho khu vực, cần chọn khu vực (theo kinh vĩ độ) để xác định số lượng sét xảy ra tại khu vực đó trong khoảng thời gian nhất định.',
+        text: '"Khu vực rừng trồng nằm ngay bên đường nhựa nên rất dễ chăm sóc. Mong cơ quan chức năng sớm có cách cứu các cây rừng đang chết dần, chết mòn tại đây" - du khách này bày tỏ.',
+        image: {
+          link: 'https://nld.mediacdn.vn/thumb_w/640/291774122806476800/2024/7/9/1-1720506865412241593281.jpg',
+          capture: 'Cây khô trơ lá khiến nhiều người tiếc nuối',
+        },
       },
       {
-        text: 'Theo thống kê nhanh từ 6 giờ đến 9 giờ ngày 5-6 tại khu vực Hà Nội và một phần lãnh thổ các tỉnh lân cận như Hải Dương, Hưng Yên (dải mây gây ra sét trong sáng nay) cho thấy:',
+        text: 'Trao đổi với PV, ông Ngô Trường Chinh, Hạt trưởng Hạt Kiểm lâm liên quận Sơn Trà – Ngũ Hành Sơn, cho hay khu rừng trồng trên đã hết chu kỳ chăm sóc (3 năm sau khi trồng – PV). Ban đầu, cây sinh trưởng, phát triển tốt nhưng đến năm thứ 4 thì bắt đầu còi cọc, chết dần.',
       },
       {
-        text: 'Từ 6-7 giờ, cơ quan quan trắc ghi nhận có 3.513 cú sét, trong đó sét đánh xuống đất là 2.322 lần. Thời gian từ 7-8 giờ, có 4.060 cú sét (sét đánh xuống đất là 2.855 lần). Thời gian từ 8-9 giờ, có 2.642 cú sét (sét đánh xuống đất là 1.848 lần).',
+        text: 'Đại diện kiểm lâm cho rằng có nhiều nguyên nhân khiến cây còi cọc, chết khô như nước, gió, độ ẩm, độ cao… Đồng thời, điều kiện lập địa ở khu vực trồng rừng, theo ông Chinh, là không tốt, do nền đất nông, bên dưới là lớp đá cứng khiến rễ cây không sinh trưởng được.',
+        image: {
+          link: 'https://nld.mediacdn.vn/thumb_w/640/291774122806476800/2024/7/9/2-172050686557268556257.jpg',
+          capture: 'Sau 4 năm, nhiều cây đã chết hoặc sinh trưởng kém',
+        },
       },
       {
-        text: 'Tổng cộng, trong buổi sáng 5-6, có khoảng 7.025 lượt sấm sét dội xuống đất. Cường độ sét từ 7 giờ 40 đến 8 giờ 50 là mạnh nhất.',
+        text: 'Về lâu dài, Hạt trưởng Hạt Kiểm lâm liên quận Sơn Trà – Ngũ Hành Sơn đề xuất cần có khảo sát cụ thể về các loại cây rừng phù hợp với thổ nhưỡng ở đỉnh núi Sơn Trà. "Cũng tại khu vực này, chúng tôi trồng thử một số cây thông thì đang phát triển rất tốt" - ông Ngô Trường Chinh ví dụ. ',
       },
       {
-        text: 'Như vậy, từ 7 giờ đến 8 giờ (thời điểm nhiều dông sét nhất) có tới 2.855 lần sét đánh. Chia trung bình ra 10 phút có 475 cú sét đánh xuống đất tại khu vực Hà Nội và vùng lân cận. Có thời điểm trong 1 giây có tới 10 cú sét được ghi nhận (lúc 8 giờ 25 phút 47 giây)',
+        text: 'Sau khi nhận phản ánh cây chết hàng loạt, Bí thư Thành đoàn Đà Nẵng sẽ cho lực lượng kiểm tra, nắm số lượng cụ thể .',
       },
       {
-        text: 'Ông Nguyễn Đức Phương cũng đưa ra thống kê một số đợt dông sét khác đã xảy ra. Tại khu nam đồng bằng bắc bộ (trọng tâm tại các tỉnh Nam Định , Thái Bình, Hà Nam) từ 15 giờ đến 18 giờ ngày 19-5-2024, xảy ra 107. 825 sét đánh, trong đó có 31.957 lần sét đánh xuống đất. Chia trung bình ra 10 phút có từ 790 đến 3.040 lần sét đánh xuống đất.',
-      },
-      {
-        text: 'Tại Yên Bái, chỉ trong 1 giờ đồng hồ, từ 17 giờ đến 18 giờ, có tổng số 9.131 cú sét,  trong đó có 2.968 cú sét đánh xuống đất. Trung bình 494 cú sét/10 phút.',
-      },
-      {
-        text: '"Như vậy ta thấy với số lượng sét như vậy (475 cú sét/10 phút) là hoàn toàn bình thường khi so sánh với 2 đợt trên" - ông Phương khẳng định.',
-      },
-      {
-        text: 'Đặc biệt khi so sánh với số liệu từ 16 đến 17 giờ ngày 19-5-2024 tại khu vực Nam Đồng Bằng Bắc Bộ có đến 3.040 cú sét/10 phút.',
-      },
-      {
-        text: 'Gần nhất, từ 12 giờ đến 13 giờ ngày 5-6-2024 tại khu vực biển Quảng Ninh gần Vịnh Hạ Long cũng có 1.866 cú sét đánh xuống đất.',
+        text: '"Thành đoàn cũng sẽ liên hệ lại phía công ty ca sĩ để nhờ hỗ trợ kinh phí trồng lại số cây đã chết;  đồng thời tìm biện pháp lâu dài để giữ được mảng xanh tại khu vực trên" - Bí thư Thành đoàn Đà Nẵng cho hay.',
       },
     ],
   },
   {
     id: 'A5',
     title: 'Thầy giáo bị điện giật tử vong khi sửa điện',
+    thumbnail:
+      'https://nld.mediacdn.vn/291774122806476800/2024/6/5/0-17175716137191686792334.png',
     author: 'Hoàng Thanh',
     publishDate: new Date(Date.parse('05-06-24 14:48')),
     category: Category.THOI_SU,
@@ -199,6 +219,8 @@ const newsDetail: NewsDetail[] = [
     id: 'A6',
     title:
       'TP HCM: Giám đốc Kho bạc Nhà nước được bổ nhiệm làm Giám đốc Sở Tài chính',
+    thumbnail:
+      'https://nld.mediacdn.vn/291774122806476800/2024/6/5/nhan-su-1-17175730284182052560321.jpg',
     author: 'PHAN ANH',
     publishDate: new Date(Date.parse('05-06-24 14:52')),
     category: Category.THOI_SU,
@@ -208,6 +230,11 @@ const newsDetail: NewsDetail[] = [
       },
       {
         text: 'Tại buổi lễ, Chủ tịch UBND TP HCM Phan Văn Mãi đã trao quyết định tiếp nhận và bổ nhiệm ông Nguyễn Hoàng Hải, Giám đốc Kho bạc Nhà nước TP HCM, giữ chức vụ Giám đốc Sở Tài chính TP HCM, từ ngày 15-6.',
+        image: {
+          link: 'https://nld.mediacdn.vn/291774122806476800/2024/6/5/nhan-su-1-17175730284182052560321.jpg',
+          capture:
+            'Chủ tịch UBND TP HCM Phan Văn Mãi (bìa phải) trao quyết định và chúc mừng ông Nguyễn Hoàng Hải được bổ nhiệm làm Giám đốc Sở Tài chính',
+        },
       },
       {
         text: 'Ông Nguyễn Hoàng Hải làm Giám đốc Sở Tài chính thay thế ông Lê Duy Minh.',
@@ -217,12 +244,21 @@ const newsDetail: NewsDetail[] = [
       },
       {
         text: 'Ông Nguyễn Hoàng Hải sinh năm 1968, quê quán Vĩnh Long; trình độ: Thạc sĩ Kinh tế học, Cử nhân Kinh tế chính trị, Thạc sĩ Kinh tế học, Cử nhân Kinh tế chính trị, Cao cấp lý luận chính trị.',
+        image: {
+          link: 'https://nld.mediacdn.vn/291774122806476800/2024/6/5/nhan-su-2-17175730284212082792228.jpg',
+          capture:
+            'Chủ tịch UBND TP HCM Phan Văn Mãi (bìa phải) trao quyết định và chúc mừng ông Trần Văn Bảy được bổ nhiệm làm Chánh Thanh tra TP HCM',
+        },
       },
       {
         text: 'Ông Hải làm Phó Giám đốc Kho bạc Nhà nước TP HCM từ tháng 8-2007 đến tháng 12-2015.',
       },
       {
         text: 'Từ tháng 1-2016 đến tháng 2-2020, ông Nguyễn Hoàng Hải là Giám đốc Kho bạc Nhà nước Cần Thơ.',
+        image: {
+          link: 'https://nld.mediacdn.vn/291774122806476800/2024/6/5/nhan-su-3-1717573028452880931486.jpg',
+          capture: 'Lãnh đạo TP HCM chúc mừng các nhân sự vừa được bổ nhiệm',
+        },
       },
       {
         text: 'Từ tháng 3-2020 đến nay, ông làm Giám đốc Kho bạc Nhà nước TP HCM.',
@@ -250,26 +286,12 @@ const newsDetail: NewsDetail[] = [
       },
       {
         text: 'Điều động, bổ nhiệm ông Trần Bạch Ngọc, Chánh thanh tra Sở Kế hoạch và Đầu tư làm Phó Trưởng Ban đổi mới doanh nghiệp TP HCM.',
-        image: {
-          link: 'https://nld.mediacdn.vn/291774122806476800/2024/6/5/nhan-su-1-17175730284182052560321.jpg',
-          capture:
-            'Chủ tịch UBND TP HCM Phan Văn Mãi (bìa phải) trao quyết định và chúc mừng ông Nguyễn Hoàng Hải được bổ nhiệm làm Giám đốc Sở Tài chính',
-        },
       },
       {
         text: 'UBND TP HCM cũng phê chuẩn kết quả bầu Phó Chủ tịch UBND huyện Hóc Môn đối với ông Nguyễn Tuấn Anh, Bí thư Đảng ủy xã Bà Điểm, huyện Hóc Môn. Ông Nguyễn Tuấn Anh được bầu bổ sung làm Phó Chủ tịch UBND huyện Hóc Môn theo cơ chế đặc thù tại Nghị quyết 98/2023 của Quốc hội, theo đó UBND các huyện ở TP HCM được tối đa 4 phó chủ tịch.',
-        image: {
-          link: 'https://nld.mediacdn.vn/291774122806476800/2024/6/5/nhan-su-2-17175730284212082792228.jpg',
-          capture:
-            'Chủ tịch UBND TP HCM Phan Văn Mãi (bìa phải) trao quyết định và chúc mừng ông Trần Văn Bảy được bổ nhiệm làm Chánh Thanh tra TP HCM',
-        },
       },
       {
         text: 'Chủ tịch UBND TP HCM Phan Văn Mãi cho biết đây là việc thường xuyên của công tác cán bộ, chuẩn bị một bước về nhân sự cho nhiệm kỳ sau. Chủ tịch UBND TP HCM đề nghị các cơ quan đón nhận cán bộ. Các cán bộ cố gắng hơn để hoàn thành nhiệm vụ, nhanh chóng tiếp cận công việc, hòa nhập công việc tại cơ quan mới.',
-        image: {
-          link: 'https://nld.mediacdn.vn/291774122806476800/2024/6/5/nhan-su-3-1717573028452880931486.jpg',
-          capture: 'Lãnh đạo TP HCM chúc mừng các nhân sự vừa được bổ nhiệm',
-        },
       },
     ],
   },
@@ -277,6 +299,8 @@ const newsDetail: NewsDetail[] = [
     id: 'A7',
     title:
       'Vụ 112 hồ sơ ở dự án cao tốc Biên Hòa - Vũng Tàu có dấu hiệu chỉnh sửa: Công an nói gì?',
+    thumbnail:
+      'https://nld.mediacdn.vn/291774122806476800/2024/6/5/img2627-17175741748431693452658.jpg',
     author: 'Nguyễn Tuấn',
     publishDate: new Date(Date.parse('05-06-24 15:19')),
     category: Category.THOI_SU,
@@ -299,6 +323,11 @@ const newsDetail: NewsDetail[] = [
       },
       {
         text: 'Tuy nhiên, do lực lượng tổ chức thực hiện chưa chuyên nghiệp nên để xảy ra tình trạng tẩy, sửa. Trong trường hợp nếu có việc cố tình tẩy sửa thì cơ quan chức năng sẽ làm việc để xác minh rõ ràng.',
+        image: {
+          link: 'https://nld.mediacdn.vn/291774122806476800/2024/5/30/2f747606-96cb-4068-b6fb-7ee3f5f470d6-17168928791151142212846-0-0-1600-2560-crop-17170335691171467644059.jpeg',
+          capture:
+            'Công an vào cuộc vụ 112 hồ sơ có dấu hiệu chỉnh sửa ở cao tốc Biên Hòa-Vũng Tàu',
+        },
       },
     ],
   },
@@ -306,6 +335,8 @@ const newsDetail: NewsDetail[] = [
     id: 'A8',
     title:
       'Bộ trưởng Nguyễn Văn Hùng trả lời câu hỏi “bỏ 300 tỉ đồng vào ngân hàng để lấy lãi”',
+    thumbnail:
+      'https://nld.mediacdn.vn/zoom/320_200/291774122806476800/2023/11/8/bt-hung-1699408416214241378246.jpeg',
     author: 'Nhóm PV',
     publishDate: new Date(Date.parse('05-06-24 15:21')),
     category: Category.THOI_SU,
@@ -358,6 +389,8 @@ const newsDetail: NewsDetail[] = [
   {
     id: 'A9',
     title: 'Đường nối Ninh Thuận - Lâm Đồng vướng đất rừng',
+    thumbnail:
+      'https://nld.mediacdn.vn/291774122806476800/2024/6/5/lam-dong-5-1717566327529644550956.jpg',
     author: 'Trường Nguyên',
     publishDate: new Date(Date.parse('05-06-24 15:22')),
     category: Category.THOI_SU,
@@ -396,6 +429,8 @@ const newsDetail: NewsDetail[] = [
   {
     id: 'A10',
     title: 'Đang ngủ bị tảng đá nặng 3 tấn lăn từ trên núi xuống đè tử vong',
+    thumbnail:
+      'https://nld.mediacdn.vn/291774122806476800/2022/3/13/images728615nh-1647146817894363633692.jpg',
     author: 'Như Quỳnh',
     publishDate: new Date(Date.parse('05-06-24 15:22')),
     category: Category.THOI_SU,
@@ -424,6 +459,8 @@ const newsDetail: NewsDetail[] = [
   {
     id: 'A11',
     title: 'TP HCM có tân Chánh Thanh tra',
+    thumbnail:
+      'https://nld.mediacdn.vn/291774122806476800/2024/6/5/nhan-su-2-17175730284212082792228.jpg',
     author: 'PHAN ANH',
     publishDate: new Date(Date.parse('05-06-24 15:27')),
     category: Category.THOI_SU,
@@ -457,6 +494,8 @@ const newsDetail: NewsDetail[] = [
     id: 'A12',
     title:
       'Bộ trưởng VH-TT-DL nói về việc "ăn chặn" tiền thưởng, khẩu phần ăn của vận động viên',
+    thumbnail:
+      'https://nld.mediacdn.vn/zoom/320_200/291774122806476800/2022/4/16/hung-1650106968536575136295.jpeg',
     author: 'Văn Duẩn - Minh Chiến - Huy Thanh',
     publishDate: new Date(Date.parse('05-06-24 15:32')),
     category: Category.THOI_SU,
@@ -518,6 +557,8 @@ const newsDetail: NewsDetail[] = [
     id: 'A13',
     title:
       'Tổng cục Thuế có công điện khẩn kiểm tra toàn diện việc livestream bán hàng',
+    thumbnail:
+      'https://nld.mediacdn.vn/zoom/320_200/291774122806476800/2024/6/5/live-17175756928421469500120.jpeg',
     author: 'Minh Chiến',
     publishDate: new Date(Date.parse('05-06-24 15:40')),
     category: Category.THOI_SU,
@@ -562,6 +603,8 @@ const newsDetail: NewsDetail[] = [
   {
     id: 'A14',
     title: '1 phụ nữ tử vong sau khi sửa mũi ở trung tâm TP HCM',
+    thumbnail:
+      'https://nld.mediacdn.vn/zoom/320_200/291774122806476800/2024/6/5/z5509813098818c7db45793154650fd21fd22b65bc446c-17175759509092020025981-29-0-1183-1846-crop-17175760229301655649196.jpg',
     author: 'Anh Vũ',
     publishDate: new Date(Date.parse('05-06-24 15:43')),
     category: Category.THOI_SU,
@@ -593,6 +636,8 @@ const newsDetail: NewsDetail[] = [
   {
     id: 'A15',
     title: 'Tuyến đường nào "đắt khách" nhất khi quận 1 cho thuê vỉa hè?',
+    thumbnail:
+      'https://nld.mediacdn.vn/zoom/320_200/291774122806476800/2024/6/5/duong-le-thanh-ton-1717575288227211083420-109-0-909-1280-crop-1717575521380981312154.jpg',
     author: 'PHAN ANH',
     publishDate: new Date(Date.parse('05-06-24 15:46')),
     category: Category.THOI_SU,
@@ -637,6 +682,8 @@ const newsDetail: NewsDetail[] = [
   {
     id: 'A16',
     title: 'Tạm đình chỉ hoạt động một trung tâm Đăng kiểm ở Gia Lai',
+    thumbnail:
+      'https://nld.mediacdn.vn/zoom/320_200/291774122806476800/2024/6/5/11111-17175786214851373786714-55-0-446-625-crop-1717578691456246615221.jpg',
     author: 'Hoàng Thanh',
     publishDate: new Date(Date.parse('05-06-24 16:36')),
     category: Category.THOI_SU,
@@ -661,6 +708,8 @@ const newsDetail: NewsDetail[] = [
     id: 'A17',
     title:
       'Ông Nguyễn Văn Nên làm Trưởng Tiểu ban Nhân sự Đại hội Đại biểu Đảng bộ TP HCM lần thứ XII',
+    thumbnail:
+      'https://nld.mediacdn.vn/zoom/320_200/291774122806476800/2024/6/5/edit-098c149994e93bb762f8-17175796853981967681132-0-114-1449-2432-crop-17175798228871795850355.jpeg',
     author: 'LÊ VĨNH',
     publishDate: new Date(Date.parse('05-06-24 16:41')),
     category: Category.THOI_SU,
@@ -693,6 +742,8 @@ const newsDetail: NewsDetail[] = [
   {
     id: 'A18',
     title: 'Tra cứu thực tế vé bay cao điểm hè hôm nay 5-6',
+    thumbnail:
+      'https://nld.mediacdn.vn/zoom/320_200/291774122806476800/2024/6/5/z5510123560720f546bdb5913cea2327e03c17b39c8cec-17175803898212108514483-160-0-960-1280-crop-17175804232652100101653.jpg',
     author: 'Tin-ảnh: Dương Ngọc',
     publishDate: new Date(Date.parse('05-06-24 16:45')),
     category: Category.THOI_SU,
@@ -755,6 +806,8 @@ const newsDetail: NewsDetail[] = [
     id: 'A19',
     title:
       'Đại biểu Quốc hội chất vấn về đường đua F1 được xây dựng "hoành tráng" nhưng đang bỏ không',
+    thumbnail:
+      'https://nld.mediacdn.vn/zoom/320_200/291774122806476800/2022/11/4/db-le-hoang-anh-1667533923567612018015.jpeg',
     author: 'Minh Chiến - Huy Thanh - Văn Duẩn',
     publishDate: new Date(Date.parse('05-06-24 16:51')),
     category: Category.THOI_SU,
@@ -790,6 +843,8 @@ const newsDetail: NewsDetail[] = [
   {
     id: 'A20',
     title: 'Xe chở keo lao xuống vực, 2 người chết',
+    thumbnail:
+      'https://nld.mediacdn.vn/zoom/320_200/291774122806476800/2024/6/5/4476711204160566547399348211980418972668501n-1717579248765653490134-129-0-804-1080-crop-17175793554701714553500.jpg',
     author: 'Trần Thường',
     publishDate: new Date(Date.parse('05-06-24 16:55')),
     category: Category.THOI_SU,
@@ -828,6 +883,8 @@ const newsDetail: NewsDetail[] = [
   {
     id: 'A21',
     title: 'Ra mắt 2 công trình ý nghĩa trên xã đảo Thạnh An',
+    thumbnail:
+      'https://nld.mediacdn.vn/zoom/320_200/291774122806476800/2024/6/5/img-9832-1717578790096490673991-83-0-1333-2000-crop-1717578811891997512985.jpg',
     author: 'Tin-ảnh: Minh Diễm',
     publishDate: new Date(Date.parse('05-06-24 16:59')),
     category: Category.THOI_SU,
@@ -889,6 +946,8 @@ const newsDetail: NewsDetail[] = [
     id: 'A22',
     title:
       'Bình Dương: 6 người trên xe tải lao xuống cây xăng gây hỗn chiến kinh hoàng',
+    thumbnail:
+      'https://nld.mediacdn.vn/thumb_w/650/291774122806476800/2024/6/5/img3480-17175802943551787883093.jpeg',
     author: 'Thanh Thảo',
     publishDate: new Date(Date.parse('05-06-24 17:03')),
     category: Category.THOI_SU,
