@@ -124,7 +124,7 @@ const newsDetail: NewsDetail[] = [
   {
     id: 'A4',
     title: 'Dự án trồng rừng của ca sĩ Hà Anh Tuấn ở Đà Nẵng: 4 năm đã tàn lụi',
-    thumbnail: '',
+    thumbnail: 'https://newsmd2fr.keeng.vn/tiin/archive/imageslead/2024/07/09/v2q63nxn50hi3r2l8sm6q9j6bzoxhm9s.jpg',
     author: 'HẢI ĐỊNH',
     publishDate: new Date(Date.parse('09/07/2024 14:56')),
     category: Category.THOI_SU,

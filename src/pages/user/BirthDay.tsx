@@ -1,4 +1,13 @@
-import { Box, Button, Link, Stack, Typography, useTheme } from '@mui/material';
+import {
+  Box,
+  Button,
+  Link,
+  Stack,
+  Theme,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import { vi } from 'date-fns/locale/vi';
 import React, { useRef, useState } from 'react';
 import { User } from '../../types/user.type';
@@ -15,6 +24,9 @@ function BirthDay({
   onUpdate: <K extends keyof User>(key: K, value: User[K]) => void;
 }) {
   const theme = useTheme();
+  const isMobile = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down('sm'),
+  );
   const [open, setOpen] = useState<boolean>(false);
   const dateRef = useRef<HTMLInputElement>(null);
   const updateBirthDay = () => {
@@ -45,8 +57,9 @@ function BirthDay({
       </Stack>
       {open && (
         <Stack
-          direction={'row'}
-          alignItems={'center'}
+          direction={isMobile ? 'column' : 'row'}
+          alignItems={isMobile ? 'flex-start' : 'center'}
+          justifyContent={'space-between'}
           sx={{
             p: 2,
             borderRadius: '10px',
@@ -54,27 +67,29 @@ function BirthDay({
           }}
         >
           <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={vi}>
-            <DatePicker format="dd-MM-yyyy" inputRef={dateRef} />
+            <DatePicker format="dd-MM-yyyy " inputRef={dateRef} />
           </LocalizationProvider>
-          <Button
-            variant={'contained'}
-            sx={{ ml: 'auto' }}
-            size={'small'}
-            onClick={updateBirthDay}
-          >
-            <Typography variant="subtitle1">Thay đổi</Typography>
-          </Button>
-          <Button
-            variant={'outlined'}
-            sx={{ ml: 2 }}
-            size={'small'}
-            onClick={() => setOpen(false)}
-          >
-            <Typography variant="subtitle1"> Đóng</Typography>
-          </Button>
+          <Stack direction={'row'} mt={isMobile ? 2 : 0}>
+            <Button
+              variant={'contained'}
+              size={'small'}
+              onClick={updateBirthDay}
+            >
+              <Typography variant="subtitle1">Thay đổi</Typography>
+            </Button>
+            <Button
+              variant={'outlined'}
+              sx={{ ml: 2 }}
+              size={'small'}
+              onClick={() => setOpen(false)}
+            >
+              <Typography variant="subtitle1"> Đóng</Typography>
+            </Button>
+          </Stack>
         </Stack>
       )}
     </>
   );
 }
+
 export default BirthDay;

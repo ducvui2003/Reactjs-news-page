@@ -1,4 +1,3 @@
-import React from 'react';
 import { Category } from '../constraints/category';
 
 export interface News {
@@ -31,5 +30,4 @@ export interface Image {
 export interface NewsLoading {
   news?: News;
   isLoading: boolean;
-  cssImage?: React.CSSProperties;
 }
