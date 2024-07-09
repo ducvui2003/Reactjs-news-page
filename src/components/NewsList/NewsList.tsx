@@ -6,7 +6,6 @@ import { categoryExist, toCategory } from '../../services/categoryService';
 
 import NewsListTransition from './NewsListTransition';
 import { Chip, Container, Grid, Stack, TextField } from '@mui/material';
-import { Search } from '@mui/icons-material';
 
 import dayjs, { Dayjs } from 'dayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';

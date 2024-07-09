@@ -53,7 +53,7 @@ const MainUser = () => {
                         direction={isMobile ? 'row' : 'column'}
                         sx={{
                             overflowX: isMobile ? 'scroll' : 'auto',
-                            backgroundColor: theme.palette.grey[200],
+                            backgroundColor: theme.palette.mode == 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
                         }}
                     >
                         <NavLink to={`/users/info`} style={{ textDecoration: 'none' }}>

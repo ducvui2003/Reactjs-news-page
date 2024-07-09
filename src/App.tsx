@@ -1,5 +1,4 @@
 import './App.css';
-import 'bootstrap/scss/bootstrap.scss';
 import { Route, Routes } from 'react-router-dom';
 import Main from './pages/Main';
 import Home from './pages/Home';

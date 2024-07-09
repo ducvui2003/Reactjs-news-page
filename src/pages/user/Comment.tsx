@@ -6,7 +6,6 @@ import { CommentProvider } from '../../hooks/commentHook';
 import CommentItem from '../../components/Comment/CommentItem';
 import { Comment } from '../../types/comment.type';
 import { Box, CardContent } from '@mui/material';
-import Typography from '@mui/material/Typography';
 import Empty from '../../components/Empty/Empty';
 
 function Comment() {

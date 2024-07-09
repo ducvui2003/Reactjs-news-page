@@ -7,7 +7,6 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Skeleton,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
@@ -27,7 +26,6 @@ export default function NewsItemSave({
 
   const handleDeletedNews = (id?: string) => {
     if (id) {
-      console.log(id);
       dispatch(unsave(id));
       toast.success('Đã xóa bài báo: ' + id);
     }
