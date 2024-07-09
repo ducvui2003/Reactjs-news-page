@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Navigate, NavLink, useNavigate, useParams } from 'react-router-dom';
+import { Navigate, NavLink, useParams } from 'react-router-dom';
 import details from '../data/newsDetail';
 import Comment from '../components/Comment/Comment';
 import {
