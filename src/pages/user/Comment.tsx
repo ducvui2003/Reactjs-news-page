@@ -5,8 +5,8 @@ import { getCommentListByUserId } from '../../services/commentServices';
 import { CommentProvider } from '../../hooks/commentHook';
 import CommentItem from '../../components/Comment/CommentItem';
 import { Comment } from '../../types/comment.type';
-import { CardContent } from '@mui/material';
-import Typography from '@mui/material/Typography';
+import { Box, CardContent } from '@mui/material';
+import Empty from '../../components/Empty/Empty';
 
 function Comment() {
   const userId = useSelector((state: RootState) => state.authenticate.id);
@@ -29,9 +29,9 @@ function Comment() {
   };
 
   return (
-    <div>
+    <Box>
       {userComments.length === 0 ? (
-        <Typography>Bạn chưa có bình luận nào!</Typography>
+        <Empty />
       ) : (
         <div>
           {userComments.map((comment) => (
@@ -47,7 +47,7 @@ function Comment() {
           ))}
         </div>
       )}
-    </div>
+    </Box>
   );
 }
 

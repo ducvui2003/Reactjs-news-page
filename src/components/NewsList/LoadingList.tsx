@@ -1,4 +1,4 @@
-import React, { ComponentType, ReactNode, useState } from 'react';
+import React, { ComponentType, ReactNode } from 'react';
 
 interface LoadingList<T> {
   isLoading: boolean;
