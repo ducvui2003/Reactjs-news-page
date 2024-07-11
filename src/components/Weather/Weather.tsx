@@ -97,7 +97,8 @@ const weatherIconMapping: WeatherIconMapping = {
     ['Cloudy']: 'CLOUDY',
     ['Heavy Rain']: 'RAIN',
     ['Thunderstorm']: 'CLOUDY',
-    // ['Mostly Cloudy Night']: 'PARTLY_CLOUDY_NIGHT',
+    ['Mostly Cloudy Night']: 'PARTLY_CLOUDY_NIGHT',
+    ['Mostly Clear Night']:'CLEAR_NIGHT',
     undefined: 'CLEAR_DAY',
 };
 
@@ -156,7 +157,6 @@ const Weather = () => {
         console.log(weatherIconMapping[
             current[Object.keys(current)[0]].cloud_status
             ]);
-        console.log( weatherIconMapping[current[Object.keys(current)[0]].cloud_status] || 'CLEAR_DAY');
     };
 
     //   Xử lý việc tìm kiếm tỉnh thành

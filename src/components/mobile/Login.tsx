@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from '../Form/LoginForm';
-import { Box, Container, IconButton, Stack, useMediaQuery } from '@mui/material';
+import { Box, Container, IconButton, Stack } from '@mui/material';
 import LogoHome from '../Logo/LogoHome';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate } from 'react-router-dom';

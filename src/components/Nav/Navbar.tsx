@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import Stack from '@mui/material/Stack';
 import { categoryList, toCategoryName } from '../../services/categoryService';
 import {
-  Box,
-  Container,
-  Divider,
-  IconButton,
-  Link,
-  Theme,
-  Tooltip,
-  useMediaQuery,
+    Box,
+    Container,
+    Divider,
+    IconButton,
+    Link,
+    Theme,
+    Tooltip,
+    useMediaQuery, useTheme,
 } from '@mui/material';
 import { Category } from '../../constraints/category';
 import { NavLink } from 'react-router-dom';
@@ -22,6 +22,7 @@ function Nav() {
   const isMobile = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down('sm'),
   );
+
   const style = {
     backgroundColor: 'background.paper',
     position: 'sticky',
@@ -53,7 +54,6 @@ function Nav() {
                 key={index}
                 variant={'h6'}
                 underline={'none'}
-                color={'theme.palette.link.main'}
                 to={`/category/${category}`}
               >
                 {toCategoryName(category)}

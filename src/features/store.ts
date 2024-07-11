@@ -11,4 +11,3 @@ export const store = configureStore({
 
 // Lấy RootState và AppDispatch từ Store
 export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;

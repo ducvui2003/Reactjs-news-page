@@ -18,7 +18,6 @@ const MenuExtends = ({ handleClose }: { handleClose: () => void }) => {
                                     key={index}
                                     variant={'h6'}
                                     underline={'none'}
-                                    color={'theme.palette.link.main'}
                                     to={`/category/${category}`}
                                     sx={{ p: 1 }}
                                     onClick={handleClose}
