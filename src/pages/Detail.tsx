@@ -37,6 +37,10 @@ function Detail() {
     const detail = getNewsById(getLastNum);
 
     useEffect(() => {
+        document.title = detail?.title || '';
+    }, []);
+
+    useEffect(() => {
         window.scrollTo(0, 0);
     }, [id]);
 
