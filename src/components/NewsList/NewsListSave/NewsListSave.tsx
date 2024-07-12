@@ -12,6 +12,10 @@ const NewsListSave: React.FC = () => {
     const [listNews, setListNews] = useState<News[]>([]);
 
     useEffect(() => {
+        document.title = 'Bài báo yêu thích';
+    }, []);
+
+    useEffect(() => {
         const fetchNews = () => {
             Promise.all(listIdNewsSave.map((id) => getNewsById(id)))
                 .then((newsData) => {

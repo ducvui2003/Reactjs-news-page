@@ -20,7 +20,7 @@ const theme = extendTheme({
                     default: '#fff',
                     paper: '#fff',
                 },
-                divider: 'rgba(255,255,255,0,12)',
+                divider: 'rgba(0,0,0,0.32)',
             },
         },
         dark: {
@@ -45,7 +45,7 @@ const theme = extendTheme({
                     800: '#424242',
                     900: '#212121',
                 },
-                divider: 'rgba(255,255,255,0,12)',
+                divider: 'rgba(255,255,255,0.12)',
             },
         },
     },
