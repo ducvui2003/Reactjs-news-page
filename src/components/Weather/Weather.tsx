@@ -4,7 +4,7 @@ import {
     getLocation,
     getProvinceName,
     getWeathers,
-} from '../../services/weather';
+} from '../../services/weatherServices';
 import {
     Box,
     Card,
@@ -98,7 +98,7 @@ const weatherIconMapping: WeatherIconMapping = {
     ['Heavy Rain']: 'RAIN',
     ['Thunderstorm']: 'CLOUDY',
     ['Mostly Cloudy Night']: 'PARTLY_CLOUDY_NIGHT',
-    ['Mostly Clear Night']:'CLEAR_NIGHT',
+    ['Mostly Clear Night']: 'CLEAR_NIGHT',
     undefined: 'CLEAR_DAY',
 };
 
@@ -128,7 +128,7 @@ const Weather = () => {
     const handleGetLocationCurrent = (): void => {
         getLocation()
             .then((data) => {
-                let province = data.province_name;
+                let province = data;
                 if (province == 'Ho Chi Minh' || province == 'Hồ Chí Minh') {
                     province = 'TP HCM';
                 }
@@ -142,7 +142,6 @@ const Weather = () => {
     //  Xử lý việc chon tỉnh thành
     const handleSelectLocation = (location: string): void => {
         if (location.trim() === '') return;
-        console.log(convertToAscii(location.toLowerCase()));
         const selectedLocation = weather?.find((item: LocationWeather) => {
             return (
                 convertToAscii(
