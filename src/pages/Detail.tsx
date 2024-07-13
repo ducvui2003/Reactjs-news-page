@@ -90,7 +90,7 @@ function Detail() {
                                 </Typography>
                             </Link>
                         </Breadcrumbs>
-                        <Typography variant={'subtitle1'}>
+                        <Typography variant={'subtitle1'} >
                             {formatDate(detail.publishDate)}
                         </Typography>
                     </Stack>
@@ -109,7 +109,7 @@ function Detail() {
                     <Typography gutterBottom component={'h1'} variant={isMobile ? 'h3' : 'h2'}>
                         {detail.title}
                     </Typography>
-                    <Typography gutterBottom align={'right'} variant={'subtitle1'}>
+                    <Typography gutterBottom align={'right'} variant={'subtitle1'} >
                         {`Tác giả ${detail.author}`}
                     </Typography>
 
@@ -149,10 +149,11 @@ function NewsImage({
         <Box>
             <CardMedia component={'img'} image={image.link} onClick={showImage} />
             <Typography
-                variant={'body2'}
+                variant={'caption'}
                 gutterBottom
                 paragraph={true}
                 align={'center'}
+                mt={1}
             >
                 {image.capture}
             </Typography>

@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import Stack from '@mui/material/Stack';
 import { categoryList, toCategoryName } from '../../services/categoryService';
 import {
-    Box,
-    Container,
-    Divider,
-    IconButton,
-    Link,
-    Theme,
-    Tooltip,
-    useMediaQuery, useTheme,
+  Box,
+  Container,
+  Divider,
+  IconButton,
+  Link,
+  Theme,
+  Tooltip,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
 import { Category } from '../../constraints/category';
 import { NavLink } from 'react-router-dom';
@@ -36,6 +37,7 @@ function Nav() {
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
+
   return (
     <Box sx={style}>
       <Divider sx={{ height: 0.5, backgroundColor: 'black', opacity: 0.2 }} />
@@ -55,6 +57,13 @@ function Nav() {
                 variant={'h6'}
                 underline={'none'}
                 to={`/category/${category}`}
+                sx={{
+                  padding: '8px 16px',
+                    borderRadius: 2,
+                  '&:active': {
+                    backgroundColor: '#ccc',
+                  },
+                }}
               >
                 {toCategoryName(category)}
               </Link>
@@ -83,4 +92,5 @@ function Nav() {
     </Box>
   );
 }
+
 export default Nav;
