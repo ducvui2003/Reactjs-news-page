@@ -109,7 +109,7 @@ function Detail() {
                     <Typography gutterBottom component={'h1'} variant={isMobile ? 'h3' : 'h2'}>
                         {detail.title}
                     </Typography>
-                    <Typography gutterBottom align={'right'} variant={'body1'} >
+                    <Typography gutterBottom align={'right'} variant={'subtitle1'} >
                         {`Tác giả ${detail.author}`}
                     </Typography>
 
