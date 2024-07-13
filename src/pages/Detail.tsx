@@ -90,7 +90,7 @@ function Detail() {
                                 </Typography>
                             </Link>
                         </Breadcrumbs>
-                        <Typography variant={'body1'} >
+                        <Typography variant={'subtitle1'} >
                             {formatDate(detail.publishDate)}
                         </Typography>
                     </Stack>
@@ -149,10 +149,11 @@ function NewsImage({
         <Box>
             <CardMedia component={'img'} image={image.link} onClick={showImage} />
             <Typography
-                variant={'body2'}
+                variant={'caption'}
                 gutterBottom
                 paragraph={true}
                 align={'center'}
+                mt={1}
             >
                 {image.capture}
             </Typography>
