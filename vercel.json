@@ -1,8 +1,10 @@
 {
-    "version": 1,
+    "version": 2,
     "buildCommand": "npm run build",
-    "github": {
-
+    "git": {
+        "deploymentEnabled": {
+            "main": false
+        }
     },
     "devCommand": "npm run dev",
     "framework": "vite",
