@@ -27,7 +27,7 @@ const theme = extendTheme({
             palette: {
                 text: {
                     primary: '#fff',
-                    secondary: '#555555',
+                    secondary: '#fff5ff',
                 },
                 background: {
                     default: '#232023',

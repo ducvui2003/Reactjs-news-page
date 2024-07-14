@@ -99,6 +99,7 @@ const weatherIconMapping: WeatherIconMapping = {
     ['Thunderstorm']: 'CLOUDY',
     ['Mostly Cloudy Night']: 'PARTLY_CLOUDY_NIGHT',
     ['Mostly Clear Night']: 'CLEAR_NIGHT',
+    ['Partly Cloudy Night']: 'PARTLY_CLOUDY_NIGHT',
     undefined: 'CLEAR_DAY',
 };
 

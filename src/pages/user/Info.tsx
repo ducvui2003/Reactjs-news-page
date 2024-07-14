@@ -51,7 +51,7 @@ function Info() {
                         <Box>
                             <Typography gutterBottom={true}>Email</Typography>
                             <Typography color={theme.palette.grey[500]}>
-                                {userInfo?.email || 'Chưa thiết lập'}
+                                {userInfo?.email}
                             </Typography>
                         </Box>
                     </Stack>
